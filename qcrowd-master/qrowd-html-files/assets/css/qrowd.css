@@ -252,7 +252,14 @@ ul {
 
 .thm-btn {
   position: relative;
-  display: inline-block;
+  display: block; /* Troque de inline-block para block para facilitar centralização */
+  margin-left: auto; /* Centraliza horizontalmente */
+  margin-right: auto; /* Centraliza horizontalmente */
+  text-align: center; /* Alinha o texto ao centro (se aplicável) */
+  width: fit-content; /* Ajusta a largura ao conteúdo (ou defina um valor fixo, ex: 200px) */
+  padding: 15px 70px; /* Aumenta o padding para um botão mais largo */
+  font-size: 18px; /* Aumenta o tamanho da fonte (opcional) */
+  /* Mantenha o resto do seu CSS original */
   vertical-align: middle;
   -webkit-appearance: none;
   appearance: none;
@@ -260,16 +267,14 @@ ul {
   border: none;
   background-color: var(--qrowd-base);
   color: var(--qrowd-white);
-  font-size: 16px;
   font-weight: 800;
   letter-spacing: 0;
-  padding: 15px 30px 15px;
   transition: all 0.5s linear;
   overflow: hidden;
   z-index: 1;
-  border-radius:10px;
-  margin-top:35px;
-  margin-left: 15px;
+  border-radius: 10px;
+  margin-top: 35px;
+}
 }
 
 .thm-btn::before {
@@ -332,9 +337,9 @@ ul {
   line-height: 60px;
   font-weight: 800px;
   letter-spacing: -0.04em;
-  text-align: center;
+  text-align: left;
   max-width: 800px; /* ou o valor que melhor se adapte */
-  padding: 0 20px; /* evita que o texto encoste nas bordas em mobile */
+  padding: 0 0px; /* evita que o texto encoste nas bordas em mobile */
 }
 
 
@@ -667,13 +672,15 @@ ul {
 }
 
 .main-menu__main-menu-box {
-  display: block;
-  float: left;
+    display: block;
+    float: left;
+    margin-right: 180px; /* Ajuste o valor conforme necessário */
 }
 
 .main-menu__right {
-  display: block;
-  float: right;
+    display: block;
+    float: right;
+    margin-left: 180px; /* Ajuste o valor conforme necessário */
 }
 
 .main-menu__call {
@@ -812,6 +819,7 @@ ul {
     display: flex;
     margin-left: 50px;
     margin-top: 10px;
+    gap: 70px;
   }
 }
 
@@ -820,11 +828,13 @@ ul {
   padding-top: 30px;
   padding-bottom: 30px;
   position: relative;
+  
 }
 
 .main-menu .main-menu__list>li+li,
 .stricky-header .main-menu__list>li+li {
   margin-left: 50px;
+  
 }
 
 .main-menu .main-menu__list>li>a,
@@ -844,7 +854,8 @@ ul {
 }
 
 .main-menu .main-menu__list>li.dropdown>a {
-  padding-right: 50px;
+  padding-right: 0px;
+  
 }
 
 .main-menu .main-menu__list>li.dropdown>a:after {
@@ -854,7 +865,7 @@ ul {
   font-family: "Font Awesome 5 Free";
   content: "\f107";
   font-size: 13px;
-  color: var(--qrowd-gray);
+  color: transparent;
   transform: translateY(-50%);
   z-index: 1;
 }
@@ -894,7 +905,7 @@ ul {
 .main-menu .main-menu__list>li:hover>a::after,
 .stricky-header .main-menu__list>li.current>a::after,
 .stricky-header .main-menu__list>li:hover>a::after {
-  color: var(--qrowd-black);
+  color: transparent;
 }
 
 .main-menu .main-menu__list>li>ul,
@@ -1120,13 +1131,15 @@ ul {
   color: var(--qrowd-base);
 }
 
-.main-menu .mobile-nav__toggler {
-  font-size: 25px;
-  color: var(--qrowd-base);
-  cursor: pointer;
-  -webkit-transition: 500ms;
-  transition: 500ms;
-  margin-top: 15px;
+@media (max-width: 991px) { /* ou o breakpoint do seu menu mobile */
+    .main-menu .mobile-nav__toggler {
+        position: absolute;
+        right: 15px; /* Distância da borda direita */
+        top: 5px; /* Ajuste conforme necessário */
+        margin-top: 0; /* Remove a margem anterior */
+        color: var(--qrowd-base);
+        font-size: 24px;
+      }
 }
 
 .main-menu .mobile-nav__toggler:hover {
@@ -1470,8 +1483,9 @@ ul {
 
 .home-showcase__image {
   position: relative;
-  background-color: var(--qrowd-base);
+  background-color: transparent;
   overflow: hidden;
+  border-radius: 12px;
 }
 
 .home-showcase__image>img {
@@ -3190,7 +3204,7 @@ ul {
   position: relative;
   display: block;
   overflow: hidden;
-  background-color: var(--qrowd-black);
+  background-color: transparent;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   border-radius: 10px 10px 0 0;
@@ -12999,6 +13013,7 @@ body.boxed-wrapper {
   margin-top: -7px;
   flex-wrap: wrap;
   margin-top: 12px;
+ 
 }
 
 .login-register__text {
@@ -13008,7 +13023,10 @@ body.boxed-wrapper {
 
 @media (min-width: 400px) {
   .login-register__info {
-    gap: 20px;
+  gap: 20px;
+  padding: 12px 24px; /* Aumenta o preenchimento interno (tamanho) */
+  font-size: 16px; /* Aumenta o texto */
+  min-width: 120px; /* Largura mínima (opcional) */
   }
 }
 /* Container Principal */
@@ -13199,3 +13217,109 @@ body.boxed-wrapper {
       font-size: 12px;
   }
 }
+        /* Estilos personalizados para o modal e login */
+        .login-section {
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
+        .login-register__title {
+            color: #2a2a2a;
+            font-size: 28px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .login-register__title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background:( #f16101);
+        }
+        
+        .register-btn {
+            background: #d67caf;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: block;
+            margin: 20px auto 0;
+            transition: all 0.3s;
+        }
+        
+        .register-btn:hover {
+            background: #db9232;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Estilos para o modal */
+        .modal-content {
+            border-radius: 10px;
+            border: none;
+        }
+        
+        .modal-header {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .modal-title {
+            color: #2a2a2a;
+            font-weight: 700;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            height: 50px;
+            border-radius: 5px;
+            border: 1px solid #e1e1e1;
+        }
+        
+        .form-control:focus {
+            border-color: #d67caf;
+            box-shadow: none;
+        }
+        
+        .btn-submit {
+            background: #d67caf;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn-submit:hover {
+            background: #d45600;
+            color: white;
+        }
+        
+        .login-link {
+            color: #f16101;
+            text-decoration: none;
+        }
+        
+        .login-link:hover {
+            text-decoration: underline;
+        }
