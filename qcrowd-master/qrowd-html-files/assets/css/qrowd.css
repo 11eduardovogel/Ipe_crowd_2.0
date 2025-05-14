@@ -817,9 +817,9 @@ ul {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-left: 50px;
+    margin-left: 0px;
     margin-top: 10px;
-    gap: 70px;
+    gap: 55px;
   }
 }
 
@@ -1495,6 +1495,12 @@ ul {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
+@media (max-width: 767px) { /* Ajuste o breakpoint conforme necessário */
+    .home-showcase__image > img {
+        display: none; /* Remove a imagem no mobile */
+    }
+}
+
 
 .home-showcase__image:hover>img {
   opacity: 0.75;
@@ -13323,3 +13329,59 @@ body.boxed-wrapper {
         .login-link:hover {
             text-decoration: underline;
         }
+/* Container do menu mobile (substitui o .home-showcase no mobile) */
+.home-showcase__mobile-menu {
+    width: 300px;
+    background-color: var(--qrowd-black);
+    z-index: 10;
+    position: fixed; /* Alterado para fixed (ou relative, conforme necessidade) */
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: opacity 500ms ease, visibility 500ms ease, -webkit-transform 500ms ease;
+    transition: opacity 500ms ease, visibility 500ms ease, transform 500ms ease;
+}
+
+/* Estado "aberto" do menu (adicione via JS quando clicar no botão) */
+.home-showcase__mobile-menu--open {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+/* Estilo dos itens de texto (substituindo as imagens) */
+.home-showcase__mobile-text {
+    display: block;
+    color: white; /* Cor do texto (ajuste conforme var(--qrowd-base)) */
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Divisor sutil */
+    -webkit-transition: color 300ms ease;
+    transition: color 300ms ease;   
+}
+
+
+.home-showcase__mobile-text:hover {
+    color: var(--qrowd-base); /* Cor de hover (ex.: laranja) */
+}
+
+/* Botão para fechar o menu (opcional) */
+.home-showcase__mobile-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
