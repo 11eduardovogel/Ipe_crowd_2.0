@@ -13385,3 +13385,403 @@ body.boxed-wrapper {
     font-size: 20px;
     cursor: pointer;
 }
+}
+        
+        .page-wrapper {
+            background-color: var(--cor-fundo);
+        }
+        
+        .invest-header {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .invest-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+        
+        .invest-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            color: white;
+        }
+        
+        .invest-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            color: white;
+        }
+        
+        .invest-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px 60px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .product-header {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .product-header h3 {
+            color: white;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .product-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            color: var(--cor-secundaria);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-body {
+            padding: 37px;
+        }
+        
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        
+        .product-table th, 
+        .product-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-table th {
+            font-weight: 600;
+            color: var(--cor-secundaria);
+            width: 40%;
+        }
+        
+        .product-table td {
+            font-weight: 500;
+            
+        }
+        
+        .highlight {
+            color: var(--cor-primaria);
+            font-weight: 700;
+            
+        }
+        
+        .btn-invest {
+            background-color: var(--cor-primaria);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-invest:hover {
+            background-color: var(--cor-secundaria);
+            transform: translateY(-2px);
+        }
+        
+        .summary-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        
+        .summary-title {
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            color: var(--cor-secundaria);
+        }
+        
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .summary-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--cor-primaria);
+            text-align: center;
+        }
+        
+        .summary-card h4 {
+            margin-top: 0;
+            color: var(--cor-secundaria);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .summary-card p {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin: 0;
+            color: var(--cor-texto);
+        }
+        
+        .details-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .details-content {
+            margin-bottom: 25px;
+        }
+        
+        .details-content h3 {
+            color: var(--cor-secundaria);
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .details-content ul {
+            padding-left: 20px;
+        }
+        
+        .details-content li {
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .invest-header h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .summary-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+         .product-details-toggle {
+        margin: 15px 0;
+        position: relative;
+    }
+    
+    .details-btn {
+        background: none;
+        border: none;
+        color: var(--cor-secundaria);
+        font-size: 0.9rem;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin: 0 auto;
+    }
+    
+    .details-btn:hover {
+        background: rgba(165, 56, 105, 0.1);
+    }
+    
+    .product-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        background: rgba(249, 249, 249, 0.7);
+        border-radius: 8px;
+    }
+    
+    .product-details-toggle:hover .product-details {
+        max-height: 500px; /* Ajuste conforme necessário */
+    }
+    
+    .details-table {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .details-table th, 
+    .details-table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .details-table th {
+        font-weight: 500;
+        color: var(--cor-secundaria);
+        width: 60%;
+    }
+    
+    .details-table tr:last-child th,
+    .details-table tr:last-child td {
+        border-bottom: none;
+    }
+        /* Estilo do trigger */
+    .invest-details-trigger {
+        background: rgba(254, 127, 76, 0.1);
+        border: 1px dashed var(--cor-primaria);
+        color: var(--cor-primaria);
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0;
+        width: 100%;
+        transition: all 0.2s;
+    }
+    
+    .invest-details-trigger:hover {
+        background: rgba(254, 127, 76, 0.2);
+    }
+    
+    .invest-details-trigger i {
+        font-size: 1rem;
+    }
+    
+    /* Estilo do overlay */
+    .invest-details-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(2px);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+    
+    .product-card:hover .invest-details-overlay {
+        opacity: 1;
+        visibility: visible;
+        padding-top: 60px;
+    }
+    
+    .invest-details-content {
+        background: white;
+        width: 85%;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        border-top: 4px solid var(--cor-primaria);
+    }
+    
+    .invest-details-content h4 {
+        color: var(--cor-secundaria);
+        margin-top: 0;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    .financial-details-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .financial-details-table th, 
+    .financial-details-table td {
+        padding: 8px 10px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        font-size: 0.9rem;
+    }
+    
+    .financial-details-table th {
+        color: var(--cor-secundaria);
+        font-weight: 500;
+        width: 60%;
+    } 
+    /* 1. Torna o botão "imune" ao overlay */
+.invest-click-area {
+    position: relative; /* Cria novo contexto de empilhamento */
+    z-index: 20; /* Coloca o botão ACIMA do overlay */
+}
+
+/* 2. Ajusta o overlay para não cobrir o botão */
+.invest-details-overlay {
+    pointer-events: none; /* Permite cliques "atravessarem" */
+}
+
+.invest-details-content {
+    pointer-events: auto; /* Restaura interação só no conteúdo */
+    margin-bottom: 60px; /* Espaço para o botão respirar */
+}
+.product-card:hover .btn-invest {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
