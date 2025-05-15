@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Gallery || Qrowd || Qrowd HTML 5 Template </title>
+    <title>Ofertas | Ipê Capital</title>
     <!-- favicons Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
+     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/Favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/Favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/Favicon.png" />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
     <meta name="description" content="Qrowd HTML 5 Template " />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
@@ -44,6 +41,418 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/qrowd.css" />
     <link rel="stylesheet" href="assets/css/qrowd-responsive.css" />
+    
+    <style>
+        :root {
+            --cor-primaria: #fe7f4c;
+            --cor-secundaria: #a53869;
+            --cor-texto: #333;
+            --cor-fundo: #f9f9f9;
+            --cor-destaque: #ff9c71;
+            --cor-texto-claro: #777;
+        }
+        
+        .page-wrapper {
+            background-color: var(--cor-fundo);
+        }
+        
+        .invest-header {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .invest-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+        
+        .invest-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            color: white;
+        }
+        
+        .invest-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            color: white;
+        }
+        
+        .invest-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px 60px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .product-header {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .product-header h3 {
+            color: white;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .product-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            color: var(--cor-secundaria);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-body {
+            padding: 37px;
+        }
+        
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        
+        .product-table th, 
+        .product-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-table th {
+            font-weight: 600;
+            color: var(--cor-secundaria);
+            width: 40%;
+        }
+        
+        .product-table td {
+            font-weight: 500;
+            
+        }
+        
+        .highlight {
+            color: var(--cor-primaria);
+            font-weight: 700;
+            
+        }
+        
+        .btn-invest {
+            background-color: var(--cor-primaria);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-invest:hover {
+            background-color: var(--cor-secundaria);
+            transform: translateY(-2px);
+        }
+        
+        .summary-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        
+        .summary-title {
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            color: var(--cor-secundaria);
+        }
+        
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .summary-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--cor-primaria);
+            text-align: center;
+        }
+        
+        .summary-card h4 {
+            margin-top: 0;
+            color: var(--cor-secundaria);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .summary-card p {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin: 0;
+            color: var(--cor-texto);
+        }
+        
+        .details-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .details-content {
+            margin-bottom: 25px;
+        }
+        
+        .details-content h3 {
+            color: var(--cor-secundaria);
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .details-content ul {
+            padding-left: 20px;
+        }
+        
+        .details-content li {
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .invest-header h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .summary-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+         .product-details-toggle {
+        margin: 15px 0;
+        position: relative;
+    }
+    
+    .details-btn {
+        background: none;
+        border: none;
+        color: var(--cor-secundaria);
+        font-size: 0.9rem;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin: 0 auto;
+    }
+    
+    .details-btn:hover {
+        background: rgba(165, 56, 105, 0.1);
+    }
+    
+    .product-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        background: rgba(249, 249, 249, 0.7);
+        border-radius: 8px;
+    }
+    
+    .product-details-toggle:hover .product-details {
+        max-height: 500px; /* Ajuste conforme necessário */
+    }
+    
+    .details-table {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .details-table th, 
+    .details-table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .details-table th {
+        font-weight: 500;
+        color: var(--cor-secundaria);
+        width: 60%;
+    }
+    
+    .details-table tr:last-child th,
+    .details-table tr:last-child td {
+        border-bottom: none;
+    }
+        /* Estilo do trigger */
+    .invest-details-trigger {
+        background: rgba(254, 127, 76, 0.1);
+        border: 1px dashed var(--cor-primaria);
+        color: var(--cor-primaria);
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0;
+        width: 100%;
+        transition: all 0.2s;
+    }
+    
+    .invest-details-trigger:hover {
+        background: rgba(254, 127, 76, 0.2);
+    }
+    
+    .invest-details-trigger i {
+        font-size: 1rem;
+    }
+    
+    /* Estilo do overlay */
+    .invest-details-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(2px);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+    
+    .product-card:hover .invest-details-overlay {
+        opacity: 1;
+        visibility: visible;
+        padding-top: 60px;
+    }
+    
+    .invest-details-content {
+        background: white;
+        width: 85%;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        border-top: 4px solid var(--cor-primaria);
+    }
+    
+    .invest-details-content h4 {
+        color: var(--cor-secundaria);
+        margin-top: 0;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    .financial-details-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .financial-details-table th, 
+    .financial-details-table td {
+        padding: 8px 10px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        font-size: 0.9rem;
+    }
+    
+    .financial-details-table th {
+        color: var(--cor-secundaria);
+        font-weight: 500;
+        width: 60%;
+    } 
+    /* 1. Torna o botão "imune" ao overlay */
+.invest-click-area {
+    position: relative; /* Cria novo contexto de empilhamento */
+    z-index: 20; /* Coloca o botão ACIMA do overlay */
+}
+
+/* 2. Ajusta o overlay para não cobrir o botão */
+.invest-details-overlay {
+    pointer-events: none; /* Permite cliques "atravessarem" */
+}
+
+.invest-details-content {
+    pointer-events: auto; /* Restaura interação só no conteúdo */
+    margin-bottom: 60px; /* Espaço para o botão respirar */
+}
+.product-card:hover .btn-invest {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
+    </style>
 </head>
 
 <body class="custom-cursor">
@@ -51,20 +460,15 @@
     <div class="custom-cursor__cursor"></div>
     <div class="custom-cursor__cursor-two"></div>
 
-
-
-
-
     <div class="preloader">
         <div class="preloader__image"></div>
     </div>
     <!-- /.preloader -->
 
-
     <div class="page-wrapper">
         <header class="main-header">
             <div class="main-header__top">
-                <div class="main-header__top-inner">
+                <!-- <div class="main-header__top-inner">
                     <div class="main-header__top-left">
                         <ul class="list-unstyled main-header__contact-list">
                             <li>
@@ -99,7 +503,7 @@
                             <a href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <nav class="main-menu">
                 <div class="main-menu__wrapper">
@@ -111,117 +515,17 @@
                             <div class="main-menu__main-menu-box">
                                 <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                 <ul class="main-menu__list">
-                                    <li class="dropdown megamenu">
-                                        <a href="index.html">Home </a>
-                                        <ul>
-                                            <li>
-                                                <section class="home-showcase">
-                                                    <div class="container">
-                                                        <div class="home-showcase__inner">
-                                                            <div class="row">
-                                                                <div class="col-lg-3">
-                                                                    <div class="home-showcase__item">
-                                                                        <div class="home-showcase__image">
-                                                                            <img src="assets/images/home-showcase/home-showcase-1-1.jpg"
-                                                                                alt="">
-                                                                            <div class="home-showcase__buttons">
-                                                                                <a href="index.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">Multi
-                                                                                    Page</a>
-                                                                                <a href="index-one-page.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">One
-                                                                                    Page</a>
-                                                                            </div>
-                                                                            <!-- /.home-showcase__buttons -->
-                                                                        </div><!-- /.home-showcase__image -->
-                                                                        <h3 class="home-showcase__title">Home
-                                                                            page
-                                                                            01</h3>
-                                                                        <!-- /.home-showcase__title -->
-                                                                    </div><!-- /.home-showcase__item -->
-                                                                </div><!-- /.col-lg-3 -->
-                                                                <div class="col-lg-3">
-                                                                    <div class="home-showcase__item">
-                                                                        <div class="home-showcase__image">
-                                                                            <img src="assets/images/home-showcase/home-showcase-1-2.jpg"
-                                                                                alt="">
-                                                                            <div class="home-showcase__buttons">
-                                                                                <a href="index2.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">Multi
-                                                                                    Page</a>
-                                                                                <a href="index2-one-page.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">One
-                                                                                    Page</a>
-                                                                            </div>
-                                                                            <!-- /.home-showcase__buttons -->
-                                                                        </div><!-- /.home-showcase__image -->
-                                                                        <h3 class="home-showcase__title">Home
-                                                                            page
-                                                                            02
-                                                                        </h3><!-- /.home-showcase__title -->
-                                                                    </div><!-- /.home-showcase__item -->
-                                                                </div><!-- /.col-lg-3 -->
-                                                                <div class="col-lg-3">
-                                                                    <div class="home-showcase__item">
-                                                                        <div class="home-showcase__image">
-                                                                            <img src="assets/images/home-showcase/home-showcase-1-3.jpg"
-                                                                                alt="">
-                                                                            <div class="home-showcase__buttons">
-                                                                                <a href="index3.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">Multi
-                                                                                    Page</a>
-                                                                                <a href="index3-one-page.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">One
-                                                                                    Page</a>
-                                                                            </div>
-                                                                            <!-- /.home-showcase__buttons -->
-                                                                        </div><!-- /.home-showcase__image -->
-                                                                        <h3 class="home-showcase__title">Home
-                                                                            page
-                                                                            03
-                                                                        </h3><!-- /.home-showcase__title -->
-                                                                    </div><!-- /.home-showcase__item -->
-                                                                </div><!-- /.col-lg-3 -->
-                                                                <div class="col-lg-3">
-                                                                    <div class="home-showcase__item">
-                                                                        <div class="home-showcase__image">
-                                                                            <img src="assets/images/home-showcase/home-showcase-1-4.jpg"
-                                                                                alt="">
-                                                                            <div class="home-showcase__buttons">
-                                                                                <a href="index-dark.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">View
-                                                                                    Page</a>
-                                                                            </div>
-                                                                            <!-- /.home-showcase__buttons -->
-                                                                        </div><!-- /.home-showcase__image -->
-                                                                        <h3 class="home-showcase__title">Home
-                                                                            page
-                                                                            04
-                                                                        </h3><!-- /.home-showcase__title -->
-                                                                    </div><!-- /.home-showcase__item -->
-                                                                </div><!-- /.col-lg-3 -->
-                                                            </div><!-- /.row -->
-                                                        </div><!-- /.home-showcase__inner -->
-
-                                                    </div><!-- /.container -->
-                                                </section>
-                                            </li>
-                                        </ul>
+                                    <li>
+                                        <a href="index.html">Home</a>
                                     </li>
                                     <li class="dropdown current">
                                         <a href="#">Pages</a>
                                         <ul class="shadow-box">
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="team.html">Team</a></li>
-                                            <li><a href="team-carousel.html">Team Carousel</a></li>
                                             <li><a href="testimonials.html">Testimonials</a></li>
-                                            <li><a href="testimonials-carousel.html">Testimonials Carousel</a></li>
-                                            <li><a href="partner.html">Partners</a></li>
-                                            <li><a href="gallery.html">Gallery</a></li>
-                                            <li><a href="gallery-carousel.html">Gallery Carousel</a></li>
                                             <li><a href="faq.html">FAQs</a></li>
-                                            <li><a href="login-register.html">Login Registration</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
+                                            <li class="current"><a href="investimentos.html">Investimentos</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">
@@ -229,35 +533,7 @@
                                         <ul class="shadow-box">
                                             <li><a href="project-01.html">Project 01</a></li>
                                             <li><a href="project-02.html">Project 02</a></li>
-                                            <li><a href="project-carousel.html">Project Carousel</a></li>
                                             <li><a href="project-details.html">Project Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#">Events</a>
-                                        <ul class="shadow-box">
-                                            <li><a href="events.html">Events</a></li>
-                                            <li><a href="events-list.html">Events List</a></li>
-                                            <li><a href="events-carousel.html">Events Carousel</a></li>
-                                            <li><a href="event-details.html">Event Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#">News</a>
-                                        <ul class="shadow-box">
-                                            <li><a href="news.html">News</a></li>
-                                            <li><a href="news-carousel.html">News Carousel</a></li>
-                                            <li><a href="news-sidebar.html">News Sidebar</a></li>
-                                            <li><a href="news-details.html">News Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#">Shop</a>
-                                        <ul class="shadow-box">
-                                            <li><a href="products.html">Products</a></li>
-                                            <li><a href="product-details.html">Product Details</a></li>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -274,17 +550,15 @@
                                     </div>
                                     <div class="main-menu__call-content">
                                         <p class="main-menu__call-sub-title">Call Anytime</p>
-                                        <h5 class="main-menu__call-number"><a href="tel:9288006780">+92 ( 8800 ) -
-                                                6780</a></h5>
+                                        <h5 class="main-menu__call-number"><a href="tel:9288006780">+92 ( 8800 ) - 6780</a></h5>
                                     </div>
                                 </div>
-                                <div class="main-menu__search-box">
+                                <!-- <div class="main-menu__search-box">
                                     <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>
-                                </div>
-                                <div class="main-menu__btn-box">
-                                    <a href="project-details.html" class="thm-btn main-menu__btn"><i
-                                            class="icon-plus-symbol"></i>Add a Project</a>
-                                </div>
+                                </div> -->
+                                <!-- <div class="main-menu__btn-box">
+                                    <a href="project-details.html" class="thm-btn main-menu__btn"><i class="icon-plus-symbol"></i>Add a Project</a>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -296,158 +570,340 @@
             <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
         </div><!-- /.stricky-header -->
 
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
-            </div>
-            <div class="page-header-shape-1 float-bob-x">
-                <img src="assets/images/shapes/page-header-shape-1.png" alt="">
-            </div>
-            <div class="page-header-shape-2 float-bob-y">
-                <img src="assets/images/shapes/page-header-shape-2.png" alt="">
-            </div>
-            <div class="page-header-shape-3 float-bob-x">
-                <img src="assets/images/shapes/page-header-shape-3.png" alt="">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><span>/</span></li>
-                        <li>Gallery</li>
-                    </ul>
-                    <h2>Gallery</h2>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
+        <!-- Conteúdo da Página de Investimentos -->
+        
+        <!-- Hero Section (já adaptado conforme seu template) -->
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-head.png)">
+    </div>
+    <div class="page-header-shape-1 float-bob-x">
+        <img src="assets/images/shapes/page-header-shape-1.png" alt="">
+    </div>
+    <div class="page-header-shape-2 float-bob-y">
+        <img src="assets/images/shapes/page-header-shape-2.png" alt="">
+    </div>
+    <div class="page-header-shape-3 float-bob-x">
+        <img src="assets/images/shapes/page-header-shape-3.png" alt="">
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="index.html">Home</a></li>
+                <li><span>/</span></li>
+                <li>Ofertas</li>
+            </ul>
+            <h2>Ofertas</h2>
+            <!-- <p class="page-header__text">Oportunidade de investimento em crowdfunding</p> -->
+        </div>
+    </div>
+</section>
 
-        <!--Gallery Page Start-->
-        <section class="gallery-page">
-            <div class="container">
-                <div class="row">
-                    <!--Gallery Page Single Start-->
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="gallery-page__single">
-                            <div class="gallery-page__img">
-                                <img src="assets/images/gallery/gallery-page-1.jpg" alt="">
-                                <div class="gallery-page__icon">
-                                    <a class="img-popup" href="assets/images/gallery/gallery-page-1.jpg"><span
-                                            class="icon-plus-symbol"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Gallery Page Single End-->
-                    <!--Gallery Page Single Start-->
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="gallery-page__single">
-                            <div class="gallery-page__img">
-                                <img src="assets/images/gallery/gallery-page-2.jpg" alt="">
-                                <div class="gallery-page__icon">
-                                    <a class="img-popup" href="assets/images/gallery/gallery-page-2.jpg"><span
-                                            class="icon-plus-symbol"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Gallery Page Single End-->
-                    <!--Gallery Page Single Start-->
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="gallery-page__single">
-                            <div class="gallery-page__img">
-                                <img src="assets/images/gallery/gallery-page-3.jpg" alt="">
-                                <div class="gallery-page__icon">
-                                    <a class="img-popup" href="assets/images/gallery/gallery-page-3.jpg"><span
-                                            class="icon-plus-symbol"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Gallery Page Single End-->
-                    <!--Gallery Page Single Start-->
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="gallery-page__single">
-                            <div class="gallery-page__img">
-                                <img src="assets/images/gallery/gallery-page-4.jpg" alt="">
-                                <div class="gallery-page__icon">
-                                    <a class="img-popup" href="assets/images/gallery/gallery-page-4.jpg"><span
-                                            class="icon-plus-symbol"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Gallery Page Single End-->
-                    <!--Gallery Page Single Start-->
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="gallery-page__single">
-                            <div class="gallery-page__img">
-                                <img src="assets/images/gallery/gallery-page-5.jpg" alt="">
-                                <div class="gallery-page__icon">
-                                    <a class="img-popup" href="assets/images/gallery/gallery-page-5.jpg"><span
-                                            class="icon-plus-symbol"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Gallery Page Single End-->
-                    <!--Gallery Page Single Start-->
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="gallery-page__single">
-                            <div class="gallery-page__img">
-                                <img src="assets/images/gallery/gallery-page-6.jpg" alt="">
-                                <div class="gallery-page__icon">
-                                    <a class="img-popup" href="assets/images/gallery/gallery-page-6.jpg"><span
-                                            class="icon-plus-symbol"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Gallery Page Single End-->
-                    <!--Gallery Page Single Start-->
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="gallery-page__single">
-                            <div class="gallery-page__img">
-                                <img src="assets/images/gallery/gallery-page-7.jpg" alt="">
-                                <div class="gallery-page__icon">
-                                    <a class="img-popup" href="assets/images/gallery/gallery-page-7.jpg"><span
-                                            class="icon-plus-symbol"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Gallery Page Single End-->
-                    <!--Gallery Page Single Start-->
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="gallery-page__single">
-                            <div class="gallery-page__img">
-                                <img src="assets/images/gallery/gallery-page-8.jpg" alt="">
-                                <div class="gallery-page__icon">
-                                    <a class="img-popup" href="assets/images/gallery/gallery-page-8.jpg"><span
-                                            class="icon-plus-symbol"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Gallery Page Single End-->
-                    <!--Gallery Page Single Start-->
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="gallery-page__single">
-                            <div class="gallery-page__img">
-                                <img src="assets/images/gallery/gallery-page-9.jpg" alt="">
-                                <div class="gallery-page__icon">
-                                    <a class="img-popup" href="assets/images/gallery/gallery-page-9.jpg"><span
-                                            class="icon-plus-symbol"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Gallery Page Single End-->
-                </div>
+<!-- Resumo da Oferta (movido para cima) -->
+<div class="invest-container">
+    <div class="summary-section">
+        <h2 class="summary-title">Resumo total referente a esta Oferta</h2>
+        <div class="summary-cards">
+            <div class="summary-card">
+                <h4>Total <br>Acumulado</h4>
+                <p>R$ 0,00</p>
             </div>
-        </section>
-        <!--Gallery Page End-->
+            <div class="summary-card">
+                <h4>Rendimento <br>Acumulado</h4>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="summary-card">
+                <h4>Principais <br> Indicadores</h4>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="summary-card">
+                <h4>Distribuição de Rendimento</h4>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="summary-card">
+                <h4>Rentabilidade no ultimo mês</h4>
+                <p>0%</p>
+            </div>
+        </div>
+    </div>
 
+    <!-- Grid de Produtos (mantido) -->
+    <div class="product-grid">
+        <!-- Card 1 - Atos Group II -->
+<!-- Card 1 - Atos Group II -->
+<div class="investment-card-wrapper">
+  <div class="product-card">
+    <div class="product-header">
+      <h3>Atos Group II</h3>
+      <span class="product-status">Aberto</span>
+    </div>
+    <div class="product-body">
+      <table class="product-table">
+        <tr>
+          <th>COD.</th>
+          <td>O1005</td>
+        </tr>
+        <tr>
+          <th>Rentabilidade</th>
+          <td class="highlight">19,6% a.a.</td>
+        </tr>
+        <tr>
+          <th>Vencimento</th>
+          <td>48 meses</td>
+        </tr>
+        <tr>
+          <th>Risco</th>
+          <td>Médio</td>
+        </tr>
+        <tr>
+          <th>Valor mínimo</th>
+          <td>R$ 1.000,00</td>
+        </tr>
+      </table>
+      <button class="invest-details-trigger">
+        <span>Ver detalhes financeiros</span>
+        <i class="fas fa-chart-line"></i>
+      </button>
+      <div class="invest-details-overlay">
+        <div class="invest-details-content">
+          <h4>Detalhes Financeiros</h4>
+          <table class="financial-details-table">
+            <tr>
+              <th>Aporte total atual</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Total rendimento acumulado</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Total acumulado</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Saques acumulados totais</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Rentabilidade desde o início</th>
+              <td>0%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-actions">
+    <button class="btn-invest">Investir agora</button>
+  </div>
+</div>
+
+<!-- Card 2 - Tech Solutions -->
+<div class="investment-card-wrapper">
+  <div class="product-card">
+    <div class="product-header">
+      <h3>Tech Solutions</h3>
+      <span class="product-status">Aberto</span>
+    </div>
+    <div class="product-body">
+      <table class="product-table">
+        <tr>
+          <th>COD.</th>
+          <td>O1006</td>
+        </tr>
+        <tr>
+          <th>Rentabilidade</th>
+          <td class="highlight">22,3% a.a.</td>
+        </tr>
+        <tr>
+          <th>Vencimento</th>
+          <td>36 meses</td>
+        </tr>
+        <tr>
+          <th>Risco</th>
+          <td>Alto</td>
+        </tr>
+        <tr>
+          <th>Valor mínimo</th>
+          <td>R$ 2.500,00</td>
+        </tr>
+      </table>
+      <button class="invest-details-trigger">
+        <span>Ver detalhes financeiros</span>
+        <i class="fas fa-chart-line"></i>
+      </button>
+      <div class="invest-details-overlay">
+        <div class="invest-details-content">
+          <h4>Detalhes Financeiros</h4>
+          <table class="financial-details-table">
+            <tr>
+              <th>Aporte total atual</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Total rendimento acumulado</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Total acumulado</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Saques acumulados totais</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Rentabilidade desde o início</th>
+              <td>0%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-actions">
+    <button class="btn-invest">Investir agora</button>
+  </div>
+</div>
+
+<!-- Card 3 - Green Energy -->
+<div class="investment-card-wrapper">
+  <div class="product-card">
+    <div class="product-header">
+      <h3>Green Energy</h3>
+      <span class="product-status">Fechando</span>
+    </div>
+    <div class="product-body">
+      <table class="product-table">
+        <tr>
+          <th>COD.</th>
+          <td>O1007</td>
+        </tr>
+        <tr>
+          <th>Rentabilidade</th>
+          <td class="highlight">15,8% a.a.</td>
+        </tr>
+        <tr>
+          <th>Vencimento</th>
+          <td>60 meses</td>
+        </tr>
+        <tr>
+          <th>Risco</th>
+          <td>Baixo</td>
+        </tr>
+        <tr>
+          <th>Valor mínimo</th>
+          <td>R$ 5.000,00</td>
+        </tr>
+      </table>
+      <button class="invest-details-trigger">
+        <span>Ver detalhes financeiros</span>
+        <i class="fas fa-chart-line"></i>
+      </button>
+      <div class="invest-details-overlay">
+        <div class="invest-details-content">
+          <h4>Detalhes Financeiros</h4>
+          <table class="financial-details-table">
+            <tr>
+              <th>Aporte total atual</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Total rendimento acumulado</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Total acumulado</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Saques acumulados totais</th>
+              <td>R$ 0,00</td>
+            </tr>
+            <tr>
+              <th>Rentabilidade desde o início</th>
+              <td>0%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-actions">
+    <button class="btn-invest">Investir agora</button>
+  </div>
+</div>
+</div>
+
+<!-- Card 4 - Urban Living -->
+<!-- <div class="product-card">
+    <div class="product-header">
+        <h3>Urban Living</h3>
+        <span class="product-status">Aberto</span>
+    </div>
+    <div class="product-body">
+        <table class="product-table">
+            <tr>
+                <th>COD.</th>
+                <td>O1008</td>
+            </tr>
+            <tr>
+                <th>Rentabilidade</th>
+                <td class="highlight">18,2% a.a.</td>
+            </tr>
+            <tr>
+                <th>Vencimento</th>
+                <td>42 meses</td>
+            </tr>
+            <tr>
+                <th>Risco</th>
+                <td>Médio</td>
+            </tr>
+            <tr>
+                <th>Valor mínimo</th>
+                <td>R$ 3.000,00</td>
+            </tr>
+        </table>
+        
+        <button class="invest-details-trigger">
+            <span>Ver detalhes financeiros</span>
+            <i class="fas fa-chart-line"></i>
+        </button>
+        
+        <div class="invest-details-overlay">
+            <div class="invest-details-content">
+                <h4>Detalhes Financeiros</h4>
+                <table class="financial-details-table">
+                    <tr>
+                        <th>Aporte total atual</th>
+                        <td>R$ 0,00</td>
+                    </tr>
+                    <tr>
+                        <th>Total rendimento acumulado</th>
+                        <td>R$ 0,00</td>
+                    </tr>
+                    <tr>
+                        <th>Total acumulado</th>
+                        <td>R$ 0,00</td>
+                    </tr>
+                    <tr>
+                        <th>Saques acumulados totais</th>
+                        <td>R$ 0,00</td>
+                    </tr>
+                    <tr>
+                        <th>Rentabilidade desde o início</th>
+                        <td>0%</td>
+                    </tr>
+                </table> -->
+            </div>
+        </div>
+        
+        <!-- <button class="btn-invest">Investir agora</button> -->
+    </div>
+</div>
+        
+        
+    </div>
+</div>
         <!--Site Footer Start-->
         <footer class="site-footer">
             <div class="site-footer__top">
@@ -559,9 +1015,7 @@
         </footer>
         <!--Site Footer End-->
 
-
     </div><!-- /.page-wrapper -->
-
 
     <div class="mobile-nav__wrapper">
         <div class="mobile-nav__overlay mobile-nav__toggler"></div>
@@ -595,9 +1049,6 @@
                     <a href="#" class="fab fa-instagram"></a>
                 </div><!-- /.mobile-nav__social -->
             </div><!-- /.mobile-nav__top -->
-
-
-
         </div>
         <!-- /.mobile-nav__content -->
     </div>
@@ -620,7 +1071,6 @@
     <!-- /.search-popup -->
 
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="icon-right-arrow"></i></a>
-
 
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -647,11 +1097,7 @@
     <script src="assets/vendors/circleType/jquery.circleType.js"></script>
     <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
 
-
-
-
     <!-- template js -->
     <script src="assets/js/qrowd.js"></script>
 </body>
-
 </html>
