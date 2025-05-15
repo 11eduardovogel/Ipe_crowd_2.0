@@ -178,11 +178,11 @@
         }
         
         .btn-invest {
-            background-color: var(--cor-primaria);
+            background-color: var(--cor-secundaria);
             color: white;
             border: none;
             padding: 12px 24px;
-            border-radius: 4px;
+            border-radius: 12px;
             font-size: 1em;
             cursor: pointer;
             transition: all 0.3s;
@@ -191,10 +191,11 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-top: 2.5px;
         }
         
         .btn-invest:hover {
-            background-color: var(--cor-secundaria);
+            background-color: var(--cor-primaria);
             transform: translateY(-2px);
         }
         
@@ -500,7 +501,7 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 .summary-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(254, 127, 76, 0.1);
         border-color: #fe7f4c;
 }
@@ -594,17 +595,97 @@
                             <div class="main-menu__main-menu-box">
                                 <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                 <ul class="main-menu__list">
-                                    <li>
-                                        <a href="index.html">Home</a>
+                                    <li class="dropdown megamenu">
+                                        <a href="#">Home </a>
+                                        <ul>
+                                            <li>
+                                                <section class="home-showcase">
+                                                    <div class="container">
+                                                        <div class="home-showcase__inner">
+                                                            <div class="row">
+                                                                <div class="col-lg-3">
+                                                                    <div class="home-showcase__item">
+                                                                        <div class="home-showcase__item">
+                                                                            <a href="index2-one-page.html" class="home-showcase__image-link">
+                                                                                <div class="home-showcase__image">
+                                                                                    <img src="assets/images/home-showcase/Securitização.png" alt="">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div><!-- /.home-showcase__image -->
+                                                                        <!-- <h3 class="home-showcase__title">Home
+                                                                            page
+                                                                            01</h3> -->
+                                                                        <!-- /.home-showcase__title -->
+                                                                    </div><!-- /.home-showcase__item -->
+                                                                </div><!-- /.col-lg-3 -->
+                                                                <div class="col-lg-3">
+                                                                    <div class="home-showcase__item">
+                                                                        <div class="home-showcase__item">
+                                                                            <a href="index3-one-page.html" class="home-showcase__image-link">
+                                                                                <div class="home-showcase__image">
+                                                                                    <img src="assets/images/home-showcase/Antecipação.png" alt="">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div><!-- /.home-showcase__image -->
+                                                                        <!-- <h3 class="home-showcase__title">Home
+                                                                            page
+                                                                            02
+                                                                        </h3>/.home-showcase__title -->
+                                                                    </div><!-- /.home-showcase__item -->
+                                                                </div><!-- /.col-lg-3 -->
+                                                                <div class="col-lg-3">
+                                                                    <div class="home-showcase__item">
+                                                                        <div class="home-showcase__item">
+                                                                            <a href="index.html" class="home-showcase__image-link">
+                                                                                <div class="home-showcase__image">
+                                                                                    <img src="assets/images/home-showcase/Crowdfunding.png" alt="">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div><!-- /.home-showcase__image -->
+                                                                        <!-- <h3 class="home-showcase__title">Home
+                                                                            page
+                                                                            03
+                                                                        </h3>/.home-showcase__title -->
+                                                                    </div><!-- /.home-showcase__item -->
+                                                                </div><!-- /.col-lg-3 -->
+                                                                <div class="col-lg-3">
+                                                                    <div class="home-showcase__image">
+                                                                        <div class="home-showcase__item">
+                                                                            <a href="about.html" class="home-showcase__image-link">
+                                                                                <div class="home-showcase__image">
+                                                                                    <img src="assets/images/home-showcase/Sobre nós.png" alt="">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                        <!-- /.home-showcase__buttons -->
+                                                                    </div><!-- /.home-showcase__image -->
+                                                                    <!-- <h3 class="home-showcase__title">Home
+                                                                        page
+                                                                        01</h3> -->
+                                                            </div>
+                                                            <!-- /.row -->
+                                                             
+                                                        </div><!-- /.home-showcase__inner -->
+
+                                                    </div><!-- /.container -->
+                                                </section>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li class="dropdown current">
                                         <a href="#">Pages</a>
                                         <ul class="shadow-box">
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="team.html">Team</a></li>
+                                            <li><a href="team-carousel.html">Team Carousel</a></li>
                                             <li><a href="testimonials.html">Testimonials</a></li>
+                                            <li><a href="testimonials-carousel.html">Testimonials Carousel</a></li>
+                                            <li><a href="partner.html">Partners</a></li>
+                                            <li><a href="gallery.html">Gallery</a></li>
+                                            <li><a href="gallery-carousel.html">Gallery Carousel</a></li>
                                             <li><a href="faq.html">FAQs</a></li>
-                                            <li class="current"><a href="investimentos.html">Investimentos</a></li>
+                                            <li><a href="login-register.html">Login Registration</a></li>
+                                            <li><a href="404.html">404 Error</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">
@@ -612,40 +693,65 @@
                                         <ul class="shadow-box">
                                             <li><a href="project-01.html">Project 01</a></li>
                                             <li><a href="project-02.html">Project 02</a></li>
+                                            <li><a href="project-carousel.html">Project Carousel</a></li>
                                             <li><a href="project-details.html">Project Details</a></li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href="contact.html">Contact</a>
+                                    <li class="dropdown">
+                                        <a href="#">Events</a>
+                                        <ul class="shadow-box">
+                                            <li><a href="events.html">Events</a></li>
+                                            <li><a href="events-list.html">Events List</a></li>
+                                            <li><a href="events-carousel.html">Events Carousel</a></li>
+                                            <li><a href="event-details.html">Event Details</a></li>
+                                        </ul>
                                     </li>
+                                    <!-- <li class="dropdown" style="margin-right: 100px;">
+                                        <a href="#">News</a>
+                                        <ul class="shadow-box">
+                                            <li><a href="news.html">News</a></li>
+                                            <li><a href="news-carousel.html">News Carousel</a></li>
+                                            <li><a href="news-sidebar.html">News Sidebar</a></li>
+                                            <li><a href="news-details.html">News Details</a></li>
+                                        </ul>
+                                    </li> -->
                                     <nav style="display: flex; align-items: center; padding: 10px; background-color: transparent;">
-                                        <a href="#" style="background-color: #aa4377; color: #ffffff; border: 1px solid #aa4377; padding: 10px 20px; text-decoration: none; display: inline-block; border-radius: 5px; margin-left: 20px;">
-                                          Sair/Logout
+                                        <a href="login-register.html" style="background-color: #aa4377; color: #ffffff; border: 1px solid #aa4377; padding: 10px 20px; text-decoration: none; display: inline-block; border-radius: 5px;">
+                                          Logout
                                         </a>
-                                    </nav>
+                                      </nav>
+                                      
+                                      <style>
+                                        @media (min-width: 768px) {
+                                          a[href="login-register.html"] {
+                                            margin-left: 50PX;
+                                          }
+                                        }
+                                      </style>
+                                </li>
                                 </ul>
-                                
                             </div>
                         </div>
                         <div class="main-menu__right">
-                            <div class="main-menu__call-search-btn-box">
+                            <!-- <div class="main-menu__call-search-btn-box">
                                 <div class="main-menu__call">
                                     <div class="main-menu__call-icon">
                                         <i class="fas fa-phone"></i>
                                     </div>
                                     <div class="main-menu__call-content">
                                         <p class="main-menu__call-sub-title">Call Anytime</p>
-                                        <h5 class="main-menu__call-number"><a href="tel:9288006780">+92 ( 8800 ) - 6780</a></h5>
+                                        <h5 class="main-menu__call-number"><a href="tel:9288006780">+92 ( 8800 ) -
+                                                6780</a></h5>
                                     </div>
                                 </div>
-                                <!-- <div class="main-menu__search-box">
+                                <div class="main-menu__search-box">
                                     <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>
-                                </div> -->
-                                <!-- <div class="main-menu__btn-box">
-                                    <a href="project-details.html" class="thm-btn main-menu__btn"><i class="icon-plus-symbol"></i>Add a Project</a>
-                                </div> -->
-                            
-                            </div>
+                                </div>
+                                <div class="main-menu__btn-box">
+                                    <a href="project-details.html" class="thm-btn main-menu__btn"><i
+                                            class="icon-plus-symbol"></i>Add a Project</a>
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -687,7 +793,7 @@
 <!-- Resumo da Oferta (movido para cima) -->
 <div class="invest-container">
     <div class="summary-section">
-        <h2 class="section-title__title2">Resumo total referente a esta Oferta</h2>
+        <h2 class="section-title__title2">Resumo total das Ofertas</h2>
         <div class="summary-cards">
             <div class="summary-card">
                 <h4>Total <br>Acumulado</h4>
@@ -733,7 +839,9 @@
     </div>
 
     <!-- Grid de Produtos (mantido) -->
-    <div class="product-grid">
+           <h2 class="section-title__title2">Ofertas</h2>
+ 
+    <div class="product-grid">   
         <!-- Card 1 - Atos Group II -->
 <!-- Card 1 - Atos Group II -->
 <div class="investment-card-wrapper">
