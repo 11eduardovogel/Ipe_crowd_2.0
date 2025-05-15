@@ -531,6 +531,7 @@
             gap: 8px;
         }
     }
+    
 
     </style>
 </head>
@@ -907,9 +908,19 @@
     </div>
   </div>
   <div class="card-actions">
-    <button class="btn-invest">Investir agora</button>
+<button class="btn-invest">Investir agora</button>
+
+<!-- Modal -->
+<div id="investModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Quanto você deseja investir?</h2>
+    <input type="number" id="investmentAmount" placeholder="Digite o valor em R$" min="0" step="0.01">
+    <button id="confirmInvest">Confirmar Investimento</button>
   </div>
+</div>  </div>
 </div>
+
 
 <!-- Card 2 - TOM IV -->
 <div class="investment-card-wrapper">
@@ -1218,7 +1229,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text">Todos os direitos reservados <a href="#">Ipê Capital</a></p> 
+                                <p class="site-footer__bottom-text">Todos os direitos reservados <a href="index.html">Ipê Capital</a></p> 
                             </div>
                         </div>
                     </div>
