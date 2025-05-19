@@ -9586,6 +9586,7 @@ border-left: 67px solid transparent;
   color: var(--qrowd-gray);
   display: block;
   font-weight: 500;
+  border-radius: 8px;
 }
 
 .contact-form__input-box textarea {
@@ -13234,11 +13235,13 @@ body.boxed-wrapper {
         }
         
         .login-register__title {
-            color: #2a2a2a;
+            color: #b74880;
             font-size: 28px;
             margin-bottom: 25px;
-            position: relative;
+            text-align: center;
             padding-bottom: 15px;
+            font-weight: 450;
+
         }
         
         .login-register__title:after {
@@ -13282,8 +13285,9 @@ body.boxed-wrapper {
         }
         
         .modal-title {
-            color: #2a2a2a;
-            font-weight: 700;
+            color: #b74880;
+            font-weight: 20px;
+            margin-left: 10px;
         }
         
         .modal-body {
@@ -13306,7 +13310,7 @@ body.boxed-wrapper {
         }
         
         .btn-submit {
-            background: #d67caf;
+            background: #ffb450;
             color: white;
             border: none;
             padding: 12px 30px;
@@ -13317,17 +13321,18 @@ body.boxed-wrapper {
         }
         
         .btn-submit:hover {
-            background: #d45600;
+            background: #fdc076;
             color: white;
         }
         
         .login-link {
-            color: #f16101;
+            color: #048ba8;
             text-decoration: none;
         }
         
         .login-link:hover {
             text-decoration: underline;
+            color: #048ba8;
         }
 /* Container do menu mobile (substitui o .home-showcase no mobile) */
 .home-showcase__mobile-menu {
