@@ -559,6 +559,142 @@
         .negative {
             color: #dc3545;
         }
+        /* Efeito Neon para o Donut */
+        .donut-ring {
+            filter: drop-shadow(0 0 2px currentColor);
+            transition: all 0.3s ease;
+        }
+        
+        .donut-segment-atos {
+            stroke: #4a6baf;
+            filter: drop-shadow(0 0 5px rgba(74, 107, 175, 0.7));
+        }
+        
+        .donut-segment-tom {
+            stroke: #aa4377;
+            filter: drop-shadow(0 0 5px rgba(170, 67, 119, 0.7));
+        }
+        
+        .donut-segment-lince {
+            stroke: #3a9d7a;
+            filter: drop-shadow(0 0 5px rgba(58, 157, 122, 0.7));
+        }
+        
+        /* Efeito hover para intensificar o neon */
+        .donut-chart:hover .donut-segment-atos {
+            filter: drop-shadow(0 0 8px rgba(74, 107, 175, 0.9));
+        }
+        
+        .donut-chart:hover .donut-segment-tom {
+            filter: drop-shadow(0 0 8px rgba(170, 67, 119, 0.9));
+        }
+        
+        .donut-chart:hover .donut-segment-lince {
+            filter: drop-shadow(0 0 8px rgba(58, 157, 122, 0.9));
+        }
+        
+        /* Texto central com efeito sutil */
+        .donut-text-total {
+            fill: #fff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Container com fundo escuro para melhor contraste */
+              /* Container do Donut */
+        .donut-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        /* Efeito Neon Aprimorado */
+        .donut-ring {
+            stroke-width: 12%;
+            stroke-linecap: round; /* Bordas arredondadas */
+            filter: drop-shadow(0 0 4px currentColor);
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+        
+        .donut-segment-atos {
+            stroke: #6a8fd8;
+            filter: drop-shadow(0 0 6px rgba(106, 143, 216, 0.8));
+        }
+        
+        .donut-segment-tom {
+            stroke: #d16fa3;
+            filter: drop-shadow(0 0 6px rgba(209, 111, 163, 0.8));
+        }
+        
+        .donut-segment-lince {
+            stroke: #5ac59e;
+            filter: drop-shadow(0 0 6px rgba(90, 197, 158, 0.8));
+        }
+        
+        /* Efeito hover - neon mais intenso */
+        .donut-segment-atos:hover {
+            stroke: #8aabf5;
+            filter: drop-shadow(0 0 12px rgba(138, 171, 245, 0.9));
+            opacity: 1;
+            stroke-width: 14%;
+        }
+        
+        .donut-segment-tom:hover {
+            stroke: #ff8cc3;
+            filter: drop-shadow(0 0 12px rgba(255, 140, 195, 0.9));
+            opacity: 1;
+            stroke-width: 14%;
+        }
+        
+        .donut-segment-lince:hover {
+            stroke: #7df7c2;
+            filter: drop-shadow(0 0 12px rgba(125, 247, 194, 0.9));
+            opacity: 1;
+            stroke-width: 14%;
+        }
+        
+        /* Texto central dinâmico */
+        .donut-text {
+            font-family: 'Manrope', sans-serif;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            transition: all 0.3s ease;
+        }
+        
+        .donut-text-total {
+            font-size: 24px;
+            font-weight: 700;
+            fill: #fff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+        }
+        
+        .donut-text-label {
+            font-size: 12px;
+            fill: #aaa;
+        }
+        
+        /* Efeito de overlay para hover */
+        .donut-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        /* Animação de pulsar sutil */
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        .donut-chart {
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
     </style>
 </head>
 
@@ -843,25 +979,26 @@
                     <h3 style="margin-bottom: 15px;">Distribuição dos Investimentos</h3>
                     
                     <!-- Gráfico Donut -->
-                    <div class="donut-chart-container">
-                        <svg class="donut-chart" viewBox="0 0 100 100">
-                            <!-- Segmento Atos Group II -->
-                            <circle class="donut-ring donut-segment-atos" stroke-dasharray="45 100" />
-                            
-                            <!-- Segmento TOM IV -->
-                            <circle class="donut-ring donut-segment-tom" stroke-dasharray="30 100" stroke-dashoffset="-45" />
-                            
-                            <!-- Segmento Lince -->
-                            <circle class="donut-ring donut-segment-lince" stroke-dasharray="25 100" stroke-dashoffset="-75" />
-                            
-                            <!-- Centro branco -->
-                            <circle class="donut-hole" />
-                            
-                            <!-- Texto central -->
-                            <text class="donut-text donut-text-total" x="50" y="45">100%</text>
-                            <text class="donut-text donut-text-label" x="50" y="55">Total Investido</text>
-                        </svg>
-                    </div>
+                      <div class="donut-container">
+        <svg class="donut-chart" viewBox="0 0 100 100">
+            <!-- Segmentos (agora com eventos hover) -->
+            <circle class="donut-ring donut-segment-atos" 
+                    stroke-dasharray="45 100" 
+                    data-percent="45%"
+                    onmouseover="showPercent('45%', '#6a8fd8')" />
+            
+            <circle class="donut-ring donut-segment-tom" 
+                    stroke-dasharray="30 100" 
+                    stroke-dashoffset="-45"
+                    data-percent="30%"
+                    onmouseover="showPercent('30%', '#d16fa3')" />
+            
+            <circle class="donut-ring donut-segment-lince" 
+                    stroke-dasharray="25 100" 
+                    stroke-dashoffset="-75"
+                    data-percent="25%"
+                    onmouseover="showPercent('25%', '#5ac59e')" />        </svg>
+    </div>
                     
                     <!-- Legenda -->
                     <div class="donut-legend">
@@ -1015,7 +1152,7 @@
                 
                 <!-- Conteúdo da aba Investimentos Encerrados -->
                 <div class="tab-content" id="encerrados">
-                    <h3>Investimentos Encerrados</h3>
+                    <h3 style=" margin-bottom: 20px;">Investimentos Encerrados</h3>
                     <div class="investments-grid">
                         <!-- Investimento Encerrado 1 -->
                         <div class="investment-card">
@@ -1051,7 +1188,7 @@
                 
                 <!-- Conteúdo da aba Histórico Financeiro -->
                 <div class="tab-content" id="historico">
-                    <h3>Histórico Financeiro</h3>
+                    <h3 style=" margin-bottom: 20px;">Histórico Financeiro</h3>
                     <div class="history-item">
                         <div class="history-date">15/06/2023</div>
                         <div class="history-title">Resgate parcial - Atos Group II</div>
@@ -1077,7 +1214,7 @@
                 
                 <!-- Conteúdo da aba Documentos -->
                 <div class="tab-content" id="documentos">
-                    <h3>Documentos</h3>
+                    <h3 style=" margin-bottom: 20px;">Documentos</h3>
                     <ul class="documents-list">
                         <li class="document-item">
                             <div class="document-icon">
