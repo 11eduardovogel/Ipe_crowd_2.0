@@ -234,12 +234,12 @@
   max-width: 1000px;
   height: 30px;
   background: radial-gradient(circle, #1b2735, #090a0f);
-  border-radius: 12px;
+  border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   border: 0.5px solid #56680c;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .progress-bar {
