@@ -745,6 +745,102 @@
         .donut-chart {
             animation: pulse 4s infinite ease-in-out;
         }
+        /* Estilo para dispositivos móveis */
+@media (max-width: 768px) {
+  .investments-grid {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 15px; /* Espaço para a barra de rolagem */
+    -webkit-overflow-scrolling: touch; /* Rolagem suave em iOS */
+    scrollbar-width: thin; /* Para Firefox */
+  }
+
+  .investments-grid::-webkit-scrollbar {
+    height: 5px; /* Altura da barra de rolagem no Chrome/Safari */
+  }
+
+  .investments-grid::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 10px;
+  }
+
+  .investment-card {
+    flex: 0 0 auto;
+    width: 85%; /* Largura dos cards - pode ajustar conforme necessário */
+    margin-right: 15px;
+  }
+
+  /* Opcional: ajustar o espaçamento entre os cards */
+  .investment-card:last-child {
+    margin-right: 0;
+  }
+}
+/* Esconde o dropdown no desktop */
+.mobile-tab-dropdown {
+  display: none;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background: white;
+}
+
+/* No mobile, esconde as abas e mostra o dropdown */
+@media (max-width: 768px) {
+  .tabs {
+    display: none;
+  }
+  .mobile-tab-dropdown {
+    display: block;
+  }
+}
+.mobile-tab-dropdown {
+  display: none; /* Inicialmente escondido (só aparece no mobile) */
+  width: 100%;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  border: 2px solid var(--qrowd-primary); /* Borda com a cor primária */
+  border-radius: 8px;
+  background-color: white;
+  color: var(--qrowd-black);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  appearance: none; /* Remove estilo padrão do navegador */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23aa4377'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+}
+
+/* Efeito hover/focus (melhora a interação) */
+.mobile-tab-dropdown:hover,
+.mobile-tab-dropdown:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(170, 67, 119, 0.2); /* Sombra suave */
+}
+
+/* Estilo das opções do dropdown */
+.mobile-tab-dropdown option {
+  padding: 10px;
+  background: white;
+  color: var(--qrowd-black);
+}
+
+/* No mobile, esconde as abas e mostra o dropdown */
+@media (max-width: 768px) {
+  .tabs {
+    display: none;
+  }
+  .mobile-tab-dropdown {
+    display: block;
+  }
+}
         
     </style>
 </head>
@@ -1110,6 +1206,13 @@
                                 <div class="tab" data-tab="historico">Histórico Financeiro</div>
                                 <div class="tab" data-tab="documentos">Documentos</div>
                             </div>
+                                                    <select class="mobile-tab-dropdown">
+                            <option value="ativos" selected>Investimentos Ativos</option>
+                            <option value="encerrados">Investimentos Encerrados</option>
+                            <option value="historico">Histórico Financeiro</option>
+                            <option value="documentos">Documentos</option>
+                        </select>
+                        </div>
                             
                             <!-- Conteúdo da aba Investimentos Ativos -->
                             <div class="tab-content active" id="ativos">
@@ -1541,6 +1644,25 @@
                 });
             });
         });
+        document.querySelector('.mobile-tab-dropdown').addEventListener('change', function(e) {
+  const selectedTab = e.target.value;
+  
+  // Remove a classe 'active' de todas as abas
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.classList.remove('active');
+  });
+  
+  // Adiciona 'active' na aba selecionada
+  document.querySelector(`.tab[data-tab="${selectedTab}"]`).classList.add('active');
+  
+  // Oculta todos os conteúdos de abas
+  document.querySelectorAll('.tab-content').forEach(content => {
+    content.classList.remove('active');
+  });
+  
+  // Mostra o conteúdo da aba selecionada
+  document.getElementById(selectedTab).classList.add('active');
+});
     </script>
 </body>
 </html>
