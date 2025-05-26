@@ -34,6 +34,12 @@
   --qrowd-extra-rgb: 242, 247, 247;
   --qrowd-letter-spacing: -0.04em;
 
+  --cor-primaria: #fe7f4c;
+  --cor-secundaria: #a53869;
+  --cor-texto: #333;
+  --cor-fundo: #f9f9f9;
+  --cor-destaque: #ff9c71;
+  --cor-texto-claro: #777;
 }
 
 .row {
@@ -135,6 +141,7 @@ ul {
   width: 100%;
   min-width: 300px;
   overflow: hidden;
+  background-color: var(--cor-fundo);
 }
 
 .container {

@@ -114,7 +114,7 @@
         .profile-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px 60px;
+            padding: 0 15px 0px;
         }
         
         .profile-section {
@@ -142,9 +142,10 @@
         
         .info-card {
             padding: 15px;
-            border: 1px solid #eee;
+            border: 1px solid transparent;
             border-radius: 8px;
             transition: all 0.3s;
+            background-color: #f9f9f9;
         }
         
         .info-card:hover {
@@ -153,17 +154,17 @@
         }
         
         .info-card h4 {
-            color: var(--cor-secundaria);
+            color: #adadad;
             margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1rem;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
         }
         
         .info-card p {
             margin: 0;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--cor-texto);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #465802;
         }
         
         .highlight {
@@ -175,7 +176,7 @@
             background-color: var(--cor-secundaria);
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 2px 16px;
             border-radius: 6px;
             font-size: 0.9em;
             cursor: pointer;
@@ -210,11 +211,30 @@
         }
         
         .investment-header {
-            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
-            color: white;
-            padding: 15px;
-            position: relative;
-        }
+    background-color: #ffb450; /* Amarelo sólido */
+    color: white;
+    padding: 15px;
+    position: relative;
+    overflow: hidden; /* Para cortar excessos da nuvem */
+}
+
+/* Nuvem SVG posicionada à direita */
+.investment-header::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0; /* Alinhada à direita */
+    bottom: -65px; /* Posição vertical */
+    width: 180px; /* Aumentei de 120px */
+    height: 120px; /* Aumentei de 80px */
+    background-image: url("../assets/images/shapes/Frame%20114.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: 0; /* Coloca ATRÁS (era 1) */    /* border: 1px solid red; Apenas para debug - remova depois */
+}
+
+
         
         .investment-header h3 {
             color: white;
@@ -227,11 +247,12 @@
             top: 10px;
             right: 15px;
             background: white;
-            color: var(--cor-secundaria);
-            padding: 3px 8px;
+            color: #465802;
+            padding: 3px 20px;
             border-radius: 15px;
             font-size: 0.7rem;
             font-weight: 600;
+            z-index: 1;
         }
         
         .investment-body {
@@ -244,13 +265,16 @@
             margin-bottom: 15px;
         }
         
-        .investment-table th, 
-        .investment-table td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-            font-size: 0.9rem;
-        }
+       .investment-table th, .investment-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+    line-height: 1.2; /* Ajuste o valor conforme necessário */
+
+}
+
+        
         
         .investment-table th {
             font-weight: 600;
@@ -295,6 +319,8 @@
         .donut-chart {
             width: 100%;
             height: 100%;
+            overflow: visible;
+
         }
 
         .donut-ring {
@@ -307,6 +333,7 @@
             transform-origin: 50% 50%;
             transform: rotate(-90deg);
             transition: stroke-dasharray 1s ease;
+            filter: drop-shadow(0 0 8px currentColor); /* Neon effect */
         }
 
         .donut-segment-atos { stroke: #4a6baf; }
@@ -314,9 +341,9 @@
         .donut-segment-lince { stroke: #3a9d7a; }
 
         .donut-hole {
-            cx: 50%;
-            cy: 50%;
-            r: 30%;
+            cx: 70%;
+            cy: 70%;
+            r: 50%;
             fill: white;
         }
 
@@ -364,76 +391,120 @@
         .legend-color-tom { background: linear-gradient(135deg, #aa4377, #d16fa3); }
         .legend-color-lince { background: linear-gradient(135deg, #3a9d7a, #5ac59e); }
 
-        /* Barras de progresso individuais */
+                /* Container Principal */
         .progress-multi-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        margin-top: 30px;
         }
 
-        .progress-container {
-            margin: 0;
-            width: 100%;
+        /* Barra Especial */
+        .progress-container-special {
+        position: relative;
+        width: 100%;
+        height: 40px; /* Aumentado para efeitos */
+        background: radial-gradient(circle, #1b2735, #090a0f);
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        border: 0.5px solid #56680c;
         }
 
-        .progress-bar {
-            height: 30px;
-            background-color: #f0f0f0;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            margin-bottom: 0;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        .progress-bar-special {
+        position: relative;
+        height: 100%;
+        width: 100%;
         }
 
-        .progress-fill {
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: width 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 12px;
-            color: white;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        /* Segmentos de Progresso */
+        .progress-segment {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        transition: width 0.5s ease;
+        z-index: 2;
+        box-shadow: 
+            0 0 10px currentColor,
+            0 0 20px rgba(255,255,255,0.3);
         }
 
-        .progress-fill.atos {
-            background: linear-gradient(90deg, #4a6baf, #6a8fd8);
-            z-index: 3;
+        .progress-segment.atos {
+        background: linear-gradient(90deg, #94b11c, #a8c64e);
+        border-radius: 30px 0 0 30px;
+        }
+        .progress-segment.tom {
+        background: linear-gradient(90deg, #829223, #96a845);
+        left: 45%; /* Posicionado após o segmento Atos */
+        }
+        .progress-segment.lince {
+        background: linear-gradient(90deg, #667023, #b0bd5c);
+        left: 75%; /* Posicionado após Atos + TOM */
         }
 
-        .progress-fill.tom {
-            background: linear-gradient(90deg, #aa4377, #d16fa3);
-            z-index: 2;
-        }
-
-        .progress-fill.lince {
-            background: linear-gradient(90deg, #3a9d7a, #5ac59e);
-            z-index: 1;
-        }
-
-        .progress-percent {
-            position: absolute;
-            right: 10px;
-            font-weight: bold;
-            font-size: 12px;
-            color: #333;
-        }
-
+        /* Textos */
         .progress-label {
-            position: absolute;
-            left: 10px;
-            font-weight: 600;
-            font-size: 12px;
-            color: white;
-            z-index: 4;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 600;
+        font-size: 12px;
+        color: white;
+        z-index: 3;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
+        .progress-percent {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        z-index: 3;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Partículas */
+        .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        filter: url('#goo');
+        z-index: 1;
+        }
+
+        .particle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: #f3d5ad;
+        border-radius: 50%;
+        opacity: 0.6;
+        animation: float 5s infinite ease-in-out, pulse 2s infinite ease;
+        top: calc(var(--random-top) * 1%);
+        left: calc(var(--random-left) * 1%);
+        animation-delay: calc(var(--random-delay) * 1s);
+        }
+                /* Correção do Footer */
+        body, html {
+            overflow-x: hidden; /* Impede cortes horizontais */
+        }
+
+        footer {
+            width: 100vw; /* Força largura total da viewport */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+
 
         /* Versão responsiva */
         @media (max-width: 768px) {
@@ -913,344 +984,344 @@
         </header>
 
         <div class="stricky-header stricked-menu main-menu">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
+    <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+</div><!-- /.stricky-header -->
 
-        <!-- Conteúdo da Página de Perfil -->
-        <section class="profile-header">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto do perfil" class="profile-avatar">
-            <h1>João da Silva</h1>
-            <p>Investidor desde: 15/03/2022</p>
-            <span class="profile-badge">Perfil: <b>Arrojado</b></span>
-        </section>
+<!-- Conteúdo da Página de Perfil -->
+<section class="profile-header" style="background: url('/assets/images/Banner (ipe)/Banner (ipe).png') no-repeat center center; background-size: cover; min-height: 300px;">
+    <a href="/assets/images/Banner (ipe)/Banner (ipe).png" style="display: block; height: 100%; text-decoration: none; color: white;">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto do perfil" class="profile-avatar">
+        <h1>João da Silva</h1>
+        <p>Investidor desde: 15/03/2022</p>
+        <span class="profile-badge">Perfil: <b>Arrojado</b></span>
+    </a>
+</section>
 
-        <div class="profile-container">
-            <!-- Seção de Informações Gerais -->
-            <div class="profile-section">
-                <h2 class="section-title__title2" style="margin-bottom: 20px;">Informações do Perfil</h2>
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h4>CPF/CNPJ</h4>
-                        <p>123.456.789-00</p>
-                        <button class="btn-edit">Editar</button>
-                    </div>
-                    <div class="info-card">
-                        <h4>E-mail</h4>
-                        <p>joao.silva@email.com</p>
-                        <button class="btn-edit">Editar</button>
-                    </div>
-                    <div class="info-card">
-                        <h4>Telefone</h4>
-                        <p>(11) 98765-4321</p>
-                        <button class="btn-edit">Editar</button>
-                    </div>
-                    <div class="info-card">
-                        <h4>Endereço</h4>
-                        <p>Rua das Flores, 123</p>
-                        <button class="btn-edit">Editar</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Seção de Resumo Financeiro -->
-            <div class="profile-section">
-                <h2 class="section-title__title2" style="margin-bottom: 20px;">Resumo Financeiro</h2>
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h4>Patrimônio Total</h4>
-                        <p class="highlight">R$ 125.430,00</p>
-                    </div>
-                    <div class="info-card">
-                        <h4>Investido Atualmente</h4>
-                        <p>R$ 85.200,00</p>
-                    </div>
-                    <div class="info-card">
-                        <h4>Rendimento Acumulado</h4>
-                        <p class="highlight">R$ 12.750,00</p>
-                    </div>
-                    <div class="info-card">
-                        <h4>Disponível para Investir</h4>
-                        <p>R$ 40.230,00</p>
-                    </div>
-                </div>
-                
-                <!-- Nova visualização de distribuição de investimentos -->
-                <div class="investment-distribution">
-                    <h3 style="margin-bottom: 15px;">Distribuição dos Investimentos</h3>
-                    
-                    <!-- Gráfico Donut -->
-                      <div class="donut-container">
-        <svg class="donut-chart" viewBox="0 0 100 100">
-            <!-- Segmentos (agora com eventos hover) -->
-            <circle class="donut-ring donut-segment-atos" 
-                    stroke-dasharray="45 100" 
-                    data-percent="45%"
-                    onmouseover="showPercent('45%', '#6a8fd8')" />
-            
-            <circle class="donut-ring donut-segment-tom" 
-                    stroke-dasharray="30 100" 
-                    stroke-dashoffset="-45"
-                    data-percent="30%"
-                    onmouseover="showPercent('30%', '#d16fa3')" />
-            
-            <circle class="donut-ring donut-segment-lince" 
-                    stroke-dasharray="25 100" 
-                    stroke-dashoffset="-75"
-                    data-percent="25%"
-                    onmouseover="showPercent('25%', '#5ac59e')" />        </svg>
-    </div>
-                    
-                    <!-- Legenda -->
-                    <div class="donut-legend">
-                        <div class="legend-item">
-                            <div class="legend-color legend-color-atos"></div>
-                            <span>Atos Group II (45%)</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color legend-color-tom"></div>
-                            <span>TOM IV (30%)</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color legend-color-lince"></div>
-                            <span>Lince (25%)</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Barras de Progresso Individuais (opcional) -->
-                    <div class="progress-multi-container">
-                        <div class="progress-container">
-                            <div class="progress-bar">
-                                <div class="progress-fill atos" style="width: 45%">
-                                    <span class="progress-label">Atos Group II</span>
-                                    <span class="progress-percent">45%</span>
+                    <div class="profile-container">
+                        <!-- Seção de Informações Gerais -->
+                        <div class="profile-section">
+                            <h2 class="section-title__title2" style="margin-bottom: 20px;">Informações do Perfil</h2>
+                            <div class="info-grid">
+                                <div class="info-card">
+                                    <h4>CPF/CNPJ</h4>
+                                    <p>123.456.789-00</p>
+                                    <button class="btn-edit">Editar</button>
+                                </div>
+                                <div class="info-card">
+                                    <h4>E-mail</h4>
+                                    <p>joao.silva@email.com</p>
+                                    <button class="btn-edit">Editar</button>
+                                </div>
+                                <div class="info-card">
+                                    <h4>Telefone</h4>
+                                    <p>(11) 98765-4321</p>
+                                    <button class="btn-edit">Editar</button>
+                                </div>
+                                <div class="info-card">
+                                    <h4>Endereço</h4>
+                                    <p>Rua das Flores, 123</p>
+                                    <button class="btn-edit">Editar</button>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="progress-container">
-                            <div class="progress-bar">
-                                <div class="progress-fill tom" style="width: 30%">
-                                    <span class="progress-label">TOM IV</span>
-                                    <span class="progress-percent">30%</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="progress-container">
-                            <div class="progress-bar">
-                                <div class="progress-fill lince" style="width: 25%">
-                                    <span class="progress-label">Lince</span>
-                                    <span class="progress-percent">25%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Seção de Investimentos com Abas -->
-            <div class="profile-section">
-                <div class="tabs">
-                    <div class="tab active" data-tab="ativos" >Investimentos Ativos</div>
-                    <div class="tab" data-tab="encerrados">Investimentos Encerrados</div>
-                    <div class="tab" data-tab="historico">Histórico Financeiro</div>
-                    <div class="tab" data-tab="documentos">Documentos</div>
-                </div>
-                
-                <!-- Conteúdo da aba Investimentos Ativos -->
-                <div class="tab-content active" id="ativos">
-                    <h3 style=" margin-bottom: 20px;">Seus Investimentos Ativos</h3>
-                    <div class="investments-grid">
-                        <!-- Investimento 1 -->
-                        <div class="investment-card">
-                            <div class="investment-header">
-                                <h3>Atos Group II</h3>
-                                <span class="investment-status">Ativo</span>
+                        <!-- Seção de Resumo Financeiro -->
+                        <div class="profile-section">
+                            <h2 class="section-title__title2" style="margin-bottom: 20px;">Resumo Financeiro</h2>
+                            <div class="info-grid">
+                                <div class="info-card">
+                                    <h4>Patrimônio Total</h4>
+                                    <p class="highlight" style="color: #c9639a;">R$ 125.430,00</p>
+                                </div>
+                                <div class="info-card">
+                                    <h4>Investido Atualmente</h4>
+                                    <p style="color: #c9639a;"></pstyle>R$ 85.200,00</p>
+                                </div>
+                                <div class="info-card">
+                                    <h4>Rendimento Acumulado</h4>
+                                    <p class="highlight" style="color: #c9639a;">R$ 12.750,00</p>
+                                </div>
+                                <div class="info-card">
+                                    <h4>Disponível para Investir</h4>
+                                    <p style="color: #c9639a;">R$ 40.230,00</p>
+                                </div>
                             </div>
-                            <div class="investment-body">
-                                <table class="investment-table">
-                                    <tr>
-                                        <th>Valor Investido</th>
-                                        <td>R$ 35.000,00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rendimento Acumulado</th>
-                                        <td class="highlight">R$ 4.250,00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rentabilidade</th>
-                                        <td>19,6% a.a.</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Vencimento</th>
-                                        <td>48 meses</td>
-                                    </tr>
-                                </table>
-                                <button class="btn-details">Ver Detalhes</button>
-                            </div>
-                        </div>
+                            
+                            <!-- Nova visualização de distribuição de investimentos -->
+                            <div class="investment-distribution">
+                                <h3 style="margin-bottom: 15px;">Distribuição dos Investimentos</h3>
+                                
+                                <!-- Gráfico Donut -->
+                                <div class="donut-container">
+                    <svg class="donut-chart" viewBox="0 0 100 100">
+                        <!-- Segmentos (agora com eventos hover) -->
+                        <circle class="donut-ring donut-segment-atos" 
+                                stroke-dasharray="45 100" 
+                                data-percent="45%"
+                                onmouseover="showPercent('45%', '#6a8fd8')" />
                         
-                        <!-- Investimento 2 -->
-                        <div class="investment-card">
-                            <div class="investment-header">
-                                <h3>TOM IV</h3>
-                                <span class="investment-status">Ativo</span>
-                            </div>
-                            <div class="investment-body">
-                                <table class="investment-table">
-                                    <tr>
-                                        <th>Valor Investido</th>
-                                        <td>R$ 25.000,00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rendimento Acumulado</th>
-                                        <td class="highlight">R$ 3.800,00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rentabilidade</th>
-                                        <td>22,3% a.a.</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Vencimento</th>
-                                        <td>36 meses</td>
-                                    </tr>
-                                </table>
-                                <button class="btn-details">Ver Detalhes</button>
-                            </div>
-                        </div>
+                        <circle class="donut-ring donut-segment-tom" 
+                                stroke-dasharray="30 100" 
+                                stroke-dashoffset="-45"
+                                data-percent="30%"
+                                onmouseover="showPercent('30%', '#d16fa3')" />
                         
-                        <!-- Investimento 3 -->
-                        <div class="investment-card">
-                            <div class="investment-header">
-                                <h3>Lince</h3>
-                                <span class="investment-status">Ativo</span>
-                            </div>
-                            <div class="investment-body">
-                                <table class="investment-table">
-                                    <tr>
-                                        <th>Valor Investido</th>
-                                        <td>R$ 25.200,00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rendimento Acumulado</th>
-                                        <td class="highlight">R$ 4.700,00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rentabilidade</th>
-                                        <td>15,8% a.a.</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Vencimento</th>
-                                        <td>60 meses</td>
-                                    </tr>
-                                </table>
-                                <button class="btn-details">Ver Detalhes</button>
-                            </div>
+                        <circle class="donut-ring donut-segment-lince" 
+                                stroke-dasharray="25 100" 
+                                stroke-dashoffset="-75"
+                                data-percent="25%"
+                                onmouseover="showPercent('25%', '#5ac59e')" />        </svg>
+                </div>
+                                
+                                <!-- Legenda -->
+                                <div class="donut-legend">
+                                    <div class="legend-item">
+                                        <div class="legend-color legend-color-atos"></div>
+                                        <span>Atos Group II (45%)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color legend-color-tom"></div>
+                                        <span>TOM IV (30%)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color legend-color-lince"></div>
+                                        <span>Lince (25%)</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Barras de Progresso Individuais (opcional) -->
+                                <div class="progress-multi-container">
+                    <!-- Barra Única com Efeitos -->
+                    <div class="progress-container-special">
+                        <!-- Partículas (adicione no início do body) -->
+                        <svg style="display: none;">
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                        </filter>
+                        </svg>
+
+                        <!-- Barra Container -->
+                        <div class="progress-bar-special">
+                        <!-- Segmentos (mantendo suas cores originais) -->
+                        <div class="progress-segment atos" style="width: 45%">
+                            <span class="progress-label">Atos Group II</span>
+                            <span class="progress-percent">45%</span>
+                        </div>
+                        <div class="progress-segment tom" style="width: 30%">
+                            <span class="progress-label">TOM IV</span>
+                            <span class="progress-percent">30%</span>
+                        </div>
+                        <div class="progress-segment lince" style="width: 25%">
+                            <span class="progress-label">Lince</span>
+                            <span class="progress-percent">25%</span>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Conteúdo da aba Investimentos Encerrados -->
-                <div class="tab-content" id="encerrados">
-                    <h3 style=" margin-bottom: 20px;">Investimentos Encerrados</h3>
-                    <div class="investments-grid">
-                        <!-- Investimento Encerrado 1 -->
-                        <div class="investment-card">
-                            <div class="investment-header">
-                                <h3>Atos Group I</h3>
-                                <span class="investment-status">Encerrado</span>
+                </div>
+                                </div>
+
+                        <!-- Seção de Investimentos com Abas -->
+                        <div class="profile-section">
+                            <div class="tabs">
+                                <div class="tab active" data-tab="ativos" >Investimentos Ativos</div>
+                                <div class="tab" data-tab="encerrados">Investimentos Encerrados</div>
+                                <div class="tab" data-tab="historico">Histórico Financeiro</div>
+                                <div class="tab" data-tab="documentos">Documentos</div>
                             </div>
-                            <div class="investment-body">
-                                <table class="investment-table">
-                                    <tr>
-                                        <th>Valor Investido</th>
-                                        <td>R$ 20.000,00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rendimento Total</th>
-                                        <td class="highlight">R$ 6.400,00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rentabilidade Final</th>
-                                        <td>18,2% a.a.</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Período</th>
-                                        <td>24 meses</td>
-                                    </tr>
-                                </table>
-                                <button class="btn-details">Ver Detalhes</button>
+                            
+                            <!-- Conteúdo da aba Investimentos Ativos -->
+                            <div class="tab-content active" id="ativos">
+                                <h3 style=" margin-bottom: 20px;">Seus Investimentos Ativos</h3>
+                                <div class="investments-grid">
+                                    <!-- Investimento 1 -->
+                                    <div class="investment-card">
+                                        <div class="investment-header">
+                                            <h3>Atos Group II</h3>
+                                            <span class="investment-status">Ativo</span>
+                                        </div>
+                                        <div class="investment-body">
+                                            <table class="investment-table">
+                                                <tr>
+                                                    <th>Valor Investido</th>
+                                                    <td>R$ 35.000,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Rendimento Acumulado</th>
+                                                    <td class="highlight">R$ 4.250,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Rentabilidade</th>
+                                                    <td>19,6% a.a.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Vencimento</th>
+                                                    <td>48 meses</td>
+                                                </tr>
+                                            </table>
+                                            <button class="btn-details">Ver Detalhes</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Investimento 2 -->
+                                    <div class="investment-card">
+                                        <div class="investment-header">
+                                            <h3>TOM IV</h3>
+                                            <span class="investment-status">Ativo</span>
+                                        </div>
+                                        <div class="investment-body">
+                                            <table class="investment-table">
+                                                <tr>
+                                                    <th>Valor Investido</th>
+                                                    <td>R$ 25.000,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Rendimento Acumulado</th>
+                                                    <td class="highlight">R$ 3.800,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Rentabilidade</th>
+                                                    <td>22,3% a.a.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Vencimento</th>
+                                                    <td>36 meses</td>
+                                                </tr>
+                                            </table>
+                                            <button class="btn-details">Ver Detalhes</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Investimento 3 -->
+                                    <div class="investment-card">
+                                        <div class="investment-header">
+                                            <h3>Lince</h3>
+                                            <span class="investment-status">Ativo</span>
+                                        </div>
+                                        <div class="investment-body">
+                                            <table class="investment-table">
+                                                <tr>
+                                                    <th>Valor Investido</th>
+                                                    <td>R$ 25.200,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Rendimento Acumulado</th>
+                                                    <td class="highlight">R$ 4.700,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Rentabilidade</th>
+                                                    <td>15,8% a.a.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Vencimento</th>
+                                                    <td>60 meses</td>
+                                                </tr>
+                                            </table>
+                                            <button class="btn-details">Ver Detalhes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Conteúdo da aba Investimentos Encerrados -->
+                            <div class="tab-content" id="encerrados">
+                                <h3 style=" margin-bottom: 20px;">Investimentos Encerrados</h3>
+                                <div class="investments-grid">
+                                    <!-- Investimento Encerrado 1 -->
+                                    <div class="investment-card">
+                                        <div class="investment-header">
+                                            <h3>Atos Group I</h3>
+                                            <span class="investment-status">Encerrado</span>
+                                        </div>
+                                        <div class="investment-body">
+                                            <table class="investment-table">
+                                                <tr>
+                                                    <th>Valor Investido</th>
+                                                    <td>R$ 20.000,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Rendimento Total</th>
+                                                    <td class="highlight">R$ 6.400,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Rentabilidade Final</th>
+                                                    <td>18,2% a.a.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Período</th>
+                                                    <td>24 meses</td>
+                                                </tr>
+                                            </table>
+                                            <button class="btn-details">Ver Detalhes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="text-align: center; margin-top: 20px;">Você possui 1 investimento encerrado.</p>
+                            </div>
+                            
+                            <!-- Conteúdo da aba Histórico Financeiro -->
+                            <div class="tab-content" id="historico">
+                                <h3 style=" margin-bottom: 20px;">Histórico Financeiro</h3>
+                                <div class="history-item">
+                                    <div class="history-date">15/06/2023</div>
+                                    <div class="history-title">Resgate parcial - Atos Group II</div>
+                                    <div class="history-value negative">- R$ 5.000,00</div>
+                                </div>
+                                <div class="history-item">
+                                    <div class="history-date">10/06/2023</div>
+                                    <div class="history-title">Rendimento - TOM IV</div>
+                                    <div class="history-value positive">+ R$ 1.250,00</div>
+                                </div>
+                                <div class="history-item">
+                                    <div class="history-date">05/06/2023</div>
+                                    <div class="history-title">Rendimento - Atos Group II</div>
+                                    <div class="history-value positive">+ R$ 1.800,00</div>
+                                </div>
+                                <div class="history-item">
+                                    <div class="history-date">01/06/2023</div>
+                                    <div class="history-title">Investimento - Lince</div>
+                                    <div class="history-value negative">- R$ 25.200,00</div>
+                                </div>
+                                <button class="btn-details" style="width: auto; margin: 20px auto 0; display: block;">Carregar mais</button>
+                            </div>
+                            
+                            <!-- Conteúdo da aba Documentos -->
+                            <div class="tab-content" id="documentos">
+                                <h3 style=" margin-bottom: 20px;">Documentos</h3>
+                                <ul class="documents-list">
+                                    <li class="document-item">
+                                        <div class="document-icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </div>
+                                        <div class="document-info">
+                                            <h4>Contrato de Adesão - Atos Group II</h4>
+                                            <p>Enviado em 15/03/2022 - 1.2MB</p>
+                                        </div>
+                                        <div class="document-download">
+                                            <a href="#"><i class="fas fa-download"></i></a>
+                                        </div>
+                                    </li>
+                                    <li class="document-item">
+                                        <div class="document-icon">
+                                            <i class="fas fa-file-contract"></i>
+                                        </div>
+                                        <div class="document-info">
+                                            <h4>Contrato de Adesão - TOM IV</h4>
+                                            <p>Enviado em 10/05/2022 - 1.5MB</p>
+                                        </div>
+                                        <div class="document-download">
+                                            <a href="#"><i class="fas fa-download"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <p style="text-align: center; margin-top: 20px;">Você possui 1 investimento encerrado.</p>
-                </div>
-                
-                <!-- Conteúdo da aba Histórico Financeiro -->
-                <div class="tab-content" id="historico">
-                    <h3 style=" margin-bottom: 20px;">Histórico Financeiro</h3>
-                    <div class="history-item">
-                        <div class="history-date">15/06/2023</div>
-                        <div class="history-title">Resgate parcial - Atos Group II</div>
-                        <div class="history-value negative">- R$ 5.000,00</div>
-                    </div>
-                    <div class="history-item">
-                        <div class="history-date">10/06/2023</div>
-                        <div class="history-title">Rendimento - TOM IV</div>
-                        <div class="history-value positive">+ R$ 1.250,00</div>
-                    </div>
-                    <div class="history-item">
-                        <div class="history-date">05/06/2023</div>
-                        <div class="history-title">Rendimento - Atos Group II</div>
-                        <div class="history-value positive">+ R$ 1.800,00</div>
-                    </div>
-                    <div class="history-item">
-                        <div class="history-date">01/06/2023</div>
-                        <div class="history-title">Investimento - Lince</div>
-                        <div class="history-value negative">- R$ 25.200,00</div>
-                    </div>
-                    <button class="btn-details" style="width: auto; margin: 20px auto 0; display: block;">Carregar mais</button>
-                </div>
-                
-                <!-- Conteúdo da aba Documentos -->
-                <div class="tab-content" id="documentos">
-                    <h3 style=" margin-bottom: 20px;">Documentos</h3>
-                    <ul class="documents-list">
-                        <li class="document-item">
-                            <div class="document-icon">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <div class="document-info">
-                                <h4>Contrato de Adesão - Atos Group II</h4>
-                                <p>Enviado em 15/03/2022 - 1.2MB</p>
-                            </div>
-                            <div class="document-download">
-                                <a href="#"><i class="fas fa-download"></i></a>
-                            </div>
-                        </li>
-                        <li class="document-item">
-                            <div class="document-icon">
-                                <i class="fas fa-file-contract"></i>
-                            </div>
-                            <div class="document-info">
-                                <h4>Contrato de Adesão - TOM IV</h4>
-                                <p>Enviado em 10/05/2022 - 1.5MB</p>
-                            </div>
-                            <div class="document-download">
-                                <a href="#"><i class="fas fa-download"></i></a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
         <!--Site Footer Start-->
         <footer class="site-footer">
             <div class="site-footer__top">
-                <div class="site-footer__shape-1 float-bob-x">
-                    <img src="assets/images/resources/Logo footer.png" alt="">
-                </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
