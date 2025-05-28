@@ -419,3 +419,101 @@
       padding-top: 75%; /* Ajuste para mobile se necessário */
   }
 }
+/* Nuvem SVG posicionada à direita */
+.investment-header::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0; /* Alinhada à direita */
+    bottom: -65px; /* Posição vertical */
+    width: 180px; /* Aumentei de 120px */
+    height: 120px; /* Aumentei de 80px */
+    background-image: url("../assets/images/shapes/Frame%20114.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: 0; /* Coloca ATRÁS (era 1) */    /* border: 1px solid red; Apenas para debug - remova depois */
+}
+
+
+        
+        .investment-header h3 {
+            color: white;
+            margin: 0;
+            font-size: 1.2rem;
+            position: relative; /* Ou 'absolute' se necessário */
+            z-index: 1; /* Garante que fique acima do ::after */
+        }
+        
+        .investment-status {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: white;
+            color: #465802;
+            padding: 3px 20px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .investment-body {
+            padding: 20px;
+        }
+        
+        .investment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        
+       .investment-table th, .investment-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+    line-height: 1.2; /* Ajuste o valor conforme necessário */
+
+}
+
+        
+        
+        .investment-table th {
+            font-weight: 600;
+            color: var(--cor-secundaria);
+            width: 50%;
+        }
+        
+        .btn-details {
+            background: none;
+            border: 1px solid var(--cor-secundaria);
+            color: var(--cor-secundaria);
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn-details:hover {
+            background-color: var(--cor-secundaria);
+            color: white;
+        }
+.investment-header::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0; /* Alinhada à direita */
+    bottom: -65px; /* Posição vertical */
+    width: 180px; /* Aumentei de 120px */
+    height: 120px; /* Aumentei de 80px */
+    background-image: url("../assets/images/shapes/Frame%20114.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: 0; /* Coloca ATRÁS (era 1) */    /* border: 1px solid red; Apenas para debug - remova depois */
+}

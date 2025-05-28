@@ -1064,14 +1064,26 @@
 </div><!-- /.stricky-header -->
 
 <!-- Conteúdo da Página de Perfil -->
-<section class="profile-header" style="background: url('/assets/images/Banner (ipe)/Banner (ipe).png') no-repeat center center; background-size: cover; min-height: 300px;">
-    <a href="/assets/images/Banner (ipe)/Banner (ipe).png" style="display: block; height: 100%; text-decoration: none; color: white;">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto do perfil" class="profile-avatar">
-        <h1>João da Silva</h1>
-        <p>Investidor desde: 15/03/2022</p>
-        <span class="profile-badge">Perfil: <b>Arrojado</b></span>
-    </a>
+<section class="profile-header" style="background: url('/assets/images/Banner\ \(ipe\)/Banner (ipe).png') no-repeat center center; background-size: cover; min-height: 300px; position: relative; text-align: center; padding-top: 20px;">
+    
+    <!-- Container da foto com botão funcional -->
+    <div class="avatar-container" style="position: relative; display: inline-block;">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto do perfil" class="profile-avatar" id="profileAvatar">
+        
+        <!-- Botão REALMENTE funcional -->
+        <label for="avatarUpload" class="upload-btn" style="position: absolute; bottom: 10px; right: 10px; background: #fe7f4c; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid white;">
+            <i class="fas fa-camera" style="font-size: 12px;"></i>
+        </label>
+        <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+    </div>
+    
+    <h1 style="color: white; margin-top: 15px;">João da Silva</h1>
+    <p style="color: white;">Investidor desde: 15/03/2022</p>
+    <span class="profile-badge" style="background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 20px; color: white;">Perfil: <b>Arrojado</b></span>
 </section>
+
+<!-- Adicione isto no final do body -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
                     <div class="profile-container">
                         <!-- Seção de Informações Gerais -->

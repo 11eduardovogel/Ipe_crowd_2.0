@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ofertas | Ipê Capital</title>
+    <title>Dashboard | Ipê Capital</title>
     <!-- favicons Icons -->
      <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/Favicon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/Favicon.png" />
@@ -41,501 +41,7 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/qrowd.css" />
     <link rel="stylesheet" href="assets/css/qrowd-responsive.css" />
-    
-    <style>
-        :root {
-            --cor-primaria: #fe7f4c;
-            --cor-secundaria: #a53869;
-            --cor-texto: #333;
-            --cor-fundo: #f9f9f9;
-            --cor-destaque: #ff9c71;
-            --cor-texto-claro: #777;
-        }
         
-        .page-wrapper {
-            background-color: var(--cor-fundo);
-        }
-        
-        .invest-header {
-            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
-            color: white;
-            padding: 80px 20px 60px;
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .invest-header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
-            opacity: 0.3;
-        }
-        
-        .invest-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            position: relative;
-            color: white;
-        }
-        
-        .invest-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            position: relative;
-            color: white;
-        }
-        
-        .invest-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px 60px;
-        }
-        
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-            margin-top: 50px;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        
-        .product-header {
-            background: #ffb450;
-            color: white;
-            padding: 20px;
-            position: relative;
-            background-image: url("../assets/images/shapes/Frame%20114.png");
-
-        }
-        
-        .product-header h3 {
-            color: white;
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        
-        .product-status {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: white;
-            color: #465802;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .product-body {
-            padding: 37px;
-        }
-        
-        .product-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-        
-        .product-table th, 
-        .product-table td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .product-table th {
-            font-weight: 600;
-            color: var(--cor-secundaria);
-            width: 40%;
-        }
-        
-        .product-table td {
-            font-weight: 500;
-            
-        }
-        
-        .highlight {
-            color: var(--cor-primaria);
-            font-weight: 700;
-            
-        }
-        
-        .btn-invest {
-            background-color: var(--cor-secundaria);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: block;
-            width: 100%;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 2.5px;
-        }
-        
-        .btn-invest:hover {
-            background-color: var(--cor-primaria);
-            transform: translateY(-2px);
-        }
-        
-        .summary-section {
-            background: white;
-            border-radius: 10px;
-            padding: 30px 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-top: 50px;
-        }
-        
-        .resumo-container {
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 30px;
-        }
-
-        .resumo-titulo {
-        color: #a53869;
-        margin: 0 0 20px 0;
-        font-size: 1.3rem;
-        font-weight: 600;
-        }
-
-        .resumo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 15px;
-        }
-
-        .resumo-card {
-        border: 1px solid #eee;
-        border-radius: 8px;
-        padding: 15px;
-        transition: all 0.2s;
-        }
-
-        .resumo-card:hover {
-        border-color: #fe7f4c;
-        }
-
-        .resumo-card-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 10px;
-        }
-
-        .resumo-icone {
-        font-size: 1.2rem;
-        }
-
-        .resumo-card h4 {
-        margin: 0;
-        color: #555;
-        font-size: 0.9rem;
-        font-weight: 500;
-        }
-
-        .resumo-valor {
-        margin: 0;
-        color: #333;
-        font-size: 1.4rem;
-        font-weight: 700;
-        }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-        .resumo-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        }
-        
-        .summary-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--cor-primaria);
-            text-align: center;
-        }
-        
-        .summary-card h4 {
-            margin-top: 0;
-            color: var(--cor-secundaria);
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-        
-        .summary-card p {
-            font-size: 1.4em;
-            font-weight: 700;
-            margin: 0;
-            color: var(--cor-texto);
-        }
-        
-        .details-section {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .details-content {
-            margin-bottom: 25px;
-        }
-        
-        .details-content h3 {
-            color: var(--cor-secundaria);
-            margin-top: 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-        }
-        
-        .details-content ul {
-            padding-left: 20px;
-        }
-        
-        .details-content li {
-            margin-bottom: 8px;
-        }
-        
-        @media (max-width: 768px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .summary-cards {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .invest-header h1 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .summary-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-         .product-details-toggle {
-        margin: 15px 0;
-        position: relative;
-    }
-    
-    .details-btn {
-        background: none;
-        border: none;
-        color: var(--cor-secundaria);
-        font-size: 0.9rem;
-        cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 4px;
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        margin: 0 auto;
-    }
-    
-    .details-btn:hover {
-        background: rgba(165, 56, 105, 0.1);
-    }
-    
-    .product-details {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-        background: rgba(249, 249, 249, 0.7);
-        border-radius: 8px;
-    }
-    
-    .product-details-toggle:hover .product-details {
-        max-height: 500px; /* Ajuste conforme necessário */
-    }
-    
-    .details-table {
-        width: 100%;
-        margin: 10px 0;
-    }
-    
-    .details-table th, 
-    .details-table td {
-        padding: 8px 10px;
-        font-size: 0.85rem;
-    }
-    
-    .details-table th {
-        font-weight: 500;
-        color: var(--cor-secundaria);
-        width: 60%;
-    }
-    
-    .details-table tr:last-child th,
-    .details-table tr:last-child td {
-        border-bottom: none;
-    }
-        /* Estilo do trigger */
-    .invest-details-trigger {
-        background: rgba(254, 127, 76, 0.1);
-        border: 1px dashed var(--cor-primaria);
-        color: var(--cor-primaria);
-        border-radius: 6px;
-        padding: 8px 12px;
-        font-size: 0.85rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin: 12px 0;
-        width: 100%;
-        transition: all 0.2s;
-    }
-    
-    .invest-details-trigger:hover {
-        background: rgba(254, 127, 76, 0.2);
-    }
-    
-    .invest-details-trigger i {
-        font-size: 1rem;
-    }
-    
-    /* Estilo do overlay */
-    .invest-details-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(2px);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 10;
-    }
-    
-    .product-card:hover .invest-details-overlay {
-        opacity: 1;
-        visibility: visible;
-        padding-top: 60px;
-    }
-    
-    .invest-details-content {
-        background: white;
-        width: 85%;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        border-top: 4px solid var(--cor-primaria);
-    }
-    
-    .invest-details-content h4 {
-        color: var(--cor-secundaria);
-        margin-top: 0;
-        margin-bottom: 15px;
-        text-align: center;
-    }
-    
-    .financial-details-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    
-    .financial-details-table th, 
-    .financial-details-table td {
-        padding: 8px 10px;
-        text-align: left;
-        border-bottom: 1px solid #eee;
-        font-size: 0.9rem;
-    }
-    
-    .financial-details-table th {
-        color: var(--cor-secundaria);
-        font-weight: 500;
-        width: 60%;
-    } 
-    /* 1. Torna o botão "imune" ao overlay */
-.invest-click-area {
-    position: relative; /* Cria novo contexto de empilhamento */
-    z-index: 20; /* Coloca o botão ACIMA do overlay */
-}
-
-/* 2. Ajusta o overlay para não cobrir o botão */
-.invest-details-overlay {
-    pointer-events: none; /* Permite cliques "atravessarem" */
-}
-
-.invest-details-content {
-    pointer-events: auto; /* Restaura interação só no conteúdo */
-    margin-bottom: 60px; /* Espaço para o botão respirar */
-}
-.product-card:hover .btn-invest {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-.summary-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(254, 127, 76, 0.1);
-        border-color: #fe7f4c;
-}
- @media (max-width: 768px) {
-        .summary-cards {
-            grid-template-columns: repeat(2, 1fr); /* 2 colunas */
-            gap: 12px; /* Espaço menor entre cards */
-        }
-        
-        .summary-card {
-            padding: 15px; /* Reduz padding */
-        }
-        
-        .summary-card h4 {
-            font-size: 0.85rem; /* Texto um pouco menor */
-            line-height: 1.3;
-        }
-        
-        .summary-card p {
-            font-size: 1.2rem; /* Valor mais compacto */
-        }
-    }
-
-    /* Ajuste para telas muito pequenas */
-    @media (max-width: 480px) {
-        .summary-cards {
-            gap: 8px;
-        }
-    }
-    
-
-    </style>
 </head>
 
 <body class="custom-cursor">
@@ -679,7 +185,7 @@
                                         <a href="#">Pages</a> 
                                     </li>
                                     <li class="dropdown">
-                                        <a href="gallery.html">Meu Perfil</a>
+                                        <a href="#">Events</a>
                                         <!-- <ul class="shadow-box">
                                             <li><a href="project-01.html">Project 01</a></li>
                                             <li><a href="project-02.html">Project 02</a></li>
@@ -700,33 +206,38 @@
                             <!-- Componente de Perfil -->
                             <div style="margin-left: 20px; position: relative; z-index: 1000;"></div>
                             <div class="profile-dropdown" style="position: relative;">
-                                <button class="profile-btn" style="
-                                    background: none;
-                                    border: none;
-                                    cursor: pointer;
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 8px;
-                                    padding: 8px 12px;
-                                    border-radius: 50px;
-                                    transition: all 0.3s;">
-                                    <div class="profile-avatar" style="
-                                        width: 36px;
-                                        height: 36px;
-                                        border-radius: 50%;
-                                        background-color: #6a8fd8;
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: center;
-                                        color: white;
-                                        font-weight: bold;
-                                        z-index: 20;
-                                        font-size: 14px;">JD</div>
-                                    <span style="font-size: 14px; color: #333;">John Doe</span>
-                                    <i class="fa fa-chevron-down" style="font-size: 12px; color: #666;"></i>
+                                <button onclick="window.location.href='profile.html'" class="profile-btn" style="
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 50px;
+    transition: all 0.3s;
+    margin-left: 120px;">
+
+    <div class="profile-avatar" style="
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #dadada;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-top: 15px;
+        z-index: 20;">
+        <i class="fas fa-user" style="font-size: 16px;"></i>
+    </div>
+    <span style="font-size: 16px; font-weight: 500; color: #6e7a7a;">Meu Perfil</span>
+</button>
+                                    <!-- <span style="font-size: 14px; color: #333;">Meu Perfil</span> -->
+                                    <!-- <i class="fa fa-chevron-down" style="font-size: 12px; color: #666;"></i> -->
                                 </button>
                                 
-                                <!-- Dropdown Menu -->
+                                <!-- Dropdown Menu
                                 <div class="profile-menu" style="
                                     position: absolute;
                                     right: 0;
@@ -762,7 +273,7 @@
                                         font-weight: 500;
                                         transition: all 0.3s;
                                     "><i class="fa fa-sign-out" style="margin-right: 10px;"></i> Sair</a>
-                                </div>
+                                </div> -->
                             </div>
                                     <!-- <li class="dropdown" style="margin-right: 100px;">
                                         <a href="#">News</a>
@@ -779,13 +290,7 @@
                                         </a>
                                       </nav> -->
                                       
-                                      <style>
-                                        @media (min-width: 768px) {
-                                          a[href="login-register.html"] {
-                                            margin-left: 50PX;
-                                          }
-                                        }
-                                      </style>
+                                      
                                 </li>
                                 
                                 </ul>
@@ -797,19 +302,6 @@
     </div>
 </nav>
 
-<!-- Estilos e Script Adicionais -->
-<style>
-    .profile-btn:hover {
-        background: #f5f5f5 !important;
-    }
-    .profile-menu a:hover {
-        background: #f9f9f9;
-        color: #aa4377 !important;
-    }
-    .profile-dropdown:hover .profile-menu {
-        display: block !important;
-    }
-</style>
                             <!-- <div class="main-menu__call-search-btn-box">
                                 <div class="main-menu__call">
                                     <div class="main-menu__call-icon">
@@ -840,6 +332,23 @@
         </div><!-- /.stricky-header -->
 
         <!-- Conteúdo da Página de Investimentos -->
+         <style>
+            /* Nuvem SVG posicionada à direita */
+.investment-header::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0; /* Alinhada à direita */
+    bottom: -65px; /* Posição vertical */
+    width: 180px; /* Aumentei de 120px */
+    height: 120px; /* Aumentei de 80px */
+    background-image: url("../assets/images/shapes/Frame%20114.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: 0; /* Coloca ATRÁS (era 1) */    /* border: 1px solid red; Apenas para debug - remova depois */
+}
+         </style>
         
         <!-- Hero Section (já adaptado conforme seu template) -->
 <section class="page-header">
@@ -923,9 +432,9 @@
 <!-- Card 1 - Atos Group II -->
 <div class="investment-card-wrapper">
   <div class="product-card">
-    <div class="product-header">
+    <div class="investment-header">
       <h3>Atos Group II</h3>
-      <span class="product-status">Aberto</span>
+      <span class="investment-status">Aberto</span>
     </div>
     <div class="product-body">
       <table class="product-table">
@@ -1001,9 +510,9 @@
 <!-- Card 2 - TOM IV -->
 <div class="investment-card-wrapper">
   <div class="product-card">
-    <div class="product-header">
+    <div class="investment-header">
       <h3>TOM IV</h3>
-      <span class="product-status">Aberto</span>
+      <span class="investment-status">Aberto</span>
     </div>
     <div class="product-body">
       <table class="product-table">
@@ -1069,9 +578,9 @@
 <!-- Card 3 - Lince -->
 <div class="investment-card-wrapper">
   <div class="product-card">
-    <div class="product-header">
+    <div class="investment-header">
       <h3>Lince</h3>
-      <span class="product-status">Aberto</span>
+      <span class="investment-status">Aberto</span>
     </div>
     <div class="product-body">
       <table class="product-table">
