@@ -38,7 +38,7 @@
   --cor-secundaria: #a53869;
   --cor-texto: #333;
   --cor-fundo: #f9f9f9;
-  --cor-destaque: #ff9c71;
+  --cor-destaque: #ffb450;
   --cor-texto-claro: #777;
 }
 .section-title__title {
@@ -14576,3 +14576,159 @@ margin-left: 50PX;
     content: "\f030";
 }
 */
+/* Adicione isso no seu CSS (qrowd.css ou qrowd-responsive.css) */
+.main-menu__list {
+    display: flex;
+    flex-wrap: nowrap; /* Impede a quebra de linha */
+    overflow-x: auto;  /* Permite scroll horizontal se necessário (opcional) */
+    white-space: nowrap; /* Mantém os itens em uma única linha */
+    gap: 10px; /* Reduz o espaço entre os itens */
+}
+
+.main-menu__list li {
+    flex-shrink: 0; /* Impede que os itens encolham */
+}
+@media (max-width: 991px) {
+    .main-menu__list li:nth-child(n+3) { /* Esconde itens após o 3º (ajuste conforme necessário) */
+        display: none;
+    }
+    .profile-btn {
+        margin-left: 0 !important; /* Remove margem extra no perfil */
+    }
+}
+@media (max-width: 768px) {
+    .profile-btn span {
+        display: none; /* Esconde o texto "Meu Perfil" */
+    }
+    .profile-btn {
+        padding: 8px !important; /* Reduz o tamanho do botão */
+    }
+}
+/* Página de Saques */
+.withdrawal-page {
+    padding: 60px 0;
+}
+
+.page-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 700;
+}
+
+.withdrawal-section {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #444;
+    font-weight: 600;
+}
+
+.withdrawal-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.withdrawal-table th {
+    background: #f8f9fa;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+}
+
+.withdrawal-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.withdrawal-table tr:last-child td {
+    border-bottom: none;
+}
+
+.btn-action {
+    background: #aa4377;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.btn-action:hover {
+    background: #8a3560;
+    color: white;
+}
+
+.btn-action:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Modais */
+.modal-content {
+    border-radius: 8px;
+    border: none;
+}
+
+.modal-header {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: #333;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
+    padding: 15px 20px;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.btn-details {
+    background: transparent;
+    border: 1px solid #aa4377;
+    color: #aa4377;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-details:hover {
+    background: #aa4377;
+    color: white;
+}

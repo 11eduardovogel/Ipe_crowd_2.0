@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Checkout || Qrowd || Qrowd HTML 5 Template </title>
+    <title>Dashboard | Ipê Capital</title>
     <!-- favicons Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
+     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/Favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/Favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/Favicon.png" />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
     <meta name="description" content="Qrowd HTML 5 Template " />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
@@ -40,11 +37,13 @@
     <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
     <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
     <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
-    <link rel="stylesheet" href="assets/vendors/nice-select/nice-select.css" />
+    <link rel="stylesheet" href="assets/vendors/nice-select/jquery.nice-select.min.css" />
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/qrowd.css" />
     <link rel="stylesheet" href="assets/css/qrowd-responsive.css" />
+    <link rel="stylesheet" href="assets/css/withdrawals.css" />
+        
 </head>
 
 <body class="custom-cursor">
@@ -52,20 +51,15 @@
     <div class="custom-cursor__cursor"></div>
     <div class="custom-cursor__cursor-two"></div>
 
-
-
-
-
     <div class="preloader">
         <div class="preloader__image"></div>
     </div>
     <!-- /.preloader -->
 
-
     <div class="page-wrapper">
         <header class="main-header">
             <div class="main-header__top">
-                <div class="main-header__top-inner">
+                <!-- <div class="main-header__top-inner">
                     <div class="main-header__top-left">
                         <ul class="list-unstyled main-header__contact-list">
                             <li>
@@ -100,7 +94,7 @@
                             <a href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <nav class="main-menu">
                 <div class="main-menu__wrapper">
@@ -113,7 +107,7 @@
                                 <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                 <ul class="main-menu__list">
                                     <li class="dropdown megamenu">
-                                        <a href="index.html">Home </a>
+                                        <a href="#">Home </a>
                                         <ul>
                                             <li>
                                                 <section class="home-showcase">
@@ -122,86 +116,66 @@
                                                             <div class="row">
                                                                 <div class="col-lg-3">
                                                                     <div class="home-showcase__item">
-                                                                        <div class="home-showcase__image">
-                                                                            <img src="assets/images/home-showcase/home-showcase-1-1.jpg"
-                                                                                alt="">
-                                                                            <div class="home-showcase__buttons">
-                                                                                <a href="index.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">Multi
-                                                                                    Page</a>
-                                                                                <a href="index-one-page.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">One
-                                                                                    Page</a>
-                                                                            </div>
-                                                                            <!-- /.home-showcase__buttons -->
+                                                                        <div class="home-showcase__item">
+                                                                            <a href="index2-one-page.html" class="home-showcase__image-link">
+                                                                                <div class="home-showcase__image">
+                                                                                    <img src="assets/images/home-showcase/Securitização.png" alt="">
+                                                                                </div>
+                                                                            </a>
                                                                         </div><!-- /.home-showcase__image -->
-                                                                        <h3 class="home-showcase__title">Home
+                                                                        <!-- <h3 class="home-showcase__title">Home
                                                                             page
-                                                                            01</h3>
+                                                                            01</h3> -->
                                                                         <!-- /.home-showcase__title -->
                                                                     </div><!-- /.home-showcase__item -->
                                                                 </div><!-- /.col-lg-3 -->
                                                                 <div class="col-lg-3">
                                                                     <div class="home-showcase__item">
-                                                                        <div class="home-showcase__image">
-                                                                            <img src="assets/images/home-showcase/home-showcase-1-2.jpg"
-                                                                                alt="">
-                                                                            <div class="home-showcase__buttons">
-                                                                                <a href="index2.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">Multi
-                                                                                    Page</a>
-                                                                                <a href="index2-one-page.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">One
-                                                                                    Page</a>
-                                                                            </div>
-                                                                            <!-- /.home-showcase__buttons -->
+                                                                        <div class="home-showcase__item">
+                                                                            <a href="index3-one-page.html" class="home-showcase__image-link">
+                                                                                <div class="home-showcase__image">
+                                                                                    <img src="assets/images/home-showcase/Antecipação.png" alt="">
+                                                                                </div>
+                                                                            </a>
                                                                         </div><!-- /.home-showcase__image -->
-                                                                        <h3 class="home-showcase__title">Home
+                                                                        <!-- <h3 class="home-showcase__title">Home
                                                                             page
                                                                             02
-                                                                        </h3><!-- /.home-showcase__title -->
+                                                                        </h3>/.home-showcase__title -->
                                                                     </div><!-- /.home-showcase__item -->
                                                                 </div><!-- /.col-lg-3 -->
                                                                 <div class="col-lg-3">
                                                                     <div class="home-showcase__item">
-                                                                        <div class="home-showcase__image">
-                                                                            <img src="assets/images/home-showcase/home-showcase-1-3.jpg"
-                                                                                alt="">
-                                                                            <div class="home-showcase__buttons">
-                                                                                <a href="index3.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">Multi
-                                                                                    Page</a>
-                                                                                <a href="index3-one-page.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">One
-                                                                                    Page</a>
-                                                                            </div>
-                                                                            <!-- /.home-showcase__buttons -->
+                                                                        <div class="home-showcase__item">
+                                                                            <a href="index.html" class="home-showcase__image-link">
+                                                                                <div class="home-showcase__image">
+                                                                                    <img src="assets/images/home-showcase/Crowdfunding.png" alt="">
+                                                                                </div>
+                                                                            </a>
                                                                         </div><!-- /.home-showcase__image -->
-                                                                        <h3 class="home-showcase__title">Home
+                                                                        <!-- <h3 class="home-showcase__title">Home
                                                                             page
                                                                             03
-                                                                        </h3><!-- /.home-showcase__title -->
+                                                                        </h3>/.home-showcase__title -->
                                                                     </div><!-- /.home-showcase__item -->
                                                                 </div><!-- /.col-lg-3 -->
                                                                 <div class="col-lg-3">
-                                                                    <div class="home-showcase__item">
-                                                                        <div class="home-showcase__image">
-                                                                            <img src="assets/images/home-showcase/home-showcase-1-4.jpg"
-                                                                                alt="">
-                                                                            <div class="home-showcase__buttons">
-                                                                                <a href="index-dark.html"
-                                                                                    class="thm-btn home-showcase__buttons__item">View
-                                                                                    Page</a>
-                                                                            </div>
-                                                                            <!-- /.home-showcase__buttons -->
-                                                                        </div><!-- /.home-showcase__image -->
-                                                                        <h3 class="home-showcase__title">Home
-                                                                            page
-                                                                            04
-                                                                        </h3><!-- /.home-showcase__title -->
-                                                                    </div><!-- /.home-showcase__item -->
-                                                                </div><!-- /.col-lg-3 -->
-                                                            </div><!-- /.row -->
+                                                                    <div class="home-showcase__image">
+                                                                        <div class="home-showcase__item">
+                                                                            <a href="about.html" class="home-showcase__image-link">
+                                                                                <div class="home-showcase__image">
+                                                                                    <img src="assets/images/home-showcase/Sobre nós.png" alt="">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                        <!-- /.home-showcase__buttons -->
+                                                                    </div><!-- /.home-showcase__image -->
+                                                                    <!-- <h3 class="home-showcase__title">Home
+                                                                        page
+                                                                        01</h3> -->
+                                                            </div>
+                                                            <!-- /.row -->
+                                                             
                                                         </div><!-- /.home-showcase__inner -->
 
                                                     </div><!-- /.container -->
@@ -209,66 +183,127 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown">
-                                        <a href="#">Pages</a>
-                                        <ul class="shadow-box">
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="team.html">Team</a></li>
-                                            <li><a href="team-carousel.html">Team Carousel</a></li>
-                                            <li><a href="testimonials.html">Testimonials</a></li>
-                                            <li><a href="testimonials-carousel.html">Testimonials Carousel</a></li>
-                                            <li><a href="partner.html">Partners</a></li>
-                                            <li><a href="gallery.html">Gallery</a></li>
-                                            <li><a href="gallery-carousel.html">Gallery Carousel</a></li>
-                                            <li><a href="faq.html">FAQs</a></li>
-                                            <li><a href="login-register.html">Login Registration</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
-                                        </ul>
+                                    <li class="dropdown current">
+                                        <a href="#">Pages</a> 
                                     </li>
                                     <li class="dropdown">
-                                        <a href="#">Explore</a>
-                                        <ul class="shadow-box">
+                                        <a href="#">Events</a>
+                                        <!-- <ul class="shadow-box">
                                             <li><a href="project-01.html">Project 01</a></li>
                                             <li><a href="project-02.html">Project 02</a></li>
                                             <li><a href="project-carousel.html">Project Carousel</a></li>
                                             <li><a href="project-details.html">Project Details</a></li>
-                                        </ul>
+                                        </ul> -->
                                     </li>
                                     <li class="dropdown">
-                                        <a href="#">Events</a>
-                                        <ul class="shadow-box">
+                                        <a href="contact.html">Contato</a> 
+                                        <!-- <ul class="shadow-box">
                                             <li><a href="events.html">Events</a></li>
                                             <li><a href="events-list.html">Events List</a></li>
                                             <li><a href="events-carousel.html">Events Carousel</a></li>
                                             <li><a href="event-details.html">Event Details</a></li>
-                                        </ul>
+                                        </ul> -->
                                     </li>
-                                    <li class="dropdown">
+                            <nav style="display: flex; align-items: center; padding: 10px; background-color: transparent; position: relative; z-index: 1000;">
+                            <!-- Componente de Perfil -->
+                            <div style="margin-left: 20px; position: relative; z-index: 1000;"></div>
+                            <div class="profile-dropdown" style="position: relative;">
+                                <button onclick="window.location.href='profile.html'" class="profile-btn" style="
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 50px;
+    transition: all 0.3s;
+    margin-left: 120px;">
+
+    <div class="profile-avatar" style="
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #dadada;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-top: 15px;
+        z-index: 20;">
+        <i class="fas fa-user" style="font-size: 16px;"></i>
+    </div>
+    <span style="font-size: 16px; font-weight: 500; color: #6e7a7a;">Meu Perfil</span>
+</button>
+                                    <!-- <span style="font-size: 14px; color: #333;">Meu Perfil</span> -->
+                                    <!-- <i class="fa fa-chevron-down" style="font-size: 12px; color: #666;"></i> -->
+                                </button>
+                                
+                                <!-- Dropdown Menu
+                                <div class="profile-menu" style="
+                                    position: absolute;
+                                    right: 0;
+                                    top: 50px;
+                                    background: white;
+                                    border-radius: 8px;
+                                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                                    width: 200px;
+                                    padding: 10px 0;
+                                    display: none;
+                                    z-index: 1000;
+                                ">
+                                    <a href="#" style="
+                                        display: block;
+                                        padding: 10px 20px;
+                                        color: #333;
+                                        text-decoration: none;
+                                        transition: all 0.3s;
+                                    "><i class="fa fa-user" style="margin-right: 10px;"></i> Meu Perfil</a>
+                                    <a href="#" style="
+                                        display: block;
+                                        padding: 10px 20px;
+                                        color: #333;
+                                        text-decoration: none;
+                                        transition: all 0.3s;">
+                                        <i class="fa fa-cog" style="margin-right: 10px;"></i> Configurações</a>
+                                    <div style="border-top: 1px solid #eee; margin: 5px 0;"></div>
+                                    <a href="login-register.html" style="
+                                        display: block;
+                                        padding: 10px 20px;
+                                        color: #aa4377;
+                                        text-decoration: none;
+                                        font-weight: 500;
+                                        transition: all 0.3s;
+                                    "><i class="fa fa-sign-out" style="margin-right: 10px;"></i> Sair</a>
+                                </div> -->
+                            </div>
+                                    <!-- <li class="dropdown" style="margin-right: 100px;">
                                         <a href="#">News</a>
                                         <ul class="shadow-box">
                                             <li><a href="news.html">News</a></li>
                                             <li><a href="news-carousel.html">News Carousel</a></li>
                                             <li><a href="news-sidebar.html">News Sidebar</a></li>
                                             <li><a href="news-details.html">News Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown current">
-                                        <a href="#">Shop</a>
-                                        <ul class="shadow-box">
-                                            <li><a href="products.html">Products</a></li>
-                                            <li><a href="product-details.html">Product Details</a></li>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Contact</a>
-                                    </li>
+                                        </ul> -->
+                                    <!-- <nav style="display: flex; align-items: center; padding: 10px; background-color: transparent;">
+                                        <a href="login-register.html" style="background-color: #aa4377; color: #ffffff; border: 1px solid #aa4377; padding: 10px 20px; text-decoration: none; display: inline-block; border-radius: 5px;">
+                                          Logout
+                                        </a>
+                                      </nav> -->
+                                      
+                                      
+                                </li>
+                                
                                 </ul>
                             </div>
                         </div>
                         <div class="main-menu__right">
-                            <div class="main-menu__call-search-btn-box">
+                            <nav style="display: flex; align-items: center; gap: 15px; padding: 10px; background-color: transparent;">
+    
+    </div>
+</nav>
+
+                            <!-- <div class="main-menu__call-search-btn-box">
                                 <div class="main-menu__call">
                                     <div class="main-menu__call-icon">
                                         <i class="fas fa-phone"></i>
@@ -286,7 +321,7 @@
                                     <a href="project-details.html" class="thm-btn main-menu__btn"><i
                                             class="icon-plus-symbol"></i>Add a Project</a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -315,276 +350,346 @@
                     <ul class="thm-breadcrumb list-unstyled">
                         <li><a href="index.html">Home</a></li>
                         <li><span>/</span></li>
-                        <li>Shop</li>
+                        <li>Meus Saques</li>
                     </ul>
-                    <h2>Checkout</h2>
+                    <h2>Meus Saques</h2>
+                    <div class="mb-4" style="text-align: right;">
+                    </div>
                 </div>
             </div>
         </section>
         <!--Page Header End-->
-
-        <!--Start Checkout Page-->
-        <section class="checkout-page">
+  <button class="thm-btn-bank" data-bs-toggle="modal" data-bs-target="#bankDataModal">
+                            Dados Bancários
+                        </button>
+        <!--Start Withdrawal Page-->
+        <section class="withdrawal-page">
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="billing_details">
-                            <div class="billing_title">
-                                <p>Returning Customer? <span>Click here to Login</span></p>
-                                <h2>Billing Details</h2>
-                            </div>
-                            <form class="billing_details_form">
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="billing_input_box">
-                                            <div class="select-box">
-                                                <select class="wide">
-                                                    <option data-display="Select country">Select a Country</option>
-                                                    <option value="1">Canada</option>
-                                                    <option value="2">England</option>
-                                                    <option value="3">Australia</option>
-                                                    <option value="3">USA</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row bs-gutter-x-20">
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="first_name" value="" placeholder="First Name"
-                                                required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="last_name" value="" placeholder="Last Name"
-                                                required="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="company_name" value="" placeholder="Company">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="Address" value="" placeholder="Address">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="company_name" value=""
-                                                placeholder="Appartment, Unit, etc. (optional)">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="Town/City" value="" placeholder="Town / City"
-                                                required="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row bs-gutter-x-20">
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="State" value="" placeholder="State" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input name="form_zip" type="text" pattern="[0-9]*" placeholder="Zip code">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input name="email" type="email" placeholder="Email Address">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input type="tel" name="form_phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                                required="" placeholder="Phone">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="checked-box">
-                                            <input type="checkbox" name="skipper1" id="skipper" checked="">
-                                            <label for="skipper"><span></span>Create an account?</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="billing_details ship_different_address">
-                            <div class="billing_title ship_different_address_title">
-                                <h2>Ship to a Different Address <span class="fa fa-check-circle"></span></h2>
-                            </div>
-                            <form class="billing_details_form ship_different_address_form">
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="billing_input_box">
-                                            <div class="select-box">
-                                                <select class="wide">
-                                                    <option data-display="Select country">Select a Country</option>
-                                                    <option value="1">Canada</option>
-                                                    <option value="2">England</option>
-                                                    <option value="3">Australia</option>
-                                                    <option value="3">USA</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row bs-gutter-x-20">
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="first_name" value="" placeholder="First Name"
-                                                required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="last_name" value="" placeholder="Last Name"
-                                                required="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="company_name" value="" placeholder="Company">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="Address" value="" placeholder="Address">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="company_name" value=""
-                                                placeholder="Appartment, Unit, etc. (optional)">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="Town/City" value="" placeholder="Town / City"
-                                                required="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row bs-gutter-x-20">
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input type="text" name="State" value="" placeholder="State" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input name="form_zip" type="text" pattern="[0-9]*" placeholder="Zip code">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row bs-gutter-x-20">
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input name="email" type="email" placeholder="Email Address">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="billing_input_box">
-                                            <input type="tel" name="form_phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                                required="" placeholder="Phone">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="ship_different_input">
-                                            <textarea placeholder="Notes About Order"
-                                                name="form_order_notes"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="your_order">
-                    <h2>Your Order</h2>
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="order_table_box">
-                                <table class="order_table_detail">
-                                    <thead class="order_table_head">
+                <!-- Seção de Saques Esperados -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="withdrawal-section">
+                            <h2 class="section-title">Saques Esperados</h2>
+                            <div class="table-responsive">
+                                <table class="withdrawal-table">
+                                    <thead>
                                         <tr>
-                                            <th>Product</th>
-                                            <th class="right">Price</th>
+                                            <th>Nome da Oferta</th>
+                                            <th>Código</th>
+                                            <th>Investido (R$)</th>
+                                            <th>Recebido (R$)</th>
+                                            <th>Acumulado (R$)</th>
+                                            <th>Próximo Rendimento</th>
+                                            <th>Detalhes</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="pro__title">Product Name</td>
-                                            <td class="pro__price">$10.99 USD</td>
+                                            <td>Residencial Green Valley</td>
+                                            <td>GV-2023-001</td>
+                                            <td>25.000,00</td>
+                                            <td>5.750,00</td>
+                                            <td>1.250,00</td>
+                                            <td>15/06/2023</td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="Digite detalhes aqui">
+                                            </td>
                                         </tr>
+                                        <!-- Mais linhas conforme necessário -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex justify-content-center gap-3 mt-4">
+                                <button class="thm-btn request-withdrawal" data-bs-toggle="modal" data-bs-target="#historyModal">Histórico de Saques</button>
+                                <button class="thm-btn request-withdrawal" data-bs-toggle="modal" data-bs-target="#requestsModal">Histórico de Solicitações</button>
+                                <button class="thm-btn request-withdrawal" data-bs-toggle="modal" data-bs-target="#withdrawalModal">Solicitar Saque</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Saques Próximos -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="withdrawal-section">
+                            <h2 class="section-title">Saques Próximos</h2>
+                            <div class="table-responsive">
+                                <table class="withdrawal-table">
+                                    <thead>
                                         <tr>
-                                            <td class="pro__title">Subtotal</td>
-                                            <td class="pro__price">$10.99 USD</td>
+                                            <th>Nome da Oferta</th>
+                                            <th>Código</th>
+                                            <th>Investido (R$)</th>
+                                            <th>Recebido (R$)</th>
+                                            <th>Acumulado (R$)</th>
+                                            <th>Próximo Rendimento</th>
+                                            <th>Detalhes</th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
                                         <tr>
-                                            <td class="pro__title">Shipping</td>
-                                            <td class="pro__price">$0.00 USD</td>
+                                            <td>Comercial Downtown</td>
+                                            <td>CD-2023-005</td>
+                                            <td>15.000,00</td>
+                                            <td>3.200,00</td>
+                                            <td>850,00</td>
+                                            <td>30/06/2023</td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="Digite detalhes aqui">
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td class="pro__title">Total</td>
-                                            <td class="pro__price">$20.98 USD</td>
-                                        </tr>
+                                        <!-- Mais linhas conforme necessário -->
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
-                        <div class="col-lg-6">
-                            <div class="checkout__payment">
-                                <div class="checkout__payment__item checkout__payment__item--active">
-                                    <h3 class="checkout__payment__title">Direct Bank Transfer</h3>
-                                    <div class="checkout__payment__content">
-                                        Make your payment directly into our bank account. Please
-                                        use your Order ID as the payment reference. Your order
-                                        wont be shipped until the funds have cleared.
-                                    </div><!-- /.checkout__payment__content -->
-                                </div><!-- /.checkout__payment__item -->
-                                <div class="checkout__payment__item">
-                                    <h3 class="checkout__payment__title">Paypal Payment <img
-                                            src="assets/images/shop/paypal-1.jpg" alt=""></h3>
-                                    <div class="checkout__payment__content">
-                                        Make your payment directly into our bank account. Please
-                                        use your Order ID as the payment reference. Your order
-                                        wont be shipped until the funds have cleared.
-                                    </div><!-- /.checkout__payment__content -->
-                                </div><!-- /.checkout__payment__item -->
-                            </div><!-- /.checkout__payment -->
-                            <div class="text-right d-flex justify-content-end">
-                                <a href="checkout.html" class="thm-btn">Back Campaign Now</a>
-                            </div><!-- /.text-right -->
-
-                        </div><!-- /.col-lg-6 -->
                     </div>
                 </div>
             </div>
         </section>
-        <!--End Checkout Page-->
+        <!--End Withdrawal Page-->
+
+        <!-- Modal para Solicitação de Saque -->
+        <div class="modal fade" id="withdrawalModal" tabindex="-1" role="dialog" aria-labelledby="withdrawalModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="withdrawalModalLabel">Solicitar Saque</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Total de Aporte (R$)</label>
+                            <input type="text" class="form-control" value="25.000,00" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Total de Rendimentos (R$)</label>
+                            <input type="text" class="form-control" value="7.000,00" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor Disponível para Saque (R$)</label>
+                            <input type="text" class="form-control" value="1.250,00" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor do Saque (R$)</label>
+                            <input type="text" class="form-control" placeholder="Digite o valor que deseja sacar">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="thm-btn">Confirmar Saque</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para Histórico de Saques -->
+        <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="historyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="historyModalLabel">Histórico de Saques</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Data Programada</th>
+                                        <th>Valor Previsto (R$)</th>
+                                        <th>Status</th>
+                                        <th>Detalhes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>SAQ-2023-001</td>
+                                        <td>15/05/2023</td>
+                                        <td>1.150,00</td>
+                                        <td><span class="badge badge-success">Concluído</span></td>
+                                        <td><button class="btn-details">Ver</button></td>
+                                    </tr>
+                                    <!-- Mais linhas conforme necessário -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="thm-btn" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para Histórico de Solicitações -->
+        <div class="modal fade" id="requestsModal" tabindex="-1" role="dialog" aria-labelledby="requestsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="requestsModalLabel">Histórico de Solicitações</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Data</th>
+                                        <th>Valor (R$)</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>SOL-2023-005</td>
+                                        <td>10/06/2023</td>
+                                        <td>1.250,00</td>
+                                        <td><span class="badge badge-warning">Processando</span></td>
+                                        <td><button class="btn-action">Cancelar</button></td>
+                                    </tr>
+                                    <!-- Mais linhas conforme necessário -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="thm-btn" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para Dados Bancários (simples, só campos essenciais) -->
+<div class="modal fade" id="bankDataModal" tabindex="-1" role="dialog" aria-labelledby="bankDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bankDataModalLabel">Meus Dados Bancários</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="bankDataForm">
+                    <div class="form-group mb-3">
+                        <label>Banco</label>
+                        <select class="form-control" required>
+                            <!-- <option value="">Selecione</option>
+                            <option value="001">Banco do Brasil</option>
+                            <option value="033">Santander</option>
+                            <option value="237">Bradesco</option>
+                            <option value="341">Itaú</option>
+                            <option value="104">Caixa Econômica Federal</option> -->
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Agência</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Conta</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Tipo de Conta</label>
+                        <select class="form-control" required>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Titular da Conta</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Chave Pix</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Documento</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+
+                        
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="thm-btn" id="saveBankData">Salvar Dados</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const select = document.getElementById('bankSelect');
+    
+    if (!select) {
+        console.error('Elemento bankSelect não encontrado');
+        return;
+    }
+
+    // Mostra estado de carregamento
+    select.innerHTML = '<option value="">Carregando bancos...</option>';
+    
+    fetch('https://brasilapi.com.br/api/banks/v1')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Falha na requisição: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(banks => {
+            // Limpa o select
+            select.innerHTML = '<option value="">Selecione seu banco</option>';
+            
+            // Ordena os bancos por nome para melhor visualização
+            banks.sort((a, b) => a.name.localeCompare(b.name));
+            
+            // Preenche as opções
+            banks.forEach(bank => {
+                if (bank.code && bank.name) { // Filtra bancos sem código ou nome
+                    const option = document.createElement('option');
+                    option.value = bank.code;
+                    option.textContent = `${bank.code} - ${bank.name}`;
+                    select.appendChild(option);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Erro ao carregar bancos:', error);
+            
+            const fallbackBanks = [
+                {code: '001', name: 'Banco do Brasil'},
+                {code: '033', name: 'Santander'},
+                {code: '237', name: 'Bradesco'},
+                {code: '341', name: 'Itaú'},
+                {code: '104', name: 'Caixa Econômica Federal'},
+                {code: '756', name: 'Sicoob'},
+                {code: '748', name: 'Sicredi'},
+                {code: '422', name: 'Banco Safra'},
+                {code: '655', name: 'Banco Votorantim'},
+                {code: '260', name: 'Nubank'}
+            ];
+            
+            select.innerHTML = '<option value="">Selecione seu banco</option>';
+            
+            fallbackBanks.forEach(bank => {
+                const option = document.createElement('option');
+                option.value = bank.code;
+                option.textContent = `${bank.code} - ${bank.name}`;
+                select.appendChild(option);
+            });
+        });
+});
+</script>
 
         <!--Site Footer Start-->
         <footer class="site-footer">
@@ -757,7 +862,7 @@
     </div>
     <!-- /.search-popup -->
 
-    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="icon-right-arrow"></i></a>
+    <a href="#" data-bs-target="html" class="scroll-to-target scroll-to-top"><i class="icon-right-arrow"></i></a>
 
 
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
@@ -786,7 +891,49 @@
     <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
     <script src="assets/vendors/nice-select/jquery.nice-select.min.js"></script>
 
+<script>
+<script>
+// Altere para executar quando o modal for aberto
+document.getElementById('bankDataModal').addEventListener('shown.bs.modal', function() {
+    const select = document.getElementById('bankSelect');
+    if (!select) return;
 
+    console.log("Iniciando carregamento de bancos..."); // Debug
+    
+    select.innerHTML = '<option value="">Carregando bancos...</option>';
+
+    fetch('https://brasilapi.com.br/api/banks/v1')
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+            return response.json();
+        })
+        .then(banks => {
+            console.log("Bancos carregados:", banks); // Debug
+            select.innerHTML = '<option value="">Selecione seu banco</option>';
+            
+            banks.sort((a, b) => a.name.localeCompare(b.name)).forEach(bank => {
+                if (bank.code && bank.name) {
+                    const option = new Option(`${bank.code} - ${bank.name}`, bank.code);
+                    select.add(option);
+                }
+            });
+        })
+        .catch(error => {
+            console.error("Falha ao carregar bancos:", error);
+            // Fallback manual
+            const fallbackBanks = [
+                {code: '001', name: 'Banco do Brasil'},
+                {code: '033', name: 'Santander'},
+                // ... (outros bancos)
+            ];
+            select.innerHTML = '<option value="">Selecione seu banco</option>';
+            fallbackBanks.forEach(bank => {
+                select.add(new Option(`${bank.code} - ${bank.name}`, bank.code));
+            });
+        });
+});
+</script>
+</script>
 
 
     <!-- template js -->
