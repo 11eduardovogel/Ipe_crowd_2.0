@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Ipê Capital</title>
+    <title>Solicitações de Saque | Ipê Capital</title>
     <!-- favicons Icons -->
-     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/Favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/Favicon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/Favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/Favicon.png" />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-    <meta name="description" content="Qrowd HTML 5 Template " />
+    <meta name="description" content="Solicitações de Saque - Ipê Capital" />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,66 +37,635 @@
     <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
     <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
     <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
-    <link rel="stylesheet" href="assets/vendors/nice-select/jquery.nice-select.min.css" />
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/qrowd.css" />
     <link rel="stylesheet" href="assets/css/qrowd-responsive.css" />
-    <link rel="stylesheet" href="assets/css/withdrawals.css" />
-        
+    <style>
+        :root {
+            --primary: #FE7F4C;
+            --primary-hover: #e57244;
+            --secondary: #2C3E50;
+            --accent: #A53869;
+            --text: #333333;
+            --text-light: #777777;
+            --background: #F8F9FA;
+            --border: #E0E0E0;
+            --success: #4CAF50;
+            --warning: #FFA726;
+            --info: #2196F3;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --card-shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilos Base do IPE Crowd */
+        body {
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Style similar ao dashboard */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        .page-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Cards Style do IPE Crowd - Containers menores */
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .card-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        .card-body {
+            padding: 15px 20px;
+        }
+
+        /* Summary Cards menores */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .summary-card.blue::before {
+            background: var(--info);
+        }
+
+        .summary-card.purple::before {
+            background: var(--accent);
+        }
+
+        .summary-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .summary-card .amount {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 8px 0;
+        }
+
+        .summary-card .info-text {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Tabs Style */
+        .tabs-container {
+            margin-bottom: 15px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-light);
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab:hover:not(.active) {
+            color: var(--secondary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Tables Style */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .table thead th {
+            background-color: var(--background);
+            color: var(--secondary);
+            font-weight: 600;
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.2s ease;
+        }
+
+        .table tbody tr:hover {
+            background-color: rgba(254, 127, 76, 0.05);
+        }
+
+        .table tbody td {
+            padding: 12px;
+            vertical-align: middle;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background-color: #E8F5E9;
+            color: var(--success);
+        }
+
+        .badge-warning {
+            background-color: #FFF8E1;
+            color: var(--warning);
+        }
+
+        .badge-info {
+            background-color: #E3F2FD;
+            color: var(--info);
+        }
+
+        /* Buttons Style */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 4px 8px rgba(254, 127, 76, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(254, 127, 76, 0.1);
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: var(--secondary);
+            font-size: 13px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(254, 127, 76, 0.2);
+            outline: none;
+        }
+
+        /* Alertas */
+        .alert {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .alert-info {
+            background-color: #E3F2FD;
+            color: var(--info);
+        }
+
+        .alert-warning {
+            background-color: #FFF8E1;
+            color: var(--warning);
+        }
+
+        /* Modal Style */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+            color: var(--secondary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--secondary);
+        }
+
+        .modal-body {
+            padding: 15px 20px;
+        }
+
+        .modal-footer {
+            padding: 12px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .summary-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+            
+            .tab {
+                white-space: nowrap;
+            }
+        }
+
+        /* NAVBAR STYLES */
+        .main-menu {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 999;
+        }
+
+        .main-menu__wrapper {
+            padding: 15px 0;
+        }
+
+        .main-menu__logo img {
+            height: 40px;
+        }
+
+        .main-menu__list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-menu__list > li {
+            position: relative;
+            padding: 10px 15px;
+        }
+
+        .main-menu__list > li > a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .main-menu__list > li > a:hover {
+            color: var(--primary);
+        }
+
+        /* Profile button styles */
+        .profile-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .profile-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #dadada;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* FOOTER STYLES */
+        .site-footer {
+            background-color: #a53869;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+
+        .site-footer__top {
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        .footer-widget__column {
+            margin-bottom: 30px;
+        }
+
+        .footer-widget__logo img {
+            height: 40px;
+            margin-bottom: 15px;
+        }
+
+        .footer-widget__about-text {
+            color: #B0B0B0;
+            margin-bottom: 20px;
+        }
+
+        .footer-widget__title {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-widget__Explore-list li,
+        .footer-widget__Contact-list li {
+            margin-bottom: 10px;
+        }
+
+        .footer-widget__Explore-list a,
+        .footer-widget__Contact-list a {
+            color: #B0B0B0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-widget__Explore-list a:hover,
+        .footer-widget__Contact-list a:hover {
+            color: var(--primary);
+        }
+
+        .site-footer__social a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            color: white;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .site-footer__social a:hover {
+            background-color: var(--primary);
+        }
+
+        .site-footer__bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        .site-footer__bottom-text {
+            color: #B0B0B0;
+            text-align: center;
+            margin: 0;
+        }
+
+        .site-footer__bottom-text a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .page-header-bg {
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            position: relative;
+        }
+
+        .page-header__inner {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+        }
+
+        .thm-breadcrumb {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .thm-breadcrumb li {
+            margin-right: 10px;
+        }
+
+        .thm-breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .page-header__inner h2 {
+            color: white;
+            font-size: 28px;
+            margin: 0;
+        }
+    </style>
 </head>
-
-<body class="custom-cursor">
-
-    <div class="custom-cursor__cursor"></div>
-    <div class="custom-cursor__cursor-two"></div>
-
-    <div class="preloader">
-        <div class="preloader__image"></div>
-    </div>
-    <!-- /.preloader -->
-
-    <div class="page-wrapper">
-        <header class="main-header">
-            <div class="main-header__top">
-                <!-- <div class="main-header__top-inner">
-                    <div class="main-header__top-left">
-                        <ul class="list-unstyled main-header__contact-list">
-                            <li>
-                                <div class="icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="text">
-                                    <p>30 Commercial road fratton, Australia</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="text">
-                                    <p><a href="mailto:needhelp@company.com">needhelp@company.com</a></p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="main-header__top-right">
-                        <div class="main-header__login">
-                            <ul class="list-unstyled main-header__login-list">
-                                <li><a href="login-register.html"> <i class="icon-account"></i> Login</a></li>
-                                <li><a href="login-register.html">Register</a></li>
-                            </ul>
-                        </div>
-                        <div class="main-header__social">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-            <nav class="main-menu">
+<body>
+    <!-- Navbar -->
+     <nav class="main-menu">
                 <div class="main-menu__wrapper">
                     <div class="main-menu__wrapper-inner clearfix">
                         <div class="main-menu__left">
@@ -284,7 +853,8 @@
                                             <li><a href="news-carousel.html">News Carousel</a></li>
                                             <li><a href="news-sidebar.html">News Sidebar</a></li>
                                             <li><a href="news-details.html">News Details</a></li>
-                                        </ul> -->
+                                        </ul>
+                                    </li> -->
                                     <!-- <nav style="display: flex; align-items: center; padding: 10px; background-color: transparent;">
                                         <a href="login-register.html" style="background-color: #aa4377; color: #ffffff; border: 1px solid #aa4377; padding: 10px 20px; text-decoration: none; display: inline-block; border-radius: 5px;">
                                           Logout
@@ -300,644 +870,579 @@
                         <div class="main-menu__right">
                             <nav style="display: flex; align-items: center; gap: 15px; padding: 10px; background-color: transparent;">
     
-    </div>
-</nav>
+                    </div>
+                </nav>
 
-                            <!-- <div class="main-menu__call-search-btn-box">
-                                <div class="main-menu__call">
-                                    <div class="main-menu__call-icon">
-                                        <i class="fas fa-phone"></i>
-                                    </div>
-                                    <div class="main-menu__call-content">
-                                        <p class="main-menu__call-sub-title">Call Anytime</p>
-                                        <h5 class="main-menu__call-number"><a href="tel:9288006780">+92 ( 8800 ) -
-                                                6780</a></h5>
-                                    </div>
-                                </div>
-                                <div class="main-menu__search-box">
-                                    <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>
-                                </div>
-                                <div class="main-menu__btn-box">
-                                    <a href="project-details.html" class="thm-btn main-menu__btn"><i
-                                            class="icon-plus-symbol"></i>Add a Project</a>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <div class="stricky-header stricked-menu main-menu">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
-
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
-            </div>
-            <div class="page-header-shape-1 float-bob-x">
-                <img src="assets/images/shapes/page-header-shape-1.png" alt="">
-            </div>
-            <div class="page-header-shape-2 float-bob-y">
-                <img src="assets/images/shapes/page-header-shape-2.png" alt="">
-            </div>
-            <div class="page-header-shape-3 float-bob-x">
-                <img src="assets/images/shapes/page-header-shape-3.png" alt="">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><span>/</span></li>
-                        <li>Meus Saques</li>
-                    </ul>
-                    <h2>Meus Saques</h2>
-                    <div class="mb-4" style="text-align: right;">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
-  <button class="thm-btn-bank" data-bs-toggle="modal" data-bs-target="#bankDataModal">
-                            Dados Bancários
-                        </button>
-        <!--Start Withdrawal Page-->
-        <section class="withdrawal-page">
-            <div class="container">
-                <!-- Seção de Saques Esperados -->
-                <div class="row mb-5">
-                    <div class="col-12">
-                        <div class="withdrawal-section">
-                            <h2 class="section-title">Saques Esperados</h2>
-                            <div class="table-responsive">
-                                <table class="withdrawal-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Nome da Oferta</th>
-                                            <th>Código</th>
-                                            <th>Investido (R$)</th>
-                                            <th>Recebido (R$)</th>
-                                            <th>Acumulado (R$)</th>
-                                            <th>Próximo Rendimento</th>
-                                            <th>Detalhes</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Residencial Green Valley</td>
-                                            <td>GV-2023-001</td>
-                                            <td>25.000,00</td>
-                                            <td>5.750,00</td>
-                                            <td>1.250,00</td>
-                                            <td>15/06/2023</td>
-                                            <td>
-                                                <input type="text" class="form-control" placeholder="Digite detalhes aqui">
-                                            </td>
-                                        </tr>
-                                        <!-- Mais linhas conforme necessário -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="d-flex justify-content-center gap-3 mt-4">
-                                <button class="thm-btn request-withdrawal" data-bs-toggle="modal" data-bs-target="#historyModal">Histórico de Saques</button>
-                                <button class="thm-btn request-withdrawal" data-bs-toggle="modal" data-bs-target="#requestsModal">Histórico de Solicitações</button>
-                                <button class="thm-btn request-withdrawal" data-bs-toggle="modal" data-bs-target="#withdrawalModal">Solicitar Saque</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Seção de Saques Próximos -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="withdrawal-section">
-                            <h2 class="section-title">Saques Próximos</h2>
-                            <div class="table-responsive">
-                                <table class="withdrawal-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Nome da Oferta</th>
-                                            <th>Código</th>
-                                            <th>Investido (R$)</th>
-                                            <th>Recebido (R$)</th>
-                                            <th>Acumulado (R$)</th>
-                                            <th>Próximo Rendimento</th>
-                                            <th>Detalhes</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Comercial Downtown</td>
-                                            <td>CD-2023-005</td>
-                                            <td>15.000,00</td>
-                                            <td>3.200,00</td>
-                                            <td>850,00</td>
-                                            <td>30/06/2023</td>
-                                            <td>
-                                                <input type="text" class="form-control" placeholder="Digite detalhes aqui">
-                                            </td>
-                                        </tr>
-                                        <!-- Mais linhas conforme necessário -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--End Withdrawal Page-->
-
-        <!-- Modal para Solicitação de Saque -->
-        <div class="modal fade" id="withdrawalModal" tabindex="-1" role="dialog" aria-labelledby="withdrawalModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="withdrawalModalLabel">Solicitar Saque</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Total de Aporte (R$)</label>
-                            <input type="text" class="form-control" value="25.000,00" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Total de Rendimentos (R$)</label>
-                            <input type="text" class="form-control" value="7.000,00" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Valor Disponível para Saque (R$)</label>
-                            <input type="text" class="form-control" value="1.250,00" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Valor do Saque (R$)</label>
-                            <input type="text" class="form-control" placeholder="Digite o valor que deseja sacar">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="thm-btn">Confirmar Saque</button>
-                    </div>
-                </div>
+   <!-- Hero Section -->
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-head.png);"></div>
+        <div class="container">
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="index.html">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>Saques</li>
+                </ul>
+                <h2>Saques</h2>
             </div>
         </div>
+    </section>
 
-        <!-- Modal para Histórico de Saques -->
-        <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="historyModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="historyModalLabel">Histórico de Saques</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Data Programada</th>
-                                        <th>Valor Previsto (R$)</th>
-                                        <th>Status</th>
-                                        <th>Detalhes</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>SAQ-2023-001</td>
-                                        <td>15/05/2023</td>
-                                        <td>1.150,00</td>
-                                        <td><span class="badge badge-success">Concluído</span></td>
-                                        <td><button class="btn-details">Ver</button></td>
-                                    </tr>
-                                    <!-- Mais linhas conforme necessário -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="thm-btn" data-bs-dismiss="modal">Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal para Histórico de Solicitações -->
-        <div class="modal fade" id="requestsModal" tabindex="-1" role="dialog" aria-labelledby="requestsModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="requestsModalLabel">Histórico de Solicitações</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Data</th>
-                                        <th>Valor (R$)</th>
-                                        <th>Status</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>SOL-2023-005</td>
-                                        <td>10/06/2023</td>
-                                        <td>1.250,00</td>
-                                        <td><span class="badge badge-warning">Processando</span></td>
-                                        <td><button class="btn-action">Cancelar</button></td>
-                                    </tr>
-                                    <!-- Mais linhas conforme necessário -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="thm-btn" data-bs-dismiss="modal">Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal para Dados Bancários (simples, só campos essenciais) -->
-<div class="modal fade" id="bankDataModal" tabindex="-1" role="dialog" aria-labelledby="bankDataModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="bankDataModalLabel">Meus Dados Bancários</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
+    <!-- Conteúdo Principal -->
+    <div class="withdrawal-container">
+        <!-- Header com título e ações alinhados -->
+        <div class="page-header-wrapper">
+            <h1 class="page-title">Solicitações de Saque</h1>
+            <div class="page-actions">
+                <button class="thm-btn btn-compact">
+                    <i class="fas fa-download"></i> Exportar
+                </button>
+                <button class="thm-btn btn-compact" onclick="openModal('newWithdrawalModal')">
+                    <i class="fas fa-plus"></i> Novo Saque
                 </button>
             </div>
+        </div>            
+            <div class="summary-card blue">
+                <h3>Próximo Rendimento</h3>
+                <div class="amount">21/06/2025</div>
+                <div class="info-text">Data do próximo pagamento</div>
+            </div>
+            
+            <div class="summary-card purple">
+                <h3>Total Recebido</h3>
+                <div class="amount">R$ 10.530,00</div>
+                <div class="info-text">Valor total já sacado</div>
+            </div>
+        </div>
+
+        <!-- Card de Tabs no estilo do dashboard -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Histórico de Saques</h2>
+                <div class="tabs">
+                    <div class="tab active" onclick="openTab(event, 'pending')">Pendentes</div>
+                    <div class="tab" onclick="openTab(event, 'completed')">Concluídos</div>
+                    <div class="tab" onclick="openTab(event, 'scheduled')">Programados</div>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                <!-- Tab Pendentes -->
+                <div id="pending" class="tab-content active">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        Você tem <strong>2 saques</strong> pendentes de processamento.
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#842</td>
+                                    <td>29/05/2025 10:15</td>
+                                    <td>R$ 150,00</td>
+                                    <td><span class="badge badge-warning">Processando</span></td>
+                                    <td>
+                                        <button class="btn btn-outline btn-sm" onclick="openModal('withdrawalDetailsModal')">
+                                            <i class="fas fa-eye"></i> Detalhes
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#840</td>
+                                    <td>28/05/2025 14:30</td>
+                                    <td>R$ 200,00</td>
+                                    <td><span class="badge badge-warning">Processando</span></td>
+                                    <td>
+                                        <button class="btn btn-outline btn-sm" onclick="openModal('withdrawalDetailsModal')">
+                                            <i class="fas fa-eye"></i> Detalhes
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Tab Concluídos -->
+                <div id="completed" class="tab-content">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>Comprovante</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#838</td>
+                                    <td>27/05/2025 16:03</td>
+                                    <td>R$ 40,00</td>
+                                    <td><span class="badge badge-success">Concluído</span></td>
+                                    <td>
+                                        <button class="btn btn-outline btn-sm">
+                                            <i class="fas fa-download"></i> Baixar
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#837</td>
+                                    <td>27/05/2025 16:03</td>
+                                    <td>R$ 20,00</td>
+                                    <td><span class="badge badge-success">Concluído</span></td>
+                                    <td>
+                                        <button class="btn btn-outline btn-sm">
+                                            <i class="fas fa-download"></i> Baixar
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Tab Programados -->
+                <div id="scheduled" class="tab-content">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-clock"></i>
+                        Os saques programados são processados automaticamente em suas respectivas datas.
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Data Programada</th>
+                                    <th>Valor Previsto</th>
+                                    <th>Status</th>
+                                    <th>Detalhes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>4560</td>
+                                    <td>20/06/2025</td>
+                                    <td>R$ 120,00</td>
+                                    <td><span class="badge badge-info">Agendado</span></td>
+                                    <td>
+                                        <button class="btn btn-outline btn-sm" onclick="openModal('scheduledDetailsModal')">
+                                            <i class="fas fa-info-circle"></i> Detalhes
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Card de Contas Bancárias -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Contas Bancárias Cadastradas</h2>
+                <button class="btn btn-sm btn-primary" onclick="openModal('bankAccountModal')">
+                    <i class="fas fa-plus"></i> Adicionar Conta
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Banco</th>
+                                <th>Agência/Conta</th>
+                                <th>Titular</th>
+                                <th>Tipo</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-university"></i> Nubank</td>
+                                <td>0001 / 56789-0</td>
+                                <td>João da Silva</td>
+                                <td>Conta Corrente</td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Novo Saque -->
+    <div id="newWithdrawalModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Solicitar Novo Saque</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
             <div class="modal-body">
-                <form id="bankDataForm">
-                    <div class="form-group mb-3">
-                        <label>Banco</label>
+                <form id="withdrawalForm">
+                    <div class="form-group">
+                        <label class="form-label">Valor do Saque (R$)</label>
+                        <input type="number" class="form-control" placeholder="Digite o valor" step="0.01" min="10" max="530" value="150.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Conta Bancária</label>
+                        <select class="form-control">
+                            <option value="">Selecione uma conta</option>
+                            <option value="1" selected>Nubank ••• 5678-9</option>
+                        </select>
+                        <small style="display: block; margin-top: 5px;">
+                            <a href="#" onclick="openModal('bankAccountModal')" style="color: var(--primary);">
+                                <i class="fas fa-plus-circle"></i> Adicionar nova conta
+                            </a>
+                        </small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            Taxa de serviço: R$ 2,90 | Valor líquido a receber: <strong>R$ 147,10</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal()">Cancelar</button>
+                <button class="btn btn-primary" onclick="confirmWithdrawal()">
+                    <i class="fas fa-paper-plane"></i> Confirmar Saque
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes do Saque -->
+    <div id="withdrawalDetailsModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Detalhes do Saque #842</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div>
+                        <h4 style="margin-top: 0; color: var(--secondary); font-size: 15px;">Informações do Saque</h4>
+                        <p><strong>Data:</strong> 29/05/2025 10:15</p>
+                        <p><strong>Valor:</strong> R$ 150,00</p>
+                        <p><strong>Taxa:</strong> R$ 2,90</p>
+                        <p><strong>Valor Líquido:</strong> R$ 147,10</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-top: 0; color: var(--secondary); font-size: 15px;">Informações Bancárias</h4>
+                        <p><strong>Banco:</strong> Nubank (260)</p>
+                        <p><strong>Agência:</strong> 0001</p>
+                        <p><strong>Conta:</strong> 56789-0</p>
+                        <p><strong>Titular:</strong> João da Silva</p>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-bottom: 0;">
+                    <div class="card-header">
+                        <h4 class="card-title">Status do Processamento</h4>
+                    </div>
+                    <div class="card-body">
+                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <div style="width: 20px; height: 20px; background-color: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; flex-shrink: 0;">
+                                <i class="fas fa-check" style="font-size: 10px;"></i>
+                            </div>
+                            <div>
+                                <strong>Solicitação Recebida</strong>
+                                <div style="font-size: 12px; color: var(--text-light);">29/05/2025 10:15</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <div style="width: 20px; height: 20px; background-color: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; flex-shrink: 0;">
+                                <i class="fas fa-check" style="font-size: 10px;"></i>
+                            </div>
+                            <div>
+                                <strong>Processamento Iniciado</strong>
+                                <div style="font-size: 12px; color: var(--text-light);">29/05/2025 10:30</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 20px; height: 20px; background-color: var(--warning); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; flex-shrink: 0;">
+                                <i class="fas fa-clock" style="font-size: 10px;"></i>
+                            </div>
+                            <div>
+                                <strong>Transferência Bancária</strong>
+                                <div style="font-size: 12px; color: var(--text-light);">Estimado: 30/05/2025</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal()">Fechar</button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-download"></i> Baixar Comprovante
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Conta Bancária -->
+    <div id="bankAccountModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Cadastrar Conta Bancária</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="bankForm">
+                    <div class="form-group">
+                        <label class="form-label">Banco</label>
                         <select class="form-control" required>
-                            <!-- <option value="">Selecione</option>
+                            <option value="">Selecione seu banco</option>
                             <option value="001">Banco do Brasil</option>
                             <option value="033">Santander</option>
                             <option value="237">Bradesco</option>
                             <option value="341">Itaú</option>
-                            <option value="104">Caixa Econômica Federal</option> -->
+                            <option value="260">Nubank</option>
                         </select>
                     </div>
-                    <div class="form-group mb-3">
-                        <label>Agência</label>
-                        <input type="text" class="form-control" required>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Agência</label>
+                        <input type="text" class="form-control" placeholder="Número da agência" required>
                     </div>
-                    <div class="form-group mb-3">
-                        <label>Conta</label>
-                        <input type="text" class="form-control" required>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Conta</label>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" class="form-control" placeholder="Número da conta" style="flex: 1;" required>
+                            <input type="text" class="form-control" placeholder="Dígito" style="width: 70px;" required>
+                        </div>
                     </div>
-                    <div class="form-group mb-3">
-                        <label>Tipo de Conta</label>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Tipo de Conta</label>
                         <select class="form-control" required>
+                            <option value="">Selecione o tipo</option>
+                            <option value="corrente">Conta Corrente</option>
+                            <option value="poupanca">Conta Poupança</option>
                         </select>
                     </div>
-                    <div class="form-group mb-3">
-                        <label>Titular da Conta</label>
-                        <input type="text" class="form-control" required>
+                    
+                    <div class="form-group">
+                        <label class="form-label">CPF do Titular</label>
+                        <input type="text" class="form-control" placeholder="000.000.000-00" required>
                     </div>
-                    <div class="form-group mb-3">
-                        <label>Chave Pix</label>
-                        <input type="text" class="form-control" required>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Nome do Titular</label>
+                        <input type="text" class="form-control" placeholder="Como consta no banco" required>
                     </div>
-                    <div class="form-group mb-3">
-                        <label>Documento</label>
-                        <input type="text" class="form-control" required>
+                    
+                    <div class="form-group">
+                        <div style="display: flex; align-items: flex-start;">
+                            <input type="checkbox" id="termsCheck" required style="margin-right: 8px; margin-top: 3px;">
+                            <label for="termsCheck" style="font-size: 13px;">
+                                Confirmo que os dados bancários informados estão corretos
+                            </label>
+                        </div>
                     </div>
-
-                        
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="thm-btn" id="saveBankData">Salvar Dados</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const select = document.getElementById('bankSelect');
-    
-    if (!select) {
-        console.error('Elemento bankSelect não encontrado');
-        return;
-    }
-
-    // Mostra estado de carregamento
-    select.innerHTML = '<option value="">Carregando bancos...</option>';
-    
-    fetch('https://brasilapi.com.br/api/banks/v1')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Falha na requisição: ' + response.status);
-            }
-            return response.json();
-        })
-        .then(banks => {
-            // Limpa o select
-            select.innerHTML = '<option value="">Selecione seu banco</option>';
-            
-            // Ordena os bancos por nome para melhor visualização
-            banks.sort((a, b) => a.name.localeCompare(b.name));
-            
-            // Preenche as opções
-            banks.forEach(bank => {
-                if (bank.code && bank.name) { // Filtra bancos sem código ou nome
-                    const option = document.createElement('option');
-                    option.value = bank.code;
-                    option.textContent = `${bank.code} - ${bank.name}`;
-                    select.appendChild(option);
-                }
-            });
-        })
-        .catch(error => {
-            console.error('Erro ao carregar bancos:', error);
-            
-            const fallbackBanks = [
-                {code: '001', name: 'Banco do Brasil'},
-                {code: '033', name: 'Santander'},
-                {code: '237', name: 'Bradesco'},
-                {code: '341', name: 'Itaú'},
-                {code: '104', name: 'Caixa Econômica Federal'},
-                {code: '756', name: 'Sicoob'},
-                {code: '748', name: 'Sicredi'},
-                {code: '422', name: 'Banco Safra'},
-                {code: '655', name: 'Banco Votorantim'},
-                {code: '260', name: 'Nubank'}
-            ];
-            
-            select.innerHTML = '<option value="">Selecione seu banco</option>';
-            
-            fallbackBanks.forEach(bank => {
-                const option = document.createElement('option');
-                option.value = bank.code;
-                option.textContent = `${bank.code} - ${bank.name}`;
-                select.appendChild(option);
-            });
-        });
-});
-</script>
-
-        <!--Site Footer Start-->
-        <footer class="site-footer">
-            <div class="site-footer__top">
-                <div class="site-footer__shape-1 float-bob-x">
-                    <img src="assets/images/shapes/site-footer-shape-1.png" alt="">
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                            <div class="footer-widget__column footer-widget__about">
-                                <div class="footer-widget__logo">
-                                    <a href="#"><img src="assets/images/resources/footer-logo.png" alt=""></a>
-                                </div>
-                                <div class="footer-widget__about-text-box">
-                                    <p class="footer-widget__about-text">Lorem quas utamur delicata qui, vix ei prima
-                                        mentitum omnesque. Duo corrumpit
-                                        cotidieque ne.</p>
-                                </div>
-                                <form class="footer-widget__subscribe-box">
-                                    <div class="footer-widget__subscribe-input-box">
-                                        <input type="email" placeholder="Email address" name="email">
-                                        <button type="submit" class="footer-widget__subscribe-btn"><img
-                                                src="assets/images/icon/paper-plan.png" alt=""></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                            <div class="footer-widget__column footer-widget__Explore">
-                                <div class="footer-widget__title-box">
-                                    <h3 class="footer-widget__title">Explore</h3>
-                                </div>
-                                <ul class="footer-widget__Explore-list list-unstyled">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="about.html">How it Works</a></li>
-                                    <li><a href="about.html">Knowledge Hub</a></li>
-                                    <li><a href="news.html">Success Stories</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                            <div class="footer-widget__column footer-widget__Fundraising">
-                                <div class="footer-widget__title-box">
-                                    <h3 class="footer-widget__title">Fundraising</h3>
-                                </div>
-                                <ul class="footer-widget__Explore-list list-unstyled">
-                                    <li><a href="about.html">Design</a></li>
-                                    <li><a href="about.html">Education</a></li>
-                                    <li><a href="about.html">Technology</a></li>
-                                    <li><a href="about.html">Games</a></li>
-                                    <li><a href="about.html">Film & Video</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                            <div class="footer-widget__column footer-widget__Contact">
-                                <div class="footer-widget__title-box">
-                                    <h3 class="footer-widget__title">Contact</h3>
-                                </div>
-                                <ul class="footer-widget__Contact-list list-unstyled">
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-telephone"></span>
-                                        </div>
-                                        <div class="text">
-                                            <p><a href="tel:+9288006780">+92 ( 8800 ) - 6780</a></p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-email"></span>
-                                        </div>
-                                        <div class="text">
-                                            <p><a href="mailto:needhelp@company.com">needhelp@company.com</a></p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-pin"></span>
-                                        </div>
-                                        <div class="text">
-                                            <p>30 broklyn golden street line. New York</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="site-footer__social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-facebook"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="site-footer__bottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text">© Copyright 2022 by <a href="#">Qrowd.com</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!--Site Footer End-->
-
-
-    </div><!-- /.page-wrapper -->
-
-
-    <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <!-- /.mobile-nav__overlay -->
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
-
-            <div class="logo-box">
-                <a href="index.html" aria-label="logo image"><img src="assets/images/resources/logo-2.png" width="143"
-                        alt="" /></a>
-            </div>
-            <!-- /.logo-box -->
-            <div class="mobile-nav__container"></div>
-            <!-- /.mobile-nav__container -->
-
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fa fa-envelope"></i>
-                    <a href="mailto:needhelp@packageName__.com">needhelp@qrowd.com</a>
-                </li>
-                <li>
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="tel:666-888-0000">666 888 0000</a>
-                </li>
-            </ul><!-- /.mobile-nav__contact -->
-            <div class="mobile-nav__top">
-                <div class="mobile-nav__social">
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-facebook-square"></a>
-                    <a href="#" class="fab fa-pinterest-p"></a>
-                    <a href="#" class="fab fa-instagram"></a>
-                </div><!-- /.mobile-nav__social -->
-            </div><!-- /.mobile-nav__top -->
-
-
-
-        </div>
-        <!-- /.mobile-nav__content -->
-    </div>
-    <!-- /.mobile-nav__wrapper -->
-
-    <div class="search-popup">
-        <div class="search-popup__overlay search-toggler"></div>
-        <!-- /.search-popup__overlay -->
-        <div class="search-popup__content">
-            <form action="#">
-                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-                <input type="text" id="search" placeholder="Search Here..." />
-                <button type="submit" aria-label="search submit" class="thm-btn">
-                    <i class="icon-magnifying-glass"></i>
+                <button class="btn btn-outline" onclick="closeModal()">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveBankData()">
+                    <i class="fas fa-save"></i> Salvar Conta
                 </button>
-            </form>
+            </div>
         </div>
-        <!-- /.search-popup__content -->
     </div>
-    <!-- /.search-popup -->
 
-    <a href="#" data-bs-target="html" class="scroll-to-target scroll-to-top"><i class="icon-right-arrow"></i></a>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="site-footer__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="footer-widget__column footer-widget__about">
+                            <div class="footer-widget__logo">
+                                <a href="#"><img src="assets/images/resources/Logo footer.png" alt=""></a>
+                            </div>
+                            <div class="footer-widget__about-text-box">
+                                <p class="footer-widget__about-text">“Como o Ipê, florescemos em cada desafio, transformando oportunidades em futuro.”</p>
+                            </div>
+                            <form class="footer-widget__subscribe-box">
+                                <div class="footer-widget__subscribe-input-box">
+                                    <input type="email" placeholder="E-mail" name="email">
+                                    <button type="submit" class="footer-widget__subscribe-btn"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-6 col-md-6">
+                        <div class="footer-widget__column footer-widget__Explore">
+                            <div class="footer-widget__title-box">
+                                <h3 class="footer-widget__title">Explore</h3>
+                            </div>
+                            <ul class="footer-widget__Explore-list list-unstyled">
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="about.html">How it Works</a></li>
+                                <li><a href="about.html">Knowledge Hub</a></li>
+                                <li><a href="news.html">Success Stories</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-6 col-md-6">
+                        <div class="footer-widget__column footer-widget__Fundraising">
+                            <div class="footer-widget__title-box">
+                                <h3 class="footer-widget__title">Fundraising</h3>
+                            </div>
+                            <ul class="footer-widget__Explore-list list-unstyled">
+                                <li><a href="about.html">Design</a></li>
+                                <li><a href="about.html">Education</a></li>
+                                <li><a href="about.html">Technology</a></li>
+                                <li><a href="about.html">Games</a></li>
+                                <li><a href="about.html">Film & Video</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="footer-widget__column footer-widget__Contact">
+                            <div class="footer-widget__title-box">
+                                <h3 class="footer-widget__title">Contact</h3>
+                            </div>
+                            <ul class="footer-widget__Contact-list list-unstyled">
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p><a href="tel:+9288006780">+92 ( 8800 ) - 6780</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p><a href="mailto:needhelp@company.com">needhelp@company.com</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>30 broklyn golden street line. New York</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="site-footer__social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="site-footer__bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="site-footer__bottom-inner">
+                            <p class="site-footer__bottom-text">Todos os direitos reservados <a href="#">Ipê Capital</a></p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-
-    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
-    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendors/jarallax/jarallax.min.js"></script>
-    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
-    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
-    <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
-    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
-    <script src="assets/vendors/nouislider/nouislider.min.js"></script>
-    <script src="assets/vendors/odometer/odometer.min.js"></script>
-    <script src="assets/vendors/swiper/swiper.min.js"></script>
-    <script src="assets/vendors/tiny-slider/tiny-slider.min.js"></script>
-    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
-    <script src="assets/vendors/wow/wow.js"></script>
-    <script src="assets/vendors/isotope/isotope.js"></script>
-    <script src="assets/vendors/countdown/countdown.min.js"></script>
-    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
-    <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
-    <script src="assets/vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
-    <script src="assets/vendors/vegas/vegas.min.js"></script>
-    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
-    <script src="assets/vendors/timepicker/timePicker.js"></script>
-    <script src="assets/vendors/circleType/jquery.circleType.js"></script>
-    <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
-    <script src="assets/vendors/nice-select/jquery.nice-select.min.js"></script>
-
-<script>
-<script>
-// Altere para executar quando o modal for aberto
-document.getElementById('bankDataModal').addEventListener('shown.bs.modal', function() {
-    const select = document.getElementById('bankSelect');
-    if (!select) return;
-
-    console.log("Iniciando carregamento de bancos..."); // Debug
-    
-    select.innerHTML = '<option value="">Carregando bancos...</option>';
-
-    fetch('https://brasilapi.com.br/api/banks/v1')
-        .then(response => {
-            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-            return response.json();
-        })
-        .then(banks => {
-            console.log("Bancos carregados:", banks); // Debug
-            select.innerHTML = '<option value="">Selecione seu banco</option>';
-            
-            banks.sort((a, b) => a.name.localeCompare(b.name)).forEach(bank => {
-                if (bank.code && bank.name) {
-                    const option = new Option(`${bank.code} - ${bank.name}`, bank.code);
-                    select.add(option);
+    <script>
+        // Funções para controle dos modais
+        function openModal(modalId) {
+            closeModal(); // Fecha qualquer modal aberto
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Fechar modal ao clicar fora do conteúdo
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
                 }
             });
-        })
-        .catch(error => {
-            console.error("Falha ao carregar bancos:", error);
-            // Fallback manual
-            const fallbackBanks = [
-                {code: '001', name: 'Banco do Brasil'},
-                {code: '033', name: 'Santander'},
-                // ... (outros bancos)
-            ];
-            select.innerHTML = '<option value="">Selecione seu banco</option>';
-            fallbackBanks.forEach(bank => {
-                select.add(new Option(`${bank.code} - ${bank.name}`, bank.code));
-            });
         });
-});
-</script>
-</script>
-
-
-    <!-- template js -->
-    <script src="assets/js/qrowd.js"></script>
+        
+        // Função para alternar entre tabs
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            const tabs = document.getElementsByClassName('tab');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+        
+        // Funções de exemplo para ações
+        function confirmWithdrawal() {
+            alert('Saque confirmado com sucesso!');
+            closeModal();
+            // Aqui você adicionaria a lógica real de confirmação
+        }
+        
+        function saveBankData() {
+            const form = document.getElementById('bankForm');
+            if (form.checkValidity()) {
+                alert('Conta bancária cadastrada com sucesso!');
+                closeModal();
+                // Aqui você adicionaria a lógica real de salvamento
+            } else {
+                form.reportValidity();
+            }
+        }
+        
+        // Fechar modal com ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
-
 </html>
