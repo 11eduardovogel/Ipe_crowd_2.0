@@ -199,6 +199,8 @@
             background-color: #f8f9fa;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
+            justify-content: right; /* Centraliza as tabs */
+
         }
         
         .tab {
@@ -719,7 +721,7 @@
         <div class="container" style="margin-top: 30px; margin-bottom: 50px;">
             <!-- Header da página -->
             <div class="page-header-wrapper">
-                <h1 class="page-title">Solicitações de Saque</h1>
+                <h1 class="page-title2">Solicitações de Saque</h1>
                 <div class="page-actions">
                     <button class="thm-btn2" aria-label="Exportar dados">
                         <i class="fas fa-download" aria-hidden="true"></i> Exportar
@@ -732,19 +734,19 @@
 
             <!-- Cards de Resumo -->
             <div class="summary-cards">
-                <div class="summary-card" style="border-left: 4px solid var(--primary);">
+                <div class="summary-card";>
                     <h3>Saldo Disponível</h3>
                     <div class="amount">R$ 530,00</div>
                     <div class="info-text">Valor total disponível para saque</div>
                 </div>
                 
-                <div class="summary-card" style="border-left: 4px solid var(--info);">
+                <div class="summary-card">
                     <h3>Próximo Rendimento</h3>
                     <div class="amount">21/06/2025</div>
                     <div class="info-text">Data do próximo pagamento</div>
                 </div>
                 
-                <div class="summary-card" style="border-left: 4px solid var(--accent);">
+                <div class="summary-card">
                     <h3>Total Recebido</h3>
                     <div class="amount">R$ 10.530,00</div>
                     <div class="info-text">Valor total já sacado</div>
@@ -754,7 +756,7 @@
             <!-- Card de Tabs -->
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">Histórico de Saques</h2>
+                    <h2 class="card-title2">Histórico de Saques</h2>
                 </div>
                 <div class="tabs" role="tablist">
                     <button class="tab active" onclick="openTab(event, 'pending')" role="tab" aria-selected="true" aria-controls="pending">
@@ -896,7 +898,7 @@
             <!-- Card de Contas Bancárias -->
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">Contas Bancárias Cadastradas</h2>
+                    <h2 class="card-title2">Contas Bancárias Cadastradas</h2>
                     <button class="btn btn-sm btn-primary" onclick="openModal('bankAccountModal')" aria-label="Adicionar nova conta bancária">
                         <i class="fas fa-plus" aria-hidden="true"></i> Adicionar Conta
                     </button>
