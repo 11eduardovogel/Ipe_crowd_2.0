@@ -445,10 +445,10 @@
         }
         
         .modal-title {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 600;
             margin: 0;
-            color: var(--secondary);
+            color: var(--qrowd-black);
         }
         
         .modal-close {
@@ -670,6 +670,104 @@
             white-space: nowrap;
             border-width: 0;
         }
+
+        .btn .fa-spinner {
+  display: none;
+  margin-right: 6px;
+  animation: spin 1s linear infinite;
+}
+.btn.downloading .fa-spinner {
+  display: inline-block;
+}
+.btn.downloading .fa-download {
+  display: none;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Stepper for Withdrawal Modal */
+.withdrawal-stepper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;      /* Add space above */
+    margin-bottom: 40px;   /* Add space below */
+    position: relative;
+    gap: 0;
+}
+.withdrawal-stepper .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    min-width: 80px;
+    z-index: 1;
+}
+.withdrawal-stepper .circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #00bcd4;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    border: 3px solid #00bcd4;
+    z-index: 2;
+    transition: background 0.2s, border 0.2s;
+    position: relative;
+}
+.withdrawal-stepper .step:not(.active) .circle {
+    background: #fff;
+    color: #bbb;
+    border: 1px solid #00bcd4;
+}
+.withdrawal-stepper .label {
+    font-size: 13px;
+    color: #00bcd4;
+    font-weight: 600;
+    text-align: center;
+}
+.withdrawal-stepper .step:not(.active) .label {
+    color: #bbb;
+    font-weight: 400;
+}
+/* --- Improved connecting lines --- */
+.withdrawal-stepper .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    width: 100%;
+    height: 4px;
+    background: #00bcd4;
+    z-index: 1;
+    transform: translateX(16px); /* was 18px, now 16px for a 2px shift left */
+}
+.withdrawal-stepper .step:not(.active):not(:last-child)::after {
+    background: #eee;
+}
+.withdrawal-stepper .step:last-child::after {
+    display: none;
+}
+
+/* Info block */
+.withdrawal-info {
+    margin-top: 10px;
+    font-size: 15px;
+}
+.withdrawal-info p {
+    margin: 0 0 6px 0;
+    color: #222;
+}
+.withdrawal-info strong {
+    color: #2C3E50;
+}
     </style>
 </head>
 
@@ -837,7 +935,8 @@
                                         <td>R$ 40,00</td>
                                         <td><span class="badge badge-success">Concluído</span></td>
                                         <td>
-                                            <button class="btn btn-outline btn-sm" aria-label="Baixar comprovante do saque #838">
+                                            <button class="btn btn-outline btn-sm download-btn" aria-label="Baixar comprovante do saque #838">
+                                                <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
                                                 <i class="fas fa-download" aria-hidden="true"></i> Baixar
                                             </button>
                                         </td>
@@ -848,7 +947,8 @@
                                         <td>R$ 20,00</td>
                                         <td><span class="badge badge-success">Concluído</span></td>
                                         <td>
-                                            <button class="btn btn-outline btn-sm" aria-label="Baixar comprovante do saque #837">
+                                            <button class="btn btn-outline btn-sm download-btn" aria-label="Baixar comprovante do saque #837">
+                                                <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
                                                 <i class="fas fa-download" aria-hidden="true"></i> Baixar
                                             </button>
                                         </td>
@@ -905,7 +1005,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="bankAccountsTable">
                             <thead>
                                 <tr>
                                     <th scope="col">Banco</th>
@@ -917,16 +1017,47 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><i class="fas fa-university" aria-hidden="true"></i> Nubank</td>
-                                    <td>0001 / 56789-0</td>
-                                    <td>João da Silva</td>
-                                    <td>Conta Corrente</td>
-                                    <td>
-                                        <button class="btn btn-outline btn-sm" aria-label="Editar conta bancária">
-                                            <i class="fas fa-edit" aria-hidden="true"></i> Editar
-                                        </button>
-                                    </td>
-                                </tr>
+        <td>
+            <img src="assets/images/banks/Nu Pagamentos S.A/nubank-logo-fundo-roxo2021.svg" alt="Nubank" style="width:24px; height:24px; vertical-align:middle; margin-right:6px; border-radius:4px;">
+            Nubank
+        </td>
+        <td>0001 / 56789-0</td>
+        <td>João da Silva</td>
+        <td>Conta Poupança</td>
+        <td>
+            <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
+                <i class="fas fa-edit" aria-hidden="true"></i> Editar
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="assets/images/banks/Banco Inter S.A/inter.svg" alt="Banco Inter" style="width:24px; height:24px; vertical-align:middle; margin-right:6px; border-radius:4px;">
+            Banco Inter
+        </td>
+        <td>077 / 12345-6</td>
+        <td>João da Silva</td>
+        <td>Conta Corrente</td>
+        <td>
+            <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
+                <i class="fas fa-edit" aria-hidden="true"></i> Editar
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="assets/images/banks/Itaú Unibanco S.A/2023_Itaú_Unibanco_Logo.png" alt="Itaú" style="width:24px; height:24px; vertical-align:middle; margin-right:6px; border-radius:4px;">
+            Itaú
+        </td>
+        <td>1234 / 56789-0</td>
+        <td>João da Silva</td>
+        <td>Conta Corrente</td>
+        <td>
+            <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
+                <i class="fas fa-edit" aria-hidden="true"></i> Editar
+            </button>
+        </td>
+    </tr>
                             </tbody>
                         </table>
                     </div>
@@ -939,112 +1070,159 @@
     <div id="newWithdrawalModal" class="modal-overlay" role="dialog" aria-labelledby="newWithdrawalTitle" aria-hidden="true">
         <div class="modal-content" role="document">
             <div class="modal-header">
-                <h3 class="modal-title" id="newWithdrawalTitle">Solicitar Novo Saque</h3>
+                <h3 class="modal-title2" id="newWithdrawalTitle">Solicitar Novo Saque</h3>
                 <button class="modal-close" onclick="closeModal()" aria-label="Fechar">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="withdrawalForm">
                     <div class="form-group">
                         <label for="withdrawalAmount" class="form-label">Valor do Saque (R$)</label>
-                        <input type="number" id="withdrawalAmount" class="form-control" placeholder="Digite o valor" step="0.01" min="10" max="530" value="150.00" required>
+                        <input type="number" id="withdrawalAmount" class="form-control" placeholder="Digite o valor" min="20" max="530" required>
+                        <small style="color: var(--text-light); font-size: 12px;">Valor mínimo: R$ 20,00 | Valor máximo: R$ 530,00</small>
                     </div>
                     
                     <div class="form-group">
-                        <label for="withdrawalAccount" class="form-label">Conta Bancária</label>
-                        <select id="withdrawalAccount" class="form-control" required>
+                        <label for="bankAccountSelect" class="form-label">Conta Bancária</label>
+                        <select id="bankAccountSelect" class="form-control" required>
                             <option value="">Selecione uma conta</option>
-                            <option value="1" selected>Nubank ••• 5678-9</option>
+                            <option value="1">Nubank ••• 5678-9</option>
                         </select>
-                        <small style="display: block; margin-top: 5px;">
-                            <a href="#" onclick="openModal('bankAccountModal')" style="color: var(--primary);">
+                        <div style="margin-top: 8px;">
+                            <a href="#" onclick="openModal(\'bankAccountModal\'); return false;" style="color: var(--primary); font-size: 13px; text-decoration: none;">
                                 <i class="fas fa-plus-circle" aria-hidden="true"></i> Adicionar nova conta
                             </a>
-                        </small>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <div class="alert alert-info">
-                            <i class="fas fa-info-circle" aria-hidden="true"></i>
-                            Taxa de serviço: R$ 2,90 | Valor líquido a receber: <strong>R$ 147,10</strong>
+                        <label class="form-label">Tipo de Saque</label>
+                        <div style="display: flex; gap: 15px;">
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <input type="radio" id="immediateWithdrawal" name="withdrawalType" value="immediate" checked>
+                                <label for="immediateWithdrawal" style="font-size: 14px; margin: 0;">Imediato</label>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <input type="radio" id="scheduledWithdrawal" name="withdrawalType" value="scheduled">
+                                <label for="scheduledWithdrawal" style="font-size: 14px; margin: 0;">Programado</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="scheduledDateContainer" class="form-group" style="display: none;">
+                        <label for="scheduledDate" class="form-label">Data Programada</label>
+                        <input type="date" id="scheduledDate" class="form-control" min="2025-06-07">
+                    </div>
+                    
+                    <div class="alert alert-info" style="margin-top: 15px;">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                        <div>
+                            <p style="margin: 0;"><strong>Taxa de serviço:</strong> R$ 2,90</p>
+                            <p style="margin: 0;">Valor líquido a receber: <strong id="netAmount">R$ 0,00</strong></p>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-outline" onclick="closeModal()">Cancelar</button>
-                <button class="btn btn-primary" onclick="confirmWithdrawal()">
-                    <i class="fas fa-paper-plane" aria-hidden="true"></i> Confirmar Saque
+                <button class="btn btn-primary" onclick="submitWithdrawal()">
+                    <i class="fas fa-check" aria-hidden="true"></i> Confirmar Saque
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Detalhes do Saque -->
+    <!-- Modal de Detalhes do Saque (Novo Estilo) -->
     <div id="withdrawalDetailsModal" class="modal-overlay" role="dialog" aria-labelledby="withdrawalDetailsTitle" aria-hidden="true">
         <div class="modal-content" role="document">
             <div class="modal-header">
-                <h3 class="modal-title" id="withdrawalDetailsTitle">Detalhes do Saque #842</h3>
+                <h3 class="modal-title2" id="withdrawalDetailsTitle">Detalhes do Saque</h3>
                 <button class="modal-close" onclick="closeModal()" aria-label="Fechar">&times;</button>
             </div>
             <div class="modal-body">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
-                    <div>
-                        <h4 style="margin-top: 0; color: var(--secondary); font-size: 15px;">Informações do Saque</h4>
-                        <p><strong>Data:</strong> 29/05/2025 10:15</p>
-                        <p><strong>Valor:</strong> R$ 150,00</p>
-                        <p><strong>Taxa:</strong> R$ 2,90</p>
-                        <p><strong>Valor Líquido:</strong> R$ 147,10</p>
+                <!-- Stepper -->
+                <div class="withdrawal-stepper">
+                    <div class="step active">
+                        <div class="circle">1</div>
+                        <div class="label">Solicitado</div>
                     </div>
-                    <div>
-                        <h4 style="margin-top: 0; color: var(--secondary); font-size: 15px;">Informações Bancárias</h4>
-                        <p><strong>Banco:</strong> Nubank (260)</p>
+                    <div class="step active">
+                        <div class="circle">2</div>
+                        <div class="label">Em processamento</div>
+                    </div>
+                    <div class="step">
+                        <div class="circle">3</div>
+                        <div class="label">Concluído</div>
+                    </div>
+                </div>
+                <!-- Info -->
+                <div class="withdrawal-info">
+                    <p><strong>Protocolo:</strong> #WD12345678</p>
+                    <p><strong>Data da Solicitação:</strong> 05/06/2025</p>
+                    <p><strong>Valor:</strong> R$ 2.500,00</p>
+                    <p><strong>Conta:</strong> 
+                        <img src="assets/images/banks/Itaú Unibanco S.A/2023_Itaú_Unibanco_Logo.png" alt="Itaú" style="width:22px; height:22px; vertical-align:middle; margin-right:6px; border-radius:4px;">
+                        Banco Itaú - Ag. 1234 - CC 56789-0
+                    </p>
+                    <p><strong>Status:</strong> Em processamento</p>
+                    <p><strong>Previsão de Conclusão:</strong> 07/06/2025</p>
+                </div>
+            </div>
+            <div class="modal-footer" style="justify-content: flex-end;">
+                <button class="btn btn-outline" onclick="closeModal()">Fechar</button>
+                <button class="btn btn-primary" style="background: #c9639a; border: none;" onclick="cancelWithdrawal()">
+                    <i class="fas fa-times" aria-hidden="true"></i> Cancelar Saque
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes do Saque Programado -->
+    <div id="scheduledDetailsModal" class="modal-overlay" role="dialog" aria-labelledby="scheduledDetailsTitle" aria-hidden="true">
+        <div class="modal-content" role="document">
+            <div class="modal-header">
+                <h3 class="modal-title" id="scheduledDetailsTitle">Detalhes do Saque Programado #4560</h3>
+                <button class="modal-close" onclick="closeModal()" aria-label="Fechar">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Informações do Saque -->
+                <div class="card" style="margin-bottom: 18px;">
+                    <div class="card-header" style="border-bottom: 1px solid #eee;">
+                        <h4 class="card-title" style="font-size: 15px; margin: 0; color: var(--secondary);">Informações do Saque</h4>
+                    </div>
+                    <div class="card-body" style="display: flex; flex-wrap: wrap; gap: 0 30px; font-size: 14px;">
+                        <div style="flex: 1 1 220px; min-width: 180px;">
+                            <p><strong>ID:</strong> #4560</p>
+                            <p><strong>Data da Solicitação:</strong> 05/06/2025</p>
+                            <p><strong>Data Programada:</strong> 20/06/2025</p>
+                            <p>
+                                <strong>Status:</strong>
+                                <span class="badge badge-info" style="vertical-align: middle;">Agendado</span>
+                            </p>
+                        </div>
+                        <div style="flex: 1 1 220px; min-width: 180px;">
+                            <p><strong>Valor Solicitado:</strong> R$ 120,00</p>
+                            <p><strong>Taxa de Serviço:</strong> R$ 2,90</p>
+                            <p><strong>Valor Líquido:</strong> R$ 117,10</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Conta Bancária -->
+                <div class="card">
+                    <div class="card-header" style="border-bottom: 1px solid #eee;">
+                        <h4 class="card-title" style="font-size: 15px; margin: 0; color: var(--secondary);">Conta Bancária</h4>
+                    </div>
+                    <div class="card-body" style="font-size: 14px;">
+                        <p><strong>Banco:</strong> Nubank</p>
                         <p><strong>Agência:</strong> 0001</p>
                         <p><strong>Conta:</strong> 56789-0</p>
                         <p><strong>Titular:</strong> João da Silva</p>
                     </div>
                 </div>
-                
-                <div class="card" style="margin-bottom: 0;">
-                    <div class="card-header">
-                        <h4 class="card-title">Status do Processamento</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="status-timeline">
-                            <div class="status-item">
-                                <div class="status-icon completed">
-                                    <i class="fas fa-check" aria-hidden="true"></i>
-                                </div>
-                                <div class="status-content">
-                                    <p class="status-title">Solicitação Recebida</p>
-                                    <p class="status-date">29/05/2025 10:15</p>
-                                </div>
-                            </div>
-                            <div class="status-item">
-                                <div class="status-icon completed">
-                                    <i class="fas fa-check" aria-hidden="true"></i>
-                                </div>
-                                <div class="status-content">
-                                    <p class="status-title">Processamento Iniciado</p>
-                                    <p class="status-date">29/05/2025 10:30</p>
-                                </div>
-                            </div>
-                            <div class="status-item">
-                                <div class="status-icon pending">
-                                    <i class="fas fa-clock" aria-hidden="true"></i>
-                                </div>
-                                <div class="status-content">
-                                    <p class="status-title">Transferência Bancária</p>
-                                    <p class="status-date">Estimado: 30/05/2025</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="display: flex; gap: 10px;">
                 <button class="btn btn-outline" onclick="closeModal()">Fechar</button>
-                <button class="btn btn-primary" aria-label="Baixar comprovante">
-                    <i class="fas fa-download" aria-hidden="true"></i> Baixar Comprovante
+                <button class="btn btn-primary" style="background: #c9639a; border: none;">
+                    <i class="fas fa-times" aria-hidden="true"></i> Cancelar Agendamento
                 </button>
             </div>
         </div>
@@ -1065,9 +1243,28 @@
                             <option value="">Selecione seu banco</option>
                             <option value="001">Banco do Brasil</option>
                             <option value="033">Santander</option>
+                            <option value="104">Caixa Econômica Federal</option>
                             <option value="237">Bradesco</option>
                             <option value="341">Itaú</option>
                             <option value="260">Nubank</option>
+                            <option value="077">Banco Inter</option>
+                            <option value="290">PagBank</option>
+                            <option value="380">PicPay</option>
+                            <option value="756">Sicoob</option>
+                            <option value="748">Sicredi</option>
+                            <option value="655">Votorantim</option>
+                            <option value="136">Unicred</option>
+                            <option value="070">Banco de Brasília (BRB)</option>
+                            <option value="389">Banco Mercantil do Brasil</option>
+                            <option value="746">Banco Modal</option>
+                            <option value="323">Mercado Pago</option>
+                            <option value="237">Bradesco</option>
+                            <option value="341">Itaú Unibanco</option>
+                            <option value="399">HSBC</option>
+                            <option value="745">Citibank</option>
+                            <option value="041">Banrisul</option>
+                            <option value="004">Banco do Nordeste</option>
+                            <option value="655">Banco Votorantim</option>
                         </select>
                     </div>
                     
@@ -1118,6 +1315,101 @@
                 <button class="btn btn-primary" onclick="saveBankData()">
                     <i class="fas fa-save" aria-hidden="true"></i> Salvar Conta
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Editar Conta Bancária -->
+    <div id="editBankAccountModal" class="modal-overlay" role="dialog" aria-labelledby="editBankAccountTitle" aria-hidden="true">
+        <div class="modal-content" role="document">
+            <div class="modal-header">
+                <h3 class="modal-title" id="editBankAccountTitle">Editar Conta Bancária</h3>
+                <button class="modal-close" onclick="closeModal()" aria-label="Fechar">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editBankForm">
+                    <!-- Repita os campos do cadastro, mas com valores preenchidos -->
+                    <div class="form-group">
+                        <label for="editBankSelect" class="form-label">Banco</label>
+                        <select id="editBankSelect" class="form-control" required>
+                            <option value="">Selecione seu banco</option>
+                            <option value="001">Banco do Brasil</option>
+                            <option value="033">Santander</option>
+                            <option value="104">Caixa Econômica Federal</option>
+                            <option value="237">Bradesco</option>
+                            <option value="341">Itaú</option>
+                            <option value="260">Nubank</option>
+                            <option value="077">Banco Inter</option>
+                            <option value="290">PagBank</option>
+                            <option value="380">PicPay</option>
+                            <option value="756">Sicoob</option>
+                            <option value="748">Sicredi</option>
+                            <option value="655">Votorantim</option>
+                            <option value="136">Unicred</option>
+                            <option value="070">Banco de Brasília (BRB)</option>
+                            <option value="389">Banco Mercantil do Brasil</option>
+                            <option value="746">Banco Modal</option>
+                            <option value="323">Mercado Pago</option>
+                            <option value="237">Bradesco</option>
+                            <option value="341">Itaú Unibanco</option>
+                            <option value="399">HSBC</option>
+                            <option value="745">Citibank</option>
+                            <option value="041">Banrisul</option>
+                            <option value="004">Banco do Nordeste</option>
+                            <option value="655">Banco Votorantim</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editAgencyInput" class="form-label">Agência</label>
+                        <input type="text" id="editAgencyInput" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editAccountInput" class="form-label">Conta</label>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" id="editAccountInput" class="form-control" style="flex: 1;" required>
+                            <input type="text" id="editAccountDigit" class="form-control" style="width: 70px;" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editAccountType" class="form-label">Tipo de Conta</label>
+                        <select id="editAccountType" class="form-control" required>
+                            <option value="">Selecione o tipo</option>
+                            <option value="corrente">Conta Corrente</option>
+                            <option value="poupanca">Conta Poupança</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCpfInput" class="form-label">CPF do Titular</label>
+                        <input type="text" id="editCpfInput" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editNameInput" class="form-label">Nome do Titular</label>
+                        <input type="text" id="editNameInput" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal()">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveBankData()">
+                    <i class="fas fa-save" aria-hidden="true"></i> Salvar Alterações
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Download -->
+    <div id="downloadConfirmModal" class="modal-overlay" role="dialog" aria-labelledby="downloadConfirmTitle" aria-hidden="true">
+        <div class="modal-content" role="document">
+            <div class="modal-header">
+                <h3 class="modal-title2" id="downloadConfirmTitle">Download concluído</h3>
+                <button class="modal-close" onclick="closeModal()" aria-label="Fechar">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <i class="fas fa-check-circle" style="color: #4CAF50; font-size: 48px; margin-bottom: 10px;" aria-hidden="true"></i>
+                <p id="downloadConfirmText" style="font-size: 16px; margin: 0;">Comprovante baixado com sucesso!</p>
+            </div>
+            <div class="modal-footer" style="justify-content: center;">
+                <button class="btn btn-primary" onclick="closeModal()">OK</button>
             </div>
         </div>
     </div>
@@ -1407,8 +1699,85 @@
                     e.target.value = value;
                 });
             }
+            
+            document.querySelectorAll('.download-btn').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (btn.classList.contains('downloading')) return; // Prevent double click
+                    btn.classList.add('downloading');
+                    // Simulate download (3.5 seconds)
+                    setTimeout(function() {
+                        btn.classList.remove('downloading');
+                        // Show custom modal after download
+                        const label = btn.getAttribute('aria-label');
+                        let id = label && label.match(/#(\d+)/) ? label.match(/#(\d+)/)[1] : '';
+                        document.getElementById('downloadConfirmText').textContent =
+                id
+                ? `Comprovante do saque #${id} baixado com sucesso!`
+                : 'Comprovante baixado com sucesso!';
+                        openModal('downloadConfirmModal');
+                    }, 3500);
+                });
+            });
         });
+
+        // Add this mapping to your script
+const bankIconClasses = {
+    "001": "icon-bancodobrasil",
+    "033": "icon-santander",
+    "104": "icon-caixa",
+    "237": "icon-bradesco",
+    "341": "icon-itau",
+    "260": "icon-nubank",
+    "077": "icon-inter",
+    "290": "icon-pagbank",
+    "380": "icon-picpay",
+    "756": "icon-sicoob",
+    "748": "icon-sicredi",
+    "655": "icon-votorantim",
+    "136": "icon-unicred",
+    "070": "icon-brb",
+    "389": "icon-mercantil",
+    "746": "icon-modal",
+    "323": "icon-mercadopago",
+    "399": "icon-hsbc",
+    "745": "icon-citibank",
+    "041": "icon-banrisul",
+    "004": "icon-bancodonordeste"
+};
+
+// Example account data
+const accounts = [
+  { bankCode: "260", bankName: "Nubank", agency: "0001", account: "56789-0", holder: "João da Silva", type: "Conta Corrente" },
+  { bankCode: "341", bankName: "Itaú", agency: "1234", account: "12345-6", holder: "Maria Souza", type: "Conta Poupança" }
+];
+
+function renderAccountsTable() {
+    const tbody = document.querySelector('#bankAccountsTable tbody');
+    tbody.innerHTML = '';
+    accounts.forEach(acc => {
+        // Use the bank code to build the image path
+        const logoFile = acc.bankCode ? acc.bankCode.toLowerCase() + '.png' : 'default.png';
+        const logoPath = `assets/images/banks/${logoFile}`;
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>
+                <img src="${logoPath}" alt="${acc.bankName}" style="width:24px; height:24px; vertical-align:middle; margin-right:6px; border-radius:4px;" onerror="this.onerror=null;this.src='assets/images/banks/default.png';">
+                ${acc.bankName}
+            </td>
+            <td>${acc.agency} / ${acc.account}</td>
+            <td>${acc.holder}</td>
+            <td>${acc.type}</td>
+            <td>
+                <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
+                    <i class="fas fa-edit" aria-hidden="true"></i> Editar
+                </button>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
     </script>
 </body>
-</html>
 
+</html>
