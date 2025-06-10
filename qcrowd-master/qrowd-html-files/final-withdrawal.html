@@ -1028,6 +1028,9 @@
             <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
                 <i class="fas fa-edit" aria-hidden="true"></i> Editar
             </button>
+            <button class="btn btn-outline btn-sm" style="color:#d9534f; border-color:#d9534f; margin-left:6px;" onclick="if(confirm('Tem certeza que deseja excluir esta conta bancária?')){ this.closest('tr').remove(); }" aria-label="Excluir conta bancária">
+                <i class="fas fa-trash" aria-hidden="true"></i> Excluir
+            </button>
         </td>
     </tr>
     <tr>
@@ -1042,6 +1045,9 @@
             <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
                 <i class="fas fa-edit" aria-hidden="true"></i> Editar
             </button>
+            <button class="btn btn-outline btn-sm" style="color:#d9534f; border-color:#d9534f; margin-left:6px;" onclick="if(confirm('Tem certeza que deseja excluir esta conta bancária?')){ this.closest('tr').remove(); }" aria-label="Excluir conta bancária">
+                <i class="fas fa-trash" aria-hidden="true"></i> Excluir
+            </button>
         </td>
     </tr>
     <tr>
@@ -1055,6 +1061,9 @@
         <td>
             <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
                 <i class="fas fa-edit" aria-hidden="true"></i> Editar
+            </button>
+            <button class="btn btn-outline btn-sm" style="color:#d9534f; border-color:#d9534f; margin-left:6px;" onclick="if(confirm('Tem certeza que deseja excluir esta conta bancária?')){ this.closest('tr').remove(); }" aria-label="Excluir conta bancária">
+                <i class="fas fa-trash" aria-hidden="true"></i> Excluir
             </button>
         </td>
     </tr>
@@ -1755,7 +1764,7 @@ const accounts = [
 function renderAccountsTable() {
     const tbody = document.querySelector('#bankAccountsTable tbody');
     tbody.innerHTML = '';
-    accounts.forEach(acc => {
+    accounts.forEach((acc, idx) => {
         // Use the bank code to build the image path
         const logoFile = acc.bankCode ? acc.bankCode.toLowerCase() + '.png' : 'default.png';
         const logoPath = `assets/images/banks/${logoFile}`;
@@ -1772,10 +1781,20 @@ function renderAccountsTable() {
                 <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
                     <i class="fas fa-edit" aria-hidden="true"></i> Editar
                 </button>
+                <button class="btn btn-outline btn-sm" style="color:#d9534f; border-color:#d9534f; margin-left:6px;" onclick="deleteAccount(${idx})" aria-label="Excluir conta bancária">
+                    <i class="fas fa-trash" aria-hidden="true"></i> Excluir
+                </button>
             </td>
         `;
         tbody.appendChild(row);
     });
+}
+
+function deleteAccount(index) {
+    if (confirm('Tem certeza que deseja excluir esta conta bancária?')) {
+        accounts.splice(index, 1);
+        renderAccountsTable();
+    }
 }
     </script>
 </body>
