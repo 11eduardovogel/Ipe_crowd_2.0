@@ -236,36 +236,19 @@
 
         /* Tables Style */
         .table-responsive {
+            width: 100%;
             overflow-x: auto;
         }
         
         .table {
             width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
+            table-layout: auto;
+            word-break: break-word;
         }
         
-        .table thead th {
-            background-color: var(--background);
-            color: var(--secondary);
-            font-weight: 600;
-            padding: 10px 12px;
-            text-align: left;
-            border-bottom: 2px solid var(--border);
-        }
-        
-        .table tbody tr {
-            border-bottom: 1px solid var(--border);
-            transition: background-color 0.2s ease;
-        }
-        
-        .table tbody tr:hover {
-            background-color: rgba(254, 127, 76, 0.05);
-        }
-        
-        .table tbody td {
-            padding: 12px;
-            vertical-align: middle;
+        .table th, .table td {
+            white-space: normal;
+            word-break: break-word;
         }
 
         /* Badges */
@@ -800,6 +783,10 @@
     border-color: #b20000 !important;
     transform: translateY(-1.5px) scale(1.025); /* much softer hop */
     box-shadow: 0 4px 16px rgba(201,99,154,0.10);
+}
+
+body.modal-open {
+    padding-right: 17px; /* Adjust this value to your scrollbar width if needed */
 }
     </style>
 </head>
@@ -1600,25 +1587,46 @@
     <script>
         // Funções para controle dos modais
         function openModal(modalId) {
-            closeModal(); // Fecha qualquer modal aberto
-            document.getElementById(modalId).classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            // Acessibilidade: foco no primeiro elemento interativo do modal
-            setTimeout(() => {
-                const modal = document.getElementById(modalId);
-                const firstFocusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-                if (firstFocusable) {
-                    firstFocusable.focus();
-                }
-            }, 100);
-        }
+    const modal = document.getElementById(modalId);
+    if (modal.classList.contains('active')) return;
+    closeModal();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Compensate for scrollbar disappearance
+    if (window.innerWidth > document.documentElement.clientWidth) {
+        document.body.classList.add('modal-open');
+    }
+
+    setTimeout(() => {
+        const firstFocusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (firstFocusable) firstFocusable.focus();
+    }, 100);
+}
+
+function closeModal() {
+    const activeModal = document.querySelector('.modal-overlay.active');
+    if (activeModal) {
+        activeModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        document.body.classList.remove('modal-open');
+    }
+    if (downloadTimeout) {
+        clearTimeout(downloadTimeout);
+        downloadTimeout = null;
+    }
+}
         
         function closeModal() {
             const activeModal = document.querySelector('.modal-overlay.active');
             if (activeModal) {
                 activeModal.classList.remove('active');
                 document.body.style.overflow = 'auto';
+            }
+            // Cancel pending download modal open
+            if (downloadTimeout) {
+                clearTimeout(downloadTimeout);
+                downloadTimeout = null;
             }
         }
         
@@ -1747,8 +1755,10 @@
                     e.preventDefault();
                     if (btn.classList.contains('downloading')) return; // Prevent double click
                     btn.classList.add('downloading');
+                    // Clear any previous timeout
+                    if (downloadTimeout) clearTimeout(downloadTimeout);
                     // Simulate download (3.5 seconds)
-                    setTimeout(function() {
+                    downloadTimeout = setTimeout(function() {
                         btn.classList.remove('downloading');
                         // Show custom modal after download
                         const label = btn.getAttribute('aria-label');
@@ -1758,6 +1768,7 @@
                 ? `Comprovante do saque #${id} baixado com sucesso!`
                 : 'Comprovante baixado com sucesso!';
                         openModal('downloadConfirmModal');
+                        downloadTimeout = null;
                     }, 3500);
                 });
             });
@@ -1831,6 +1842,8 @@ function deleteAccount(index) {
         renderAccountsTable();
     }
 }
+
+let downloadTimeout = null;
     </script>
 </body>
 

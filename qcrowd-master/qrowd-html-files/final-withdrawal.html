@@ -768,6 +768,39 @@
 .withdrawal-info strong {
     color: #2C3E50;
 }
+
+.btn-edit {
+    border: 1px solid #0AB2C4 !important;
+    color: #0AB2C4 !important;
+    background: transparent !important;
+}
+.btn-edit:hover, .btn-edit:focus {
+    background: #f5fdfd !important;
+    color: #0cdaf1 !important;
+    border-color: #0cdaf1 !important;
+}
+
+.btn-delete {
+    border: 1px solid #C9639A !important;
+    color: #C9639A !important;
+    background: transparent !important;
+    margin-left: 6px;
+    transition: 
+        background 0.25s cubic-bezier(.4,1.5,.5,1),
+        color 0.25s cubic-bezier(.4,1.5,.5,1),
+        border-color 0.25s cubic-bezier(.4,1.5,.5,1),
+        box-shadow 0.25s cubic-bezier(.4,1.5,.5,1),
+        transform 0.35s cubic-bezier(.4,1.5,.5,1);
+    will-change: transform;
+    margin-top: 10px;
+}
+.btn-delete:hover, .btn-delete:focus {
+    background: #fbeaf5 !important;
+    color: #b20000 !important;
+    border-color: #b20000 !important;
+    transform: translateY(-1.5px) scale(1.025); /* much softer hop */
+    box-shadow: 0 4px 16px rgba(201,99,154,0.10);
+}
     </style>
 </head>
 
@@ -1025,10 +1058,10 @@
         <td>João da Silva</td>
         <td>Conta Poupança</td>
         <td>
-            <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
+            <button class="btn btn-sm btn-edit" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
                 <i class="fas fa-edit" aria-hidden="true"></i> Editar
             </button>
-            <button class="btn btn-outline btn-sm" style="color:#d9534f; border-color:#d9534f; margin-left:6px;" onclick="if(confirm('Tem certeza que deseja excluir esta conta bancária?')){ this.closest('tr').remove(); }" aria-label="Excluir conta bancária">
+            <button class="btn btn-sm btn-delete" onclick="if(confirm('Tem certeza que deseja excluir esta conta bancária?')){ this.closest('tr').remove(); }" aria-label="Excluir conta bancária">
                 <i class="fas fa-trash" aria-hidden="true"></i> Excluir
             </button>
         </td>
@@ -1042,10 +1075,10 @@
         <td>João da Silva</td>
         <td>Conta Corrente</td>
         <td>
-            <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
+            <button class="btn btn-sm btn-edit" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
                 <i class="fas fa-edit" aria-hidden="true"></i> Editar
             </button>
-            <button class="btn btn-outline btn-sm" style="color:#d9534f; border-color:#d9534f; margin-left:6px;" onclick="if(confirm('Tem certeza que deseja excluir esta conta bancária?')){ this.closest('tr').remove(); }" aria-label="Excluir conta bancária">
+            <button class="btn btn-sm btn-delete" onclick="if(confirm('Tem certeza que deseja excluir esta conta bancária?')){ this.closest('tr').remove(); }" aria-label="Excluir conta bancária">
                 <i class="fas fa-trash" aria-hidden="true"></i> Excluir
             </button>
         </td>
@@ -1059,10 +1092,10 @@
         <td>João da Silva</td>
         <td>Conta Corrente</td>
         <td>
-            <button class="btn btn-outline btn-sm" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
+            <button class="btn btn-sm btn-edit" onclick="openModal('editBankAccountModal')" aria-label="Editar conta bancária">
                 <i class="fas fa-edit" aria-hidden="true"></i> Editar
             </button>
-            <button class="btn btn-outline btn-sm" style="color:#d9534f; border-color:#d9534f; margin-left:6px;" onclick="if(confirm('Tem certeza que deseja excluir esta conta bancária?')){ this.closest('tr').remove(); }" aria-label="Excluir conta bancária">
+            <button class="btn btn-sm btn-delete" onclick="if(confirm('Tem certeza que deseja excluir esta conta bancária?')){ this.closest('tr').remove(); }" aria-label="Excluir conta bancária">
                 <i class="fas fa-trash" aria-hidden="true"></i> Excluir
             </button>
         </td>
@@ -1749,6 +1782,8 @@ const bankIconClasses = {
     "389": "icon-mercantil",
     "746": "icon-modal",
     "323": "icon-mercadopago",
+    "237": "icon-bradesco",
+    "341": "icon-itau-unibanco",
     "399": "icon-hsbc",
     "745": "icon-citibank",
     "041": "icon-banrisul",
